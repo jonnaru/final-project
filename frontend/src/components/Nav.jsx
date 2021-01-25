@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 const NavList = styled.ul`
@@ -7,9 +8,14 @@ const NavList = styled.ul`
 `;
 
 const NavLink = styled.li`
-  font-size: 72px;
+  font-size: 120px;
   margin: 0;
   text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
 `;
 
 const StyledNav = styled.nav`
@@ -34,11 +40,21 @@ export const Nav = ({ closeNav }) => {
     <NavBackdrop onClick={closeNav}>
       <StyledNav onMouseLeave={closeNav}>
         <NavList>
-          <NavLink>hej</NavLink>
-          <NavLink>hej</NavLink>
-          <NavLink>hej</NavLink>
-          <NavLink>hej</NavLink>
-          <NavLink>hej</NavLink>
+          <NavLink>
+            <Link to="/gallery">gallery</Link>
+          </NavLink>
+          <NavLink>
+            <Link to="/shop">shop</Link>
+          </NavLink>
+          <NavLink>
+            <Link to="/cart">cart</Link>
+          </NavLink>
+          <NavLink>
+            <Link to="/sign-in">sign in</Link>
+          </NavLink>
+          <NavLink>
+            <Link to="/contact">contact</Link>
+          </NavLink>
         </NavList>
       </StyledNav>
     </NavBackdrop>

@@ -12,10 +12,7 @@ const HeaderContainer = styled.div`
 const Logo = styled.h1`
   margin-right: 20px;
   font-size: 52px;
-
-  &:hover {
-    color: red;
-  }
+  z-index: 10;
 `;
 
 export const Header = () => {
@@ -24,7 +21,7 @@ export const Header = () => {
   return (
     <>
       <HeaderContainer>
-        <Logo onMouseEnter={() => setShowNav(true)}>hello</Logo>
+        <Logo onMouseEnter={() => setShowNav(true)}>shop-name</Logo>
         {showNav && <Nav closeNav={() => setShowNav(false)} />}
       </HeaderContainer>
     </>
