@@ -5,7 +5,7 @@ import { Header } from "./components/Header";
 import { Gallery } from "./pages/Gallery";
 import { Shop } from "./pages/Shop";
 import { Cart } from "./pages/Cart";
-import { SignIn } from "./pages/SignIn";
+import { LoginSignUp } from "./pages/LoginSignUp";
 import { Contact } from "./pages/Contact";
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
           <Cart />
         </Route>
         <Route path="/sign-in" exact>
-          <SignIn />
+          <LoginSignUp />
         </Route>
         <Route path="/contact" exact>
           <Contact />

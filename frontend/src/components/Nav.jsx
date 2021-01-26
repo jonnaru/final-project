@@ -12,10 +12,6 @@ const NavLink = styled.li`
   margin: 0;
   text-align: center;
   cursor: pointer;
-
-  &:hover {
-    color: red;
-  }
 `;
 
 const StyledNav = styled.nav`
@@ -49,9 +45,9 @@ export const Nav = ({ closeNav }) => {
           <NavLink>
             <Link to="/cart">cart</Link>
           </NavLink>
-          <NavLink>
+          {/* <NavLink>
             <Link to="/sign-in">sign in</Link>
-          </NavLink>
+          </NavLink> */}
           <NavLink>
             <Link to="/contact">contact</Link>
           </NavLink>
