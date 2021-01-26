@@ -5,32 +5,11 @@ import mongoose from "mongoose";
 import crypto from "crypto";
 import bcrypt from "bcrypt-nodejs";
 
+import userSchema from "./models/users";
+
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/authAPI";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
-
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    minlength: 5,
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 8,
-  },
-  accessToken: {
-    type: String,
-    // unique: true,
-    default: () => crypto.randomBytes(128).toString("hex"),
-  },
-});
 
 userSchema.pre("save", async function (next) {
   const user = this;
@@ -50,7 +29,7 @@ const User = mongoose.model("User", userSchema);
 const port = process.env.PORT || 8080;
 const app = express();
 
-// Add middlewares to enable cors and json body parsing
+// Add middle wares to enable cors and json body parsing
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -73,9 +52,21 @@ const authenticateUser = async (req, res, next) => {
 // Sign-up
 app.post("/users", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      lastName,
+      address,
+      postalCode,
+      city,
+      email,
+      password,
+    } = req.body;
     const user = await new User({
       name,
+      lastName,
+      address,
+      postalCode,
+      city,
       email,
       password,
     });
@@ -87,32 +78,6 @@ app.post("/users", async (req, res) => {
       .json({ message: "Could not create user", errors: err.errors });
   }
 });
-
-// Logout
-app.post("/users/logout", authenticateUser);
-app.post("/users/logout", async (req, res) => {
-  try {
-    const user = req.user;
-    user.accessToken = null;
-    await user.save();
-    res.status(200).json({ loggedOut: true });
-  } catch (err) {
-    res.status(400).json({ error: "Could not logout", err });
-  }
-});
-
-// Logout -> SAVING AS REF.
-/*
-const authenticateUser = async (req, res, next) => {
-  const user = await User.findOne({ accessToken: req.header("Authorization") });
-  if (user) {
-    req.user = user;
-    next();
-  } else {
-    res.status(401).json({ loggedOut: true });
-  }
-};
-*/
 
 // Login
 app.post("/sessions", async (req, res) => {
@@ -136,23 +101,18 @@ app.post("/sessions", async (req, res) => {
   }
 });
 
-// -> SAVING AS REF. (why doesn't this work?)
-/*
-app.get("/users/:id/profile", authenticateUser);
-app.get("/users/:id/profile", async (req, res) => {
-  const user = await User.findOne({ _id: req.params.id });
-  const publicProfileMessage = `This is a public profile message for ${user.name}`;
-  const privateProfileMessage = `This is a private profile message for ${user.name}`;
-
-  // Decide private or public
-  if (req.user._id.$oid === user._id.$oid) {
-    res.status(200).json({ profileMessage: privateProfileMessage });
-  } else {
-    // Public information or forbidden (403) because the users don't match
-    res.status(200).json({ profileMessage: publicProfileMessage });
+// Logout
+app.post("/users/logout", authenticateUser);
+app.post("/users/logout", async (req, res) => {
+  try {
+    const user = req.user;
+    user.accessToken = null;
+    await user.save();
+    res.status(200).json({ loggedOut: true });
+  } catch (err) {
+    res.status(400).json({ error: "Could not logout", err });
   }
 });
-*/
 
 // Get user specific information
 app.get("/users/:id/secret", authenticateUser);
