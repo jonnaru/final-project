@@ -54,9 +54,6 @@ export const Nav = ({ closeNav }) => {
           <NavLink>
             <Link to="/cart">cart</Link>
           </NavLink>
-          {/* <NavLink>
-            <Link to="/sign-in">sign in</Link>
-          </NavLink> */}
           <NavLink>
             <Link to="/contact">contact</Link>
           </NavLink>

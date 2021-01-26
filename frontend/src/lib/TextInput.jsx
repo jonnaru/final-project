@@ -18,6 +18,11 @@ const StyledInput = styled.input`
   }
 `;
 
-export const TextInput = ({ placeholder }) => (
-  <StyledInput type="text" placeholder={placeholder} />
+export const TextInput = ({ placeholder, onChange, value, type }) => (
+  <StyledInput
+    placeholder={placeholder}
+    value={value}
+    onChange={onChange}
+    type="text"
+  />
 );
