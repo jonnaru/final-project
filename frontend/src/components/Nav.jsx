@@ -12,6 +12,14 @@ const NavLink = styled.li`
   margin: 0;
   text-align: center;
   cursor: pointer;
+  & a {
+    text-decoration: none;
+    color: #000;
+
+    &:hover {
+      color: grey;
+    }
+  }
 `;
 
 const StyledNav = styled.nav`
@@ -29,6 +37,7 @@ const NavBackdrop = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
+  background: rgba(255, 255, 255, 0.5);
 `;
 
 export const Nav = ({ closeNav }) => {
