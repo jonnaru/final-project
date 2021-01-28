@@ -52,7 +52,6 @@ export const Header = () => {
         }
         return res.json();
       })
-      // SUCCESS: Do something with the information we got back
       .then((json) => logoutSuccess(json))
       .catch((err) => logoutFailed(err));
   };

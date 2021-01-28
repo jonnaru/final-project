@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import { user } from "./reducers/user";
 
+import { StartPage } from "./pages/StartPage";
 import { Header } from "./components/Header";
 import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
@@ -35,8 +36,11 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header />
         <Switch>
+          <Route path="/" exact>
+            <StartPage />
+          </Route>
+          <Header />
           <Route path="/gallery" exact>
             <GalleryPage />
           </Route>
