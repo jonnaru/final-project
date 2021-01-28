@@ -71,7 +71,12 @@ app.post("/users", async (req, res) => {
       password,
     });
     await user.save();
-    res.status(201).json({ message: `Signup success for ${user.name}` });
+    res.status(201).json({
+      userId: user._id,
+      name: user.name,
+      accessToken: user.accessToken,
+      message: `Signup success for ${user.name}`,
+    });
   } catch (err) {
     res
       .status(400)
