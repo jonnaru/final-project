@@ -2,10 +2,10 @@ import React from "react";
 
 import { PageContainer } from "./styling/PageContainer";
 
-export const Cart = () => {
+export const ContactPage = () => {
   return (
     <PageContainer>
-      <h2>This is a cart</h2>
+      <h2>This is a contact</h2>
     </PageContainer>
   );
 };

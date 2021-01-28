@@ -10,7 +10,7 @@ const Image = styled.img`
   height: 100%;
 `;
 
-export const Gallery = () => {
+export const GalleryPage = () => {
   return (
     <PageContainer>
       <h2>this is a gallery</h2>
@@ -23,6 +23,7 @@ export const Gallery = () => {
           <Image
             src={`https://source.unsplash.com/collection/76205006/200x400?random=${Math.random()}`}
             alt="hej"
+            type="large"
           />
         </Cell>
         <Cell>

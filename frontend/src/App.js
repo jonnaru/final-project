@@ -6,11 +6,11 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { user } from "./reducers/user";
 
 import { Header } from "./components/Header";
-import { Gallery } from "./pages/Gallery";
+import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
-import { Cart } from "./pages/Cart";
-import { Contact } from "./pages/Contact";
-import { Product } from "./pages/Product";
+import { CartPage } from "./pages/CartPage";
+import { ContactPage } from "./pages/ContactPage";
+import { ProductPage } from "./pages/ProductPage";
 
 export const URL = "http://localhost:8080";
 
@@ -38,19 +38,19 @@ const App = () => {
         <Header />
         <Switch>
           <Route path="/gallery" exact>
-            <Gallery />
+            <GalleryPage />
           </Route>
           <Route path="/shop" exact>
             <ShopPage />
           </Route>
           <Route path="/cart" exact>
-            <Cart />
+            <CartPage />
           </Route>
           <Route path="/contact" exact>
-            <Contact />
+            <ContactPage />
           </Route>
           <Route path="/product/:productId">
-            <Product />
+            <ProductPage />
           </Route>
         </Switch>
       </BrowserRouter>
