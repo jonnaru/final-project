@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
+import CrossfadeImage from "react-crossfade-image";
 
 import { Nav } from "../components/Nav";
 
@@ -20,6 +21,10 @@ export const StartPage = () => {
   const [showNav, setShowNav] = useState(false);
   return (
     <StartPageContainer>
+      <CrossfadeImage
+        src={`https://source.unsplash.com/collection/76205006?random=${Math.random()}`} // Math.random to reload image
+      />
+
       <Logo onMouseEnter={() => setShowNav(true)}>shop-name</Logo>
       {showNav && <Nav closeNav={() => setShowNav(false)} />}
     </StartPageContainer>

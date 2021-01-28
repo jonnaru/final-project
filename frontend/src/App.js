@@ -36,11 +36,11 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <Header />
         <Switch>
           <Route path="/" exact>
             <StartPage />
           </Route>
-          <Header />
           <Route path="/gallery" exact>
             <GalleryPage />
           </Route>
