@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
+import { Backdrop } from "./styling/Backdrop";
 
 const NavList = styled.ul`
   list-style-type: none;
@@ -29,20 +30,12 @@ const StyledNav = styled.nav`
   transform: translate(-50%, -50%);
   width: 500px;
   border: 2px solid black;
-`;
-
-const NavBackdrop = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.5);
+  z-index: 10;
 `;
 
 export const Nav = ({ closeNav }) => {
   return (
-    <NavBackdrop onClick={closeNav}>
+    <>
       <StyledNav onMouseLeave={closeNav}>
         <NavList>
           <NavLink>
@@ -59,6 +52,7 @@ export const Nav = ({ closeNav }) => {
           </NavLink>
         </NavList>
       </StyledNav>
-    </NavBackdrop>
+      <Backdrop onClick={closeNav} />
+    </>
   );
 };

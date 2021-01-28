@@ -1,54 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
+import { URL } from "../App";
 import { user } from "../reducers/user";
 
 import { StyledForm } from "./styling/StyledForm";
 import { TextInput } from "../lib/TextInput";
 import { PrimaryButton } from "../lib/PrimaryButton";
 
-export const LoginForm = ({ URL }) => {
+export const LoginForm = ({ closeDrawer }) => {
   const LOGIN_URL = `${URL}/sessions`;
 
+  const statusMessage = useSelector((store) => store.user.login.statusMessage);
+
   const dispatch = useDispatch();
+  const { setAccessToken, setUserId, setName, setStatusMessage } = user.actions;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    // CLean up
+    return () => {
+      dispatch(setStatusMessage({ statusMessage: "" }));
+    };
+  }, []);
+
   // Login success
   const handleLoginSuccess = (loginResponse) => {
-    dispatch(
-      user.actions.setAccessToken({
-        accessToken: loginResponse.accessToken,
-      })
-    );
-    dispatch(
-      user.actions.setUserId({
-        userId: loginResponse.userId,
-      })
-    );
-    dispatch(
-      user.actions.setName({
-        name: loginResponse.name,
-      })
-    );
-    dispatch(
-      user.actions.setStatusMessage({
-        statusMessage: "You are logged in",
-      })
-    );
+    // sending response to store
+    dispatch(setAccessToken({ accessToken: loginResponse.accessToken }));
+    dispatch(setUserId({ userId: loginResponse.userId }));
+    dispatch(setName({ name: loginResponse.name }));
+    // closing drawer
+    closeDrawer();
   };
 
   // Login fail
   const handleLoginFailed = (loginError) => {
-    dispatch(
-      user.actions.setAccessToken({
-        accessToken: null,
-      })
-    );
-    dispatch(
-      user.actions.setStatusMessage({
-        statusMessage: loginError.message,
-      })
-    );
+    // reset accessToken and show error message
+    dispatch(setAccessToken({ accessToken: null }));
+    dispatch(setStatusMessage({ statusMessage: loginError.message }));
   };
 
   // Login a user
@@ -67,11 +60,11 @@ export const LoginForm = ({ URL }) => {
         return res.json();
       })
       .then((json) => handleLoginSuccess(json))
-      .catch((err) => handleLoginFailed(err))
-      .finally(() => {
-        setEmail("");
-        setPassword("");
-      });
+      .catch((err) => handleLoginFailed(err));
+    // .finally(() => {
+    //   setEmail("");
+    //   setPassword("");
+    // });
   };
 
   return (
@@ -92,6 +85,7 @@ export const LoginForm = ({ URL }) => {
         type="password"
       />
       <PrimaryButton small title="sign in" onClick={handleLogin} />
+      <p>{`${statusMessage}`}</p>
     </StyledForm>
   );
 };

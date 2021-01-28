@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
+import { URL } from "../App";
 import { user } from "../reducers/user";
 
 import { StyledForm } from "./styling/StyledForm";
 import { TextInput } from "../lib/TextInput";
 import { PrimaryButton } from "../lib/PrimaryButton";
 
-export const SignUpForm = ({ URL }) => {
+export const SignUpForm = ({ closeDrawer }) => {
   const SIGNUP_URL = `${URL}/users`;
 
+  const statusMessage = useSelector((store) => store.user.login.statusMessage);
+
   const dispatch = useDispatch();
+
+  const {
+    setAccessToken,
+    setUserId,
+    setName: setFirstName,
+    setStatusMessage,
+  } = user.actions;
+
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -19,21 +32,24 @@ export const SignUpForm = ({ URL }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  useEffect(() => {
+    // Clean up
+    return () => {
+      dispatch(user.actions.setStatusMessage({ statusMessage: "" }));
+    };
+  }, []);
+
   const handleSignupSuccess = (signupResponse) => {
-    console.log(signupResponse);
-    dispatch(
-      user.actions.setStatusMessage({
-        statusMessage: signupResponse.message,
-      })
-    );
+    dispatch(setAccessToken({ accessToken: signupResponse.accessToken }));
+    dispatch(setUserId({ userId: signupResponse.userId }));
+    dispatch(setFirstName({ name: signupResponse.name }));
+    dispatch(setStatusMessage({ statusMessage: signupResponse.message }));
+    // closing drawer
+    closeDrawer();
   };
 
   const handleSignupFailed = (signupError) => {
-    dispatch(
-      user.actions.setStatusMessage({
-        statusMessage: signupError.message,
-      })
-    );
+    dispatch(setStatusMessage({ statusMessage: signupError.message }));
   };
 
   // To sign up a user
@@ -167,6 +183,7 @@ export const SignUpForm = ({ URL }) => {
         title="sign up"
         onClick={handleSignup}
       />
+      <p>{`${statusMessage}`}</p>
     </StyledForm>
   );
 };

@@ -7,12 +7,12 @@ import { user } from "./reducers/user";
 
 import { Header } from "./components/Header";
 import { Gallery } from "./pages/Gallery";
-import { Shop } from "./pages/Shop";
+import { ShopPage } from "./pages/ShopPage";
 import { Cart } from "./pages/Cart";
-import { LoginSignUp } from "./pages/LoginSignUp";
 import { Contact } from "./pages/Contact";
+import { Product } from "./pages/Product";
 
-const URL = "http://localhost:8080";
+export const URL = "http://localhost:8080";
 
 const reducer = combineReducers({ user: user.reducer });
 
@@ -41,16 +41,16 @@ const App = () => {
             <Gallery />
           </Route>
           <Route path="/shop" exact>
-            <Shop />
+            <ShopPage />
           </Route>
           <Route path="/cart" exact>
             <Cart />
           </Route>
-          <Route path="/sign-in" exact>
-            <LoginSignUp URL={URL} />
-          </Route>
           <Route path="/contact" exact>
             <Contact />
+          </Route>
+          <Route path="/product/:productId">
+            <Product />
           </Route>
         </Switch>
       </BrowserRouter>
