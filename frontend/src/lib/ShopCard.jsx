@@ -7,10 +7,13 @@ const Container = styled.article`
   /* border: 1px solid black; */
   background: #fff;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
-const Title = styled.h1`
+const Title = styled.h3`
   margin: 0;
+  text-transform: lowercase;
+  /* font-style: italic; */
   font-size: 36px;
 `;
 
@@ -28,6 +31,10 @@ const TitleBar = styled.div`
 const CoverImage = styled.img`
   width: 100%;
   padding: 0 10px;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const Content = styled.div`
@@ -45,14 +52,15 @@ const Heart = styled(IconHeart)`
   }
 `;
 
-export const PrimaryCard = ({
+export const ShopCard = ({
   title,
   secondaryText,
   coverImage,
   className,
   children,
+  onClick,
 }) => (
-  <Container className={className}>
+  <Container className={className} onClick={onClick}>
     {coverImage && <CoverImage src={coverImage} />}
 
     <Content>

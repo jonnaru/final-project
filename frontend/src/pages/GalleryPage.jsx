@@ -13,7 +13,6 @@ const Image = styled.img`
 export const GalleryPage = () => {
   return (
     <PageContainer>
-      <h2>this is a gallery</h2>
       <Grid
         flow="row dense"
         columns="repeat(auto-fit,minmax(200px,1fr))"

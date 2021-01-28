@@ -69,7 +69,7 @@ export const LoginForm = ({ closeDrawer }) => {
 
   return (
     <StyledForm>
-      <h1>login form</h1>
+      <h1>login</h1>
       <TextInput
         placeholder="email"
         value={email}

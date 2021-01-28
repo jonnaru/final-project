@@ -5,7 +5,7 @@ import { PageContainer } from "./styling/PageContainer";
 export const ContactPage = () => {
   return (
     <PageContainer>
-      <h2>This is a contact</h2>
+      <h1>This is a contact page</h1>
     </PageContainer>
   );
 };

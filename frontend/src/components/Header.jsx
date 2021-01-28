@@ -14,18 +14,20 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 0 10px;
+  padding-bottom: 40px;
   width: 100%;
   max-width: 1400px;
 
   margin: auto;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
 `;
 
 const Logo = styled.h1`
   font-size: 52px;
   z-index: 10;
+  cursor: pointer;
 `;
 
 export const Header = () => {

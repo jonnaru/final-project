@@ -36,11 +36,14 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Header />
         <Switch>
           <Route path="/" exact>
             <StartPage />
           </Route>
+        </Switch>
+
+        <Header />
+        <Switch>
           <Route path="/gallery" exact>
             <GalleryPage />
           </Route>
@@ -53,7 +56,7 @@ const App = () => {
           <Route path="/contact" exact>
             <ContactPage />
           </Route>
-          <Route path="/product/:productId">
+          <Route path="/product">
             <ProductPage />
           </Route>
         </Switch>

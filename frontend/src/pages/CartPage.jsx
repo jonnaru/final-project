@@ -5,7 +5,7 @@ import { PageContainer } from "./styling/PageContainer";
 export const CartPage = () => {
   return (
     <PageContainer>
-      <h2>This is a cart</h2>
+      <h1>This is a cart page</h1>
     </PageContainer>
   );
 };

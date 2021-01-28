@@ -120,7 +120,7 @@ export const SignUpForm = ({ closeDrawer }) => {
 
   return (
     <StyledForm>
-      <h1>sign up form</h1>
+      <h1>sign up</h1>
       <TextInput
         placeholder="first name"
         value={name}

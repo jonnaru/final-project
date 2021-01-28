@@ -6,21 +6,27 @@ import { Backdrop } from "./styling/Backdrop";
 
 const NavList = styled.ul`
   list-style-type: none;
-  padding: 0;
+  margin: 0;
+  padding: 20px;
 `;
 
 const NavLink = styled.li`
+  display: block;
   font-size: 120px;
   margin: 0;
+  padding: 20px;
+  text-transform: lowercase;
+  font-weight: 700;
+  letter-spacing: 4px;
   text-align: center;
   cursor: pointer;
   & a {
     text-decoration: none;
     color: #000;
-
-    &:hover {
-      color: grey;
-    }
+  }
+  &:hover {
+    background: #fff;
+    font-style: italic;
   }
 `;
 
@@ -29,8 +35,8 @@ const StyledNav = styled.nav`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  border: 2px solid black;
+  width: 600px;
+  /* border: 2px solid black; */
   z-index: 10;
 `;
 
