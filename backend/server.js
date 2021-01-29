@@ -74,6 +74,11 @@ app.post("/users", async (req, res) => {
     res.status(201).json({
       userId: user._id,
       name: user.name,
+      lastName: user.lastName,
+      address: user.address,
+      postalCode: user.postalCode,
+      city: user.city,
+      email: user.email,
       accessToken: user.accessToken,
       message: `Signup success for ${user.name}`,
     });
@@ -96,6 +101,11 @@ app.post("/sessions", async (req, res) => {
       res.status(200).json({
         userId: updatedUser._id,
         name: updatedUser.name,
+        lastName: updatedUser.lastName,
+        address: updatedUser.address,
+        postalCode: updatedUser.postalCode,
+        city: updatedUser.city,
+        email: updatedUser.email,
         accessToken: updatedUser.accessToken,
       });
     } else {
