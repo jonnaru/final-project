@@ -1,65 +1,39 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "styled-components/macro";
+import { useDispatch } from "react-redux";
 
+import { ui } from "../reducers/ui";
 import { Backdrop } from "./styling/Backdrop";
+import { StyledNav } from "./styling/StyledNav";
 
-const NavList = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 20px;
-`;
+export const Nav = () => {
+  const showNav = useSelector((store) => store.ui.showNav);
 
-const NavLink = styled.li`
-  display: block;
-  font-size: 120px;
-  margin: 0;
-  padding: 20px;
-  text-transform: lowercase;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-align: center;
-  cursor: pointer;
-  & a {
-    text-decoration: none;
-    color: #000;
-  }
-  &:hover {
-    background: #fff;
-    font-style: italic;
-  }
-`;
+  const dispatch = useDispatch();
+  const { setShowNav } = ui.actions;
 
-const StyledNav = styled.nav`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  /* border: 2px solid black; */
-  z-index: 10;
-`;
+  if (!showNav) return <></>;
 
-export const Nav = ({ closeNav }) => {
   return (
     <>
-      <StyledNav onMouseLeave={closeNav}>
-        <NavList>
-          <NavLink>
+      <StyledNav onMouseLeave={() => dispatch(setShowNav(false))}>
+        <ul onClick={() => dispatch(setShowNav(false))}>
+          <li>
             <Link to="/gallery">gallery</Link>
-          </NavLink>
-          <NavLink>
+          </li>
+          <li>
             <Link to="/shop">shop</Link>
-          </NavLink>
-          <NavLink>
+          </li>
+          <li>
             <Link to="/cart">cart</Link>
-          </NavLink>
-          <NavLink>
+          </li>
+          <li>
             <Link to="/contact">contact</Link>
-          </NavLink>
-        </NavList>
+          </li>
+        </ul>
       </StyledNav>
-      <Backdrop onClick={closeNav} />
+      <Backdrop onClick={() => dispatch(setShowNav(false))} />
     </>
   );
 };

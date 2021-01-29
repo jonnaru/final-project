@@ -15,7 +15,17 @@ export const LoginForm = ({ closeDrawer }) => {
   const statusMessage = useSelector((store) => store.user.login.statusMessage);
 
   const dispatch = useDispatch();
-  const { setAccessToken, setUserId, setName, setStatusMessage } = user.actions;
+  const {
+    setAccessToken,
+    setUserId,
+    setName,
+    setLastName,
+    setAddress,
+    setPostalCode,
+    setCity,
+    setEmail: setUserEmail,
+    setStatusMessage,
+  } = user.actions;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +43,11 @@ export const LoginForm = ({ closeDrawer }) => {
     dispatch(setAccessToken({ accessToken: loginResponse.accessToken }));
     dispatch(setUserId({ userId: loginResponse.userId }));
     dispatch(setName({ name: loginResponse.name }));
+    dispatch(setLastName({ lastName: loginResponse.lastName }));
+    dispatch(setAddress({ address: loginResponse.address }));
+    dispatch(setPostalCode({ postalCode: loginResponse.postalCode }));
+    dispatch(setCity({ city: loginResponse.city }));
+    dispatch(setUserEmail({ email: loginResponse.email }));
     // closing drawer
     closeDrawer();
   };
@@ -61,10 +76,6 @@ export const LoginForm = ({ closeDrawer }) => {
       })
       .then((json) => handleLoginSuccess(json))
       .catch((err) => handleLoginFailed(err));
-    // .finally(() => {
-    //   setEmail("");
-    //   setPassword("");
-    // });
   };
 
   return (

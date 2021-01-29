@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 import { IconHeart } from "./IconHeart";
 
@@ -12,6 +13,7 @@ const Container = styled.article`
 
 const Title = styled.h3`
   margin: 0;
+  color: #000;
   text-transform: lowercase;
   /* font-style: italic; */
   font-size: 36px;
@@ -46,9 +48,18 @@ const ChildrenContent = styled.div`
   padding: 20px;
 `;
 
+// doesn't work
 const Heart = styled(IconHeart)`
-  &:hover {
+  &:hover svg {
     fill: pink;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:hover h3 {
+    text-decoration: underline;
   }
 `;
 
@@ -58,21 +69,22 @@ export const ShopCard = ({
   coverImage,
   className,
   children,
-  onClick,
+  slug,
 }) => (
-  <Container className={className} onClick={onClick}>
-    {coverImage && <CoverImage src={coverImage} />}
+  <Container className={className}>
+    <StyledLink to="/product/slug">
+      {coverImage && <CoverImage src={coverImage} />}
 
-    <Content>
-      <TitleBar>
-        <div>
-          {title && <Title>{title}</Title>}
-          {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
-        </div>
-        <Heart />
-      </TitleBar>
-
-      {children && <ChildrenContent>{children}</ChildrenContent>}
-    </Content>
+      <Content>
+        <TitleBar>
+          <div>
+            {title && <Title>{title}</Title>}
+            {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
+          </div>
+          <Heart />
+        </TitleBar>
+        {children && <ChildrenContent>{children}</ChildrenContent>}
+      </Content>
+    </StyledLink>
   </Container>
 );

@@ -1,70 +1,52 @@
 import React from "react";
-import styled from "styled-components/macro";
 
 import { PageContainer } from "./styling/PageContainer";
+import { ProductPageContainer } from "./styling/ProductPageContainer";
 import { ProductCard } from "../lib/ProductCard";
-
-const ProductPageContainer = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const ProductArticle = styled.article`
-  /* border: 1px solid grey; */
-  width: 50%;
-  object-fit: cover;
-`;
-
-const Image = styled.img`
-  height: 900px;
-  width: 100%;
-  object-fit: cover;
-  margin-bottom: -4px;
-  padding: 10px;
-`;
 
 export const ProductPage = () => {
   return (
+    // Will map this:
     <PageContainer>
       <ProductPageContainer>
-        <ProductArticle>
-          <Image
+        <article>
+          <img
             src={`https://source.unsplash.com/collection/76205006?random=${Math.random()}`}
             alt="hej"
           />
-        </ProductArticle>
+        </article>
 
-        <ProductArticle>
+        <article>
           <ProductCard
             itemTitle="Product Name"
             price="123 SEK"
             color="Colour: Nice colour"
           />
-        </ProductArticle>
+        </article>
 
-        <ProductArticle>
-          <Image
+        <article>
+          <img
             style={{ height: "500px" }}
             src={`https://source.unsplash.com/collection/76205006?random=${Math.random()}`}
             alt="hej"
           />
-        </ProductArticle>
+        </article>
 
-        <ProductArticle>
-          <Image
+        <article>
+          <img
             style={{ height: "500px" }}
             src={`https://source.unsplash.com/collection/76205006?random=${Math.random()}`}
             alt="hej"
           />
-        </ProductArticle>
+        </article>
 
-        <ProductArticle>
-          <Image
+        <article>
+          <img
             style={{ height: "500px" }}
             src={`https://source.unsplash.com/collection/76205006?random=${Math.random()}`}
             alt="hej"
           />
-        </ProductArticle>
+        </article>
       </ProductPageContainer>
     </PageContainer>
   );

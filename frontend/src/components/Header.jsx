@@ -1,51 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import styled from "styled-components/macro";
-
+import { useLocation } from "react-router-dom";
 import { user } from "../reducers/user";
+import { ui } from "../reducers/ui";
 import { URL } from "../App";
 
 import { LoginDrawer } from "./LoginDrawer";
-import { Nav } from "./Nav";
 import { PrimaryButton } from "../lib/PrimaryButton";
-
-const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* border: 1px solid black; */
-  padding: 0 10px;
-  padding-bottom: 40px;
-  width: 100%;
-  max-width: 1400px;
-
-  margin: auto;
-  /* border: 1px solid grey; */
-`;
-
-const Logo = styled.h1`
-  font-size: 52px;
-  z-index: 10;
-  cursor: pointer;
-`;
+import { HeaderContainer } from "./styling/HeaderContainer";
+import { HeaderLogo } from "../lib/HeaderLogo";
 
 export const Header = () => {
-  const accessToken = useSelector((store) => store.user.login.accessToken);
+  const location = useLocation();
 
-  const [showNav, setShowNav] = useState(false);
-  const [showDrawer, setShowDrawer] = useState(false);
+  const accessToken = useSelector((store) => store.user.login.accessToken);
+  const showDrawer = useSelector((store) => store.ui.showDrawer);
 
   const dispatch = useDispatch();
-  const { setAccessToken, setStatusMessage } = user.actions;
+  const { logout: logoutAction, setStatusMessage } = user.actions;
+  const { setShowNav, setShowDrawer } = ui.actions;
 
   const LOGOUT_URL = `${URL}/users/logout`;
 
   const logout = () => {
-    // Include userId in the path
     fetch(LOGOUT_URL, {
       method: "POST",
-      // Include the accessToken to get the protected endpoint
+
       headers: { Authorization: accessToken },
     })
       .then((res) => {
@@ -60,12 +41,14 @@ export const Header = () => {
 
   const logoutSuccess = () => {
     dispatch(setStatusMessage({ statusMessage: "You are logged out" }));
-    dispatch(setAccessToken({ accessToken: null }));
+    dispatch(logoutAction());
   };
 
   const logoutFailed = (logoutError) => {
     dispatch(setStatusMessage({ statusMessage: logoutError.message }));
   };
+
+  if (location.pathname === "/") return <></>;
 
   return (
     <>
@@ -73,12 +56,18 @@ export const Header = () => {
         <PrimaryButton
           small
           title={!accessToken ? "sign in" : "log out"}
-          onClick={!accessToken ? () => setShowDrawer(true) : logout}
+          onClick={!accessToken ? () => dispatch(setShowDrawer(true)) : logout}
         />
 
-        <Logo onMouseEnter={() => setShowNav(true)}>shop-name</Logo>
-        {showNav && <Nav closeNav={() => setShowNav(false)} />}
-        {showDrawer && <LoginDrawer closeDrawer={() => setShowDrawer(false)} />}
+        <HeaderLogo onMouseEnter={() => dispatch(setShowNav(true))}>
+          shop-name
+        </HeaderLogo>
+        {showDrawer && (
+          <LoginDrawer
+            showDrawer={showDrawer}
+            closeDrawer={() => dispatch(setShowDrawer(false))}
+          />
+        )}
       </HeaderContainer>
     </>
   );

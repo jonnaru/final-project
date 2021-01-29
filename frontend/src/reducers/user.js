@@ -5,6 +5,11 @@ const initialState = {
     accessToken: null,
     userId: 0,
     name: "",
+    lastName: "",
+    address: "",
+    postalCode: "",
+    city: "",
+    email: "",
     statusMessage: "",
   },
 };
@@ -26,8 +31,33 @@ export const user = createSlice({
     },
     setName: (state, action) => {
       const { name } = action.payload;
-      console.log(`User name: ${name}`);
+      console.log(`User first name: ${name}`);
       state.login.name = name;
+    },
+    setLastName: (state, action) => {
+      const { lastName } = action.payload;
+      console.log(`User last name: ${lastName}`);
+      state.login.lastName = lastName;
+    },
+    setAddress: (state, action) => {
+      const { address } = action.payload;
+      console.log(`Address: ${address}`);
+      state.login.address = address;
+    },
+    setPostalCode: (state, action) => {
+      const { postalCode } = action.payload;
+      console.log(`Postal code: ${postalCode}`);
+      state.login.postalCode = postalCode;
+    },
+    setCity: (state, action) => {
+      const { city } = action.payload;
+      console.log(`City: ${city}`);
+      state.login.city = city;
+    },
+    setEmail: (state, action) => {
+      const { email } = action.payload;
+      console.log(`Email: ${email}`);
+      state.login.email = email;
     },
     setStatusMessage: (state, action) => {
       const { statusMessage } = action.payload;
@@ -38,6 +68,12 @@ export const user = createSlice({
       console.log("Logging out");
       state.login.userId = 0;
       state.login.accessToken = null;
+      state.login.name = "";
+      state.login.lastName = "";
+      state.login.address = "";
+      state.login.postalCode = "";
+      state.login.city = "";
+      state.login.email = "";
     },
   },
 });

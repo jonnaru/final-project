@@ -1,21 +1,29 @@
 import React from "react";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+  useLocation,
+} from "react-router-dom";
 
 import { user } from "./reducers/user";
 
 import { StartPage } from "./pages/StartPage";
 import { Header } from "./components/Header";
+import { Nav } from "./components/Nav";
 import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
 import { CartPage } from "./pages/CartPage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
+import { ui } from "./reducers/ui";
 
 export const URL = "http://localhost:8080";
 
-const reducer = combineReducers({ user: user.reducer });
+const reducer = combineReducers({ user: user.reducer, ui: ui.reducer });
 
 // Get local storage and sets as preloadedState
 const persistedStateJSON = localStorage.getItem("userStore");
@@ -36,14 +44,14 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <Header />
+        <Nav />
+
         <Switch>
           <Route path="/" exact>
             <StartPage />
           </Route>
-        </Switch>
 
-        <Header />
-        <Switch>
           <Route path="/gallery" exact>
             <GalleryPage />
           </Route>
@@ -56,7 +64,7 @@ const App = () => {
           <Route path="/contact" exact>
             <ContactPage />
           </Route>
-          <Route path="/product">
+          <Route path="/product/:slug">
             <ProductPage />
           </Route>
         </Switch>

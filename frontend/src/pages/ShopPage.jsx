@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 
 import { PageContainer } from "./styling/PageContainer";
@@ -16,14 +15,15 @@ const ItemCard = styled(ShopCard)`
 
 export const ShopPage = () => {
   return (
+    // Will map this:
     <PageContainer>
       <ShopContainer>
         <ItemCard
-          onClick={<Link to="/product">gallery</Link>}
+          slug={"hej"}
           coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
           title="Item Title"
           secondaryText="123 SEK"
-        ></ItemCard>
+        />
 
         <ItemCard
           coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}

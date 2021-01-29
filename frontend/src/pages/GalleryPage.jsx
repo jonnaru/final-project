@@ -12,6 +12,7 @@ const Image = styled.img`
 
 export const GalleryPage = () => {
   return (
+    // Will map this:
     <PageContainer>
       <Grid
         flow="row dense"

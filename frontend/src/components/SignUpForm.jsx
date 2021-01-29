@@ -43,6 +43,7 @@ export const SignUpForm = ({ closeDrawer }) => {
     dispatch(setAccessToken({ accessToken: signupResponse.accessToken }));
     dispatch(setUserId({ userId: signupResponse.userId }));
     dispatch(setFirstName({ name: signupResponse.name }));
+    dispatch(setLastName({ lastName: signupResponse.lastName }));
     dispatch(setStatusMessage({ statusMessage: signupResponse.message }));
     // closing drawer
     closeDrawer();
@@ -119,6 +120,7 @@ export const SignUpForm = ({ closeDrawer }) => {
   };
 
   return (
+    // Will map this:
     <StyledForm>
       <h1>sign up</h1>
       <TextInput
