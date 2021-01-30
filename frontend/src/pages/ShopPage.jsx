@@ -31,6 +31,7 @@ export const ShopPage = () => {
       })
       .then((data) => {
         setProducts(data.items);
+        console.log(data.items);
       })
       .catch((error) => {
         console.log("error", error);
@@ -42,7 +43,7 @@ export const ShopPage = () => {
       <ShopContainer>
         {products?.map((product) => (
           <ItemCard
-            slug={"hej"}
+            id={product.sys.id}
             coverImage={`http:${product.fields.thumb.fields.file.url}`}
             title={product.fields.productName}
             secondaryText={`${product.fields.price} SEK`}

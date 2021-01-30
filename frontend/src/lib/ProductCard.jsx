@@ -17,16 +17,23 @@ const Product = styled.div`
   }
 `;
 
-export const ProductCard = ({ itemTitle, price, color, title }) => {
+export const ProductCard = ({
+  itemTitle,
+  price,
+  color,
+  measurements,
+  description,
+  materialCare,
+}) => {
   return (
     <Product>
       <h1>{itemTitle}</h1>
       <h2>{price}</h2>
       <h2>{color}</h2>
+      <h2>{measurements}</h2>
       <PrimaryButton title="Add to basket" />
-      <p>
-        Here will be some text for description, material, details and caretaking{" "}
-      </p>
+      <p>{description}</p>
+      <p>{materialCare}</p>
     </Product>
   );
 };

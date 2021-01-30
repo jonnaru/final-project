@@ -69,10 +69,10 @@ export const ShopCard = ({
   coverImage,
   className,
   children,
-  slug,
+  id,
 }) => (
   <Container className={className}>
-    <StyledLink to="/product/slug">
+    <StyledLink to={`/product/${id}`}>
       {coverImage && <CoverImage src={coverImage} />}
 
       <Content>

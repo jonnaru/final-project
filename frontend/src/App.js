@@ -64,7 +64,7 @@ const App = () => {
           <Route path="/contact" exact>
             <ContactPage />
           </Route>
-          <Route path="/product/:slug">
+          <Route path="/product/:id">
             <ProductPage />
           </Route>
         </Switch>

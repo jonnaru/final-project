@@ -1,7 +1,8 @@
 import styled from "styled-components/macro";
 
 export const HeaderContainer = styled.header`
-  /* position: fixed; */
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
