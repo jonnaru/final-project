@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "contentful";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { PageContainer } from "./styling/PageContainer";
 import { ProductPageContainer } from "./styling/ProductPageContainer";
 import { ProductCard } from "../lib/ProductCard";
+import { PrimaryButton } from "../lib/PrimaryButton";
+import { IconArrow } from "../lib/IconArrow";
 
 const client = createClient({
   space: "u1hj1odlv53m",
@@ -13,6 +16,7 @@ const client = createClient({
 
 export const ProductPage = () => {
   const { id } = useParams();
+  const history = useHistory();
 
   const [product, setProduct] = useState();
 
@@ -50,6 +54,14 @@ export const ProductPage = () => {
             description={product.productDescription}
             materialCare={product.materialCare}
           />
+          <div style={{ padding: "40px", textAlign: "right" }}>
+            <PrimaryButton
+              small
+              icon={<IconArrow />}
+              title="back"
+              onClick={() => history.goBack()}
+            />
+          </div>
         </article>
 
         {product.image.slice(1).map((item) => (

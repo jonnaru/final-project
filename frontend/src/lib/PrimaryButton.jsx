@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 
 const StyledButton = styled.button`
-  background: ${(props) => (props.small ? "#fff" : "#000")};
+  background: ${(props) => (props.small ? "none" : "#000")};
   padding: 6px 20px;
   margin: 20px 0;
   margin-left: 2px;
@@ -18,13 +18,17 @@ const StyledButton = styled.button`
     background: ${(props) => (props.small ? "#101010;" : "#fff")};
     color: ${(props) => (props.small ? "#f1f1f1;" : "#101010")};
     transition: 0.1s;
+
+    & path {
+      stroke: white;
+    }
   }
 `;
 
-export const PrimaryButton = ({ title, onClick, small }) => {
+export const PrimaryButton = ({ title, onClick, small, icon }) => {
   return (
     <StyledButton small={small} onClick={onClick}>
-      {title}
+      {icon && icon} {title}
     </StyledButton>
   );
 };
