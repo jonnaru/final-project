@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/macro";
+import { createClient } from "contentful";
 
 import { PageContainer } from "./styling/PageContainer";
 import { ShopCard } from "../lib/ShopCard";
@@ -13,98 +14,40 @@ const ItemCard = styled(ShopCard)`
   width: 25%;
 `;
 
+const client = createClient({
+  space: "u1hj1odlv53m",
+  accessToken: "1TRVfQyDn_PgHJtYsjYqeBAg8hfo5bIATKK_MBsFHYU",
+});
+
 export const ShopPage = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    client
+      .getEntries({
+        content_type: "product",
+        limit: 20,
+        skip: 0,
+      })
+      .then((data) => {
+        setProducts(data.items);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, []);
+
   return (
-    // Will map this:
     <PageContainer>
       <ShopContainer>
-        <ItemCard
-          slug={"hej"}
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        />
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        <ItemCard
-          coverImage={`https://source.unsplash.com/collection/76205006/500x300?random=${Math.random()}`}
-          title="Item Title"
-          secondaryText="123 SEK"
-        ></ItemCard>
-
-        {/* <PrimaryCard
-          title="Only a title"
-          secondaryText="And a secondary text"
-        />
-
-        <PrimaryCard>
-          <h1>Hello from children</h1>
-        </PrimaryCard> */}
+        {products?.map((product) => (
+          <ItemCard
+            slug={"hej"}
+            coverImage={`http:${product.fields.thumb.fields.file.url}`}
+            title={product.fields.productName}
+            secondaryText={`${product.fields.price} SEK`}
+          />
+        ))}
       </ShopContainer>
     </PageContainer>
   );

@@ -4,22 +4,30 @@ import { useSelector } from "react-redux";
 import { PageContainer } from "./styling/PageContainer";
 
 export const CartPage = () => {
+  const accessToken = useSelector((store) => store.user.login.accessToken);
   const name = useSelector((store) => store.user.login.name);
-  const lastName = useSelector((store) => store.user.login.lastName); // this?
-  const address = useSelector((store) => store.user.login.address); // this?
-  const postalCode = useSelector((store) => store.user.login.postalCode); // this?
-  const city = useSelector((store) => store.user.login.city); // this?
+  const lastName = useSelector((store) => store.user.login.lastName);
+  const address = useSelector((store) => store.user.login.address);
+  const postalCode = useSelector((store) => store.user.login.postalCode);
+  const city = useSelector((store) => store.user.login.city);
   const email = useSelector((store) => store.user.login.email);
 
   return (
     <PageContainer>
-      <h1>This is a cart page for:</h1>
-      <p>{`First name: ${name}`}</p>
-      <p>{`Last name: ${lastName}`}</p>
-      <p>{`Address: ${address}`}</p>
-      <p>{`Postal code: ${postalCode}`}</p>
-      <p>{`City: ${city}`}</p>
-      <p>{`Email: ${email}`}</p>
+      {!accessToken ? (
+        <h1>Sign in to view cart</h1>
+      ) : (
+        <>
+          <h1>{`Hello ${name}!`}</h1>
+          <p>User details:</p>
+          <p>{`${name}`}</p>
+          <p>{`${lastName}`}</p>
+          <p>{`${address}`}</p>
+          <p>{`${postalCode}`}</p>
+          <p>{`${city}`}</p>
+          <p>{`${email}`}</p>
+        </>
+      )}
     </PageContainer>
   );
 };
