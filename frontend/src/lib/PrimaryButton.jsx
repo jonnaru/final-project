@@ -20,7 +20,7 @@ const StyledButton = styled.button`
     transition: 0.1s;
 
     & path {
-      stroke: white;
+      fill: #fff;
     }
   }
 `;

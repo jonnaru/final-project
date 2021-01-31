@@ -1,21 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { user } from "../reducers/user";
 import { ui } from "../reducers/ui";
 import { URL } from "../App";
 
-import { LoginDrawer } from "./LoginDrawer";
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { HeaderContainer } from "./styling/HeaderContainer";
 import { HeaderLogo } from "../lib/HeaderLogo";
+import { IconCart } from "../lib/IconCart";
 
 export const Header = () => {
   const location = useLocation();
 
   const accessToken = useSelector((store) => store.user.login.accessToken);
-  const showDrawer = useSelector((store) => store.ui.showDrawer);
 
   const dispatch = useDispatch();
   const { logout: logoutAction, setStatusMessage } = user.actions;
@@ -53,21 +51,18 @@ export const Header = () => {
   return (
     <>
       <HeaderContainer>
-        <PrimaryButton
-          small
-          title={!accessToken ? "sign in" : "log out"}
-          onClick={!accessToken ? () => dispatch(setShowDrawer(true)) : logout}
-        />
-
-        <HeaderLogo onMouseEnter={() => dispatch(setShowNav(true))}>
-          shop-name
-        </HeaderLogo>
-        {showDrawer && (
-          <LoginDrawer
-            showDrawer={showDrawer}
-            closeDrawer={() => dispatch(setShowDrawer(false))}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <PrimaryButton
+            small
+            title={!accessToken ? "sign in" : "log out"}
+            onClick={
+              !accessToken ? () => dispatch(setShowDrawer(true)) : logout
+            }
           />
-        )}
+          <IconCart />
+        </div>
+
+        <HeaderLogo onMouseEnter={() => dispatch(setShowNav(true))} />
       </HeaderContainer>
     </>
   );

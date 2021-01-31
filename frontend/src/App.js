@@ -14,6 +14,7 @@ import { user } from "./reducers/user";
 import { StartPage } from "./pages/StartPage";
 import { Header } from "./components/Header";
 import { Nav } from "./components/Nav";
+import { LoginDrawer } from "./components/LoginDrawer";
 import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
 import { CartPage } from "./pages/CartPage";
@@ -46,6 +47,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Nav />
+        <LoginDrawer />
 
         <Switch>
           <Route path="/" exact>

@@ -2,23 +2,24 @@ import React from "react";
 import styled from "styled-components/macro";
 
 const Arrow = styled.svg`
-  transform: rotate(180deg);
+  width: 24px;
+  margin-right: 6px;
 `;
 
 export const IconArrow = () => {
   return (
     <Arrow
-      width="14"
-      viewBox="0 0 50 39"
-      fill="none"
+      id="Capa_1"
+      data-name="Capa 1"
       xmlns="http://www.w3.org/2000/svg"
-      class="pmzxns-3 gLXOYg"
+      viewBox="0 0 512 248"
     >
+      <title>left-arrow</title>
       <path
-        stroke="#000"
-        stroke-width="6"
-        d="M.631 19h46.646M26.717 37.569l20.273-18.45M28.318 1.213l20.275 18.448"
-      ></path>
+        d="M492,236H68.44l70.17-69.82a20,20,0,0,0-28.22-28.36L5.88,241.82a0,0,0,0,1,0,0,20,20,0,0,0,0,28.32l0,0,104.51,104a20,20,0,0,0,28.21-28.36L68.44,276H492a20,20,0,0,0,0-40Z"
+        transform="translate(0 -132)"
+        fill="#000"
+      />
     </Arrow>
   );
 };

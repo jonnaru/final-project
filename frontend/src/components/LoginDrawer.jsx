@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components/macro";
-
+import { useSelector, useDispatch } from "react-redux";
 import { Backdrop } from "./styling/Backdrop";
 import { LoginForm } from "./LoginForm";
 import { SignUpForm } from "./SignUpForm";
 import { PrimaryButton } from "../lib/PrimaryButton";
+import { ui } from "../reducers/ui";
 
 const show = keyframes`
   from {transform: translateX(-100%)}
@@ -28,8 +29,17 @@ const Drawer = styled.aside`
     animateDrawer ? "translateX(-100%)" : "translateX(0)"};
 `;
 
-export const LoginDrawer = ({ showDrawer, closeDrawer }) => {
+export const LoginDrawer = () => {
+  const showDrawer = useSelector((store) => store.ui.showDrawer);
+  const dispatch = useDispatch();
+
+  const { setShowDrawer } = ui.actions;
+
   const [showSignUp, setShowSignUp] = useState(false);
+
+  const closeDrawer = () => dispatch(setShowDrawer(false));
+
+  if (!showDrawer) return <></>;
 
   return (
     <>

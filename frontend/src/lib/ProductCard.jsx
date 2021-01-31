@@ -24,6 +24,7 @@ export const ProductCard = ({
   measurements,
   description,
   materialCare,
+  quantity,
 }) => {
   return (
     <Product>
@@ -31,6 +32,7 @@ export const ProductCard = ({
       <h2>{price}</h2>
       <h2>{color}</h2>
       <h2>{measurements}</h2>
+      <h2>{quantity}</h2>
       <PrimaryButton title="Add to basket" />
       <p>{description}</p>
       <p>{materialCare}</p>

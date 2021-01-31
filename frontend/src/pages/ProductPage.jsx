@@ -49,8 +49,9 @@ export const ProductPage = () => {
           <ProductCard
             itemTitle={product.productName}
             price={`${product.price} SEK`}
-            color={`Color: ${product.color}`}
+            color={`Glazing: ${product.color}`}
             measurements={`Measurements: ${product.size}`}
+            quantity={`Quantity: ${product.quantity}`}
             description={product.productDescription}
             materialCare={product.materialCare}
           />
