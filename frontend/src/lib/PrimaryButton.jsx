@@ -23,11 +23,23 @@ const StyledButton = styled.button`
       fill: #fff;
     }
   }
+
+  &:disabled {
+    background: #ccc;
+    border: #ccc;
+    color: #fff;
+    cursor: unset;
+  }
 `;
 
-export const PrimaryButton = ({ title, onClick, small, icon }) => {
+export const PrimaryButton = ({ title, onClick, small, icon, disabled }) => {
   return (
-    <StyledButton small={small} onClick={onClick}>
+    <StyledButton
+      type="button"
+      small={small}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {icon && icon} {title}
     </StyledButton>
   );

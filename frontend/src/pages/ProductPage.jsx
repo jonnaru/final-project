@@ -51,9 +51,10 @@ export const ProductPage = () => {
             price={`${product.price} SEK`}
             color={`Glazing: ${product.color}`}
             measurements={`Measurements: ${product.size}`}
-            quantity={`Quantity: ${product.quantity}`}
+            // quantity={`Quantity: ${product.quantity}`}
+            quantity={product.quantity}
             description={product.productDescription}
-            materialCare={product.materialCare}
+            materialCare={`Item Care: ${product.materialCare}`}
           />
           <div style={{ padding: "40px", textAlign: "right" }}>
             <PrimaryButton

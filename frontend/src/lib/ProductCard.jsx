@@ -32,8 +32,12 @@ export const ProductCard = ({
       <h2>{price}</h2>
       <h2>{color}</h2>
       <h2>{measurements}</h2>
-      <h2>{quantity}</h2>
-      <PrimaryButton title="Add to basket" />
+      <h2>{`Quantity: ${quantity}`}</h2>
+      <PrimaryButton
+        disabled={quantity < 1}
+        title="Add to basket"
+        onClick={() => console.log("click")}
+      />
       <p>{description}</p>
       <p>{materialCare}</p>
     </Product>
