@@ -35,7 +35,6 @@ export const ProductPage = () => {
   if (!product) return <></>; // show spinner
 
   return (
-    // Will map this:
     <PageContainer>
       <ProductPageContainer>
         <article>
@@ -48,13 +47,13 @@ export const ProductPage = () => {
         <article>
           <ProductCard
             itemTitle={product.productName}
-            price={`${product.price} SEK`}
-            color={`Glazing: ${product.color}`}
-            measurements={`Measurements: ${product.size}`}
-            // quantity={`Quantity: ${product.quantity}`}
+            price={product.price}
+            color={product.color}
+            measurements={product.size}
             quantity={product.quantity}
             description={product.productDescription}
-            materialCare={`Item Care: ${product.materialCare}`}
+            materialCare={product.materialCare}
+            sample={product.sample}
           />
           <div style={{ padding: "40px", textAlign: "right" }}>
             <PrimaryButton

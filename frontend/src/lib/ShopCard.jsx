@@ -6,8 +6,11 @@ import { IconHeart } from "./IconHeart";
 
 const Container = styled.article`
   /* border: 1px solid black; */
+  position: relative;
   background: #fff;
+  padding: 10px;
   margin-bottom: 20px;
+
   cursor: pointer;
 `;
 
@@ -32,7 +35,7 @@ const TitleBar = styled.div`
 
 const CoverImage = styled.img`
   width: 100%;
-  padding: 0 10px;
+  /* padding: 0 10px; */
 
   &:hover {
     opacity: 0.7;
@@ -40,7 +43,7 @@ const CoverImage = styled.img`
 `;
 
 const Content = styled.div`
-  padding: 10px;
+  padding: 10px 0;
 `;
 
 const ChildrenContent = styled.div`
@@ -48,11 +51,26 @@ const ChildrenContent = styled.div`
   padding: 20px;
 `;
 
-// doesn't work
 const Heart = styled(IconHeart)`
-  &:hover svg {
-    fill: pink;
+  z-index: 15;
+  &:hover path {
+    fill: #000;
   }
+`;
+
+const TextFlag = styled.p`
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  text-align: right;
+  margin-top: 12px;
+
+  margin-right: 10px;
+  padding: 3px 10px 4px 10px;
+  background: ${(props) => (props.sample ? "#fff" : "#000")};
+  color: ${(props) => (props.sample ? "#000" : "#fff")};
+  font-size: 18px;
+  font-style: italic;
 `;
 
 const StyledLink = styled(Link)`
@@ -68,22 +86,25 @@ export const ShopCard = ({
   secondaryText,
   coverImage,
   className,
-  children,
+  quantity,
   id,
+  sample,
 }) => (
   <Container className={className}>
+    {quantity < 1 && <TextFlag>sold out</TextFlag>}
+    {sample && <TextFlag sample>sample</TextFlag>}
+
     <StyledLink to={`/product/${id}`}>
-      {coverImage && <CoverImage src={coverImage} />}
+      <CoverImage src={coverImage} />
 
       <Content>
         <TitleBar>
           <div>
-            {title && <Title>{title}</Title>}
-            {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
+            <Title>{title}</Title>
+            <SecondaryText>{`${secondaryText} SEK`}</SecondaryText>
           </div>
           <Heart />
         </TitleBar>
-        {children && <ChildrenContent>{children}</ChildrenContent>}
       </Content>
     </StyledLink>
   </Container>

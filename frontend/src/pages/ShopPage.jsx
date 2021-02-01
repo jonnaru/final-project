@@ -43,10 +43,13 @@ export const ShopPage = () => {
       <ShopContainer>
         {products?.map((product) => (
           <ItemCard
+            key={product.sys.id}
             id={product.sys.id}
             coverImage={`http:${product.fields.thumb.fields.file.url}`}
             title={product.fields.productName}
-            secondaryText={`${product.fields.price} SEK`}
+            secondaryText={product.fields.price}
+            quantity={product.fields.quantity}
+            sample={product.fields.sample}
           />
         ))}
       </ShopContainer>

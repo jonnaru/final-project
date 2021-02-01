@@ -6,7 +6,7 @@ export const StyledNav = styled.nav`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
-  z-index: 10;
+  z-index: 20;
 
   & ul {
     list-style-type: none;

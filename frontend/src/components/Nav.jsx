@@ -26,7 +26,7 @@ export const Nav = () => {
             <Link to="/shop">shop</Link>
           </li>
           <li>
-            <Link to="/cart">cart</Link>
+            <Link to="/profile">profile</Link>
           </li>
           <li>
             <Link to="/contact">contact</Link>

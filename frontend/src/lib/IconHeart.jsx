@@ -7,9 +7,10 @@ const Heart = styled.svg`
   width: 32px;
 `;
 
-export const IconHeart = () => {
+export const IconHeart = ({ className }) => {
   return (
     <Heart
+      className={className}
       fill="#ccc"
       id="Capa_1"
       data-name="Capa 1"

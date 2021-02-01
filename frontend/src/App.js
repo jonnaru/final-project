@@ -18,6 +18,7 @@ import { LoginDrawer } from "./components/LoginDrawer";
 import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
 import { CartPage } from "./pages/CartPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
 import { ui } from "./reducers/ui";
@@ -59,6 +60,9 @@ const App = () => {
           </Route>
           <Route path="/shop" exact>
             <ShopPage />
+          </Route>
+          <Route path="/profile" exact>
+            <ProfilePage />
           </Route>
           <Route path="/cart" exact>
             <CartPage />

@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 
 export const Backdrop = styled.div`
   position: fixed;
+  z-index: 10;
   top: 0;
   bottom: 0;
   left: 0;

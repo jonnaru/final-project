@@ -25,21 +25,23 @@ export const ProductCard = ({
   description,
   materialCare,
   quantity,
+  sample,
 }) => {
   return (
     <Product>
       <h1>{itemTitle}</h1>
-      <h2>{price}</h2>
-      <h2>{color}</h2>
-      <h2>{measurements}</h2>
-      <h2>{`Quantity: ${quantity}`}</h2>
+      <h2>{`${price} SEK`}</h2>
+      <h2>{`Glazing: ${color}`}</h2>
+      <h2>{`Measurements: ${measurements}`}</h2>
+      <h2>{`${quantity < 1 ? "Sold out" : `Quantity: ${quantity}`}`}</h2>
+      {sample && <p>This is a sample item</p>}
       <PrimaryButton
         disabled={quantity < 1}
         title="Add to basket"
         onClick={() => console.log("click")}
       />
       <p>{description}</p>
-      <p>{materialCare}</p>
+      <p>{`Item Care: ${materialCare}`}</p>
     </Product>
   );
 };
