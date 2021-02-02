@@ -17,7 +17,7 @@ export const CartPage = () => {
       .then((environment) => environment.getEntry(id))
       .then((item) => {
         console.log("Prev quantity", item.fields.quantity["en-US"]);
-        item.fields.quantity["en-US"] = item.fields.quantity["en-US"] + 1;
+        item.fields.quantity["en-US"] = item.fields.quantity["en-US"] - 1;
         return item.update();
       })
       .then((item) => item.publish())
