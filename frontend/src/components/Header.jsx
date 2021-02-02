@@ -17,7 +17,7 @@ export const Header = () => {
 
   const dispatch = useDispatch();
   const { logout: logoutAction, setStatusMessage } = user.actions;
-  const { setShowNav, setShowDrawer } = ui.actions;
+  const { setShowNav, setShowLoginDrawer, setShowCartDrawer } = ui.actions;
 
   const LOGOUT_URL = `${URL}/users/logout`;
 
@@ -56,10 +56,10 @@ export const Header = () => {
             small
             title={!accessToken ? "sign in" : "log out"}
             onClick={
-              !accessToken ? () => dispatch(setShowDrawer(true)) : logout
+              !accessToken ? () => dispatch(setShowLoginDrawer(true)) : logout
             }
           />
-          <IconCart />
+          <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />
         </div>
 
         <HeaderLogo onMouseEnter={() => dispatch(setShowNav(true))} />

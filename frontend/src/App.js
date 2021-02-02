@@ -15,9 +15,10 @@ import { StartPage } from "./pages/StartPage";
 import { Header } from "./components/Header";
 import { Nav } from "./components/Nav";
 import { LoginDrawer } from "./components/LoginDrawer";
+import { CartDrawer } from "./components/CartDrawer";
 import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
-import { CartPage } from "./pages/CartPage";
+// import { CartPage } from "./pages/CartPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
@@ -49,6 +50,7 @@ const App = () => {
         <Header />
         <Nav />
         <LoginDrawer />
+        <CartDrawer />
 
         <Switch>
           <Route path="/" exact>
@@ -64,9 +66,9 @@ const App = () => {
           <Route path="/profile" exact>
             <ProfilePage />
           </Route>
-          <Route path="/cart" exact>
+          {/* <Route path="/cart" exact>
             <CartPage />
-          </Route>
+          </Route> */}
           <Route path="/contact" exact>
             <ContactPage />
           </Route>

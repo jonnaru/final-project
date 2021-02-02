@@ -31,10 +31,10 @@ const Drawer = styled.aside`
 `;
 
 export const LoginDrawer = () => {
-  const showDrawer = useSelector((store) => store.ui.showDrawer);
+  const showLoginDrawer = useSelector((store) => store.ui.showLoginDrawer);
   const dispatch = useDispatch();
 
-  const { setShowDrawer } = ui.actions;
+  const { setShowLoginDrawer } = ui.actions;
 
   const [showSignUp, setShowSignUp] = useState(false);
   const [animateDrawer, setAnimateDrawer] = useState(false);
@@ -42,16 +42,16 @@ export const LoginDrawer = () => {
   const closeDrawer = () => {
     setAnimateDrawer(true);
     setTimeout(() => {
-      dispatch(setShowDrawer(false));
+      dispatch(setShowLoginDrawer(false));
       setAnimateDrawer(false);
     }, 500);
   };
 
-  if (!showDrawer) return <></>;
+  if (!showLoginDrawer) return <></>;
 
   return (
     <>
-      <Drawer showDrawer={showDrawer} animateDrawer={animateDrawer}>
+      <Drawer showLoginDrawer={showLoginDrawer} animateDrawer={animateDrawer}>
         {showSignUp ? (
           <SignUpForm closeDrawer={closeDrawer} />
         ) : (

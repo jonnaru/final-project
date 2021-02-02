@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  showDrawer: false,
+  showLoginDrawer: false,
+  showCartDrawer: false,
   showNav: false,
   isLoading: false,
 };
@@ -10,8 +11,11 @@ export const ui = createSlice({
   name: "ui",
   initialState: initialState,
   reducers: {
-    setShowDrawer: (state, action) => {
-      state.showDrawer = action.payload;
+    setShowLoginDrawer: (state, action) => {
+      state.showLoginDrawer = action.payload;
+    },
+    setShowCartDrawer: (state, action) => {
+      state.showCartDrawer = action.payload;
     },
     setShowNav: (state, action) => {
       state.showNav = action.payload;
