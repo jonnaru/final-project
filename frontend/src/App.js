@@ -23,7 +23,7 @@ import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
 import { ui } from "./reducers/ui";
 
-export const URL = "http://localhost:8080";
+export const URL = process.env.REACT_APP_URL;
 
 const reducer = combineReducers({ user: user.reducer, ui: ui.reducer });
 

@@ -33,7 +33,7 @@ export const ProductCard = ({
       <h2>{`${price} SEK`}</h2>
       <h2>{`Glazing: ${color}`}</h2>
       <h2>{`Measurements: ${measurements}`}</h2>
-      <h2>{`${quantity < 1 ? "Sold out" : `Quantity: ${quantity}`}`}</h2>
+      <h2>{quantity < 1 ? "Sold out" : `Quantity: ${quantity}`}</h2>
       {sample && <p>This is a sample item</p>}
       <PrimaryButton
         disabled={quantity < 1}

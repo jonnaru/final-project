@@ -67,7 +67,7 @@ const TextFlag = styled.p`
 
   margin-right: 10px;
   padding: 3px 10px 4px 10px;
-  background: ${(props) => (props.sample ? "#fff" : "#000")};
+  background: ${(props) => (props.sample ? "#fff" : "#303030")};
   color: ${(props) => (props.sample ? "#000" : "#fff")};
   font-size: 18px;
   font-style: italic;

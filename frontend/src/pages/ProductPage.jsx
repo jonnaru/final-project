@@ -10,8 +10,8 @@ import { PrimaryButton } from "../lib/PrimaryButton";
 import { IconArrow } from "../lib/IconArrow";
 
 const client = createClient({
-  space: "u1hj1odlv53m",
-  accessToken: "1TRVfQyDn_PgHJtYsjYqeBAg8hfo5bIATKK_MBsFHYU",
+  space: process.env.REACT_APP_CONTENTFUL_SPACE,
+  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
 });
 
 export const ProductPage = () => {
@@ -24,7 +24,7 @@ export const ProductPage = () => {
     client
       .getEntry(id)
       .then((item) => {
-        console.log("item.fields product page", item.fields);
+        console.log("item product page", item.fields);
         setProduct(item.fields);
       })
       .catch((error) => {

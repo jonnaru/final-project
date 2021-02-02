@@ -2,11 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import CrossfadeImage from "react-crossfade-image";
-
 import { ui } from "../reducers/ui";
 import { StartPageContainer } from "./styling/StartPageContainer";
 import { StartPageLogo } from "../lib/StartPageLogo";
+
+const images = [
+  "http://images.ctfassets.net/u1hj1odlv53m/xJzg7D8OiQSOtndH7TBsK/4298e811913707d658f76b67836993c8/shop_122.jpg",
+  "http://images.ctfassets.net/u1hj1odlv53m/6gpgc2Mj4Bod07ybmW2MNU/6fe2d16333569ffd6fd0a64aa317ce7d/shop_112.jpg",
+];
 
 export const StartPage = () => {
   const showNav = useSelector((store) => store.ui.showNav);
@@ -16,9 +19,6 @@ export const StartPage = () => {
 
   return (
     <StartPageContainer>
-      <CrossfadeImage
-        src={"https://source.unsplash.com/collection/76205006/2500x1400"}
-      />
       {!showNav && (
         <StartPageLogo onMouseEnter={() => dispatch(setShowNav(true))}>
           shop-name
