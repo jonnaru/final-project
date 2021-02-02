@@ -25,10 +25,9 @@ const Drawer = styled.aside`
 
   animation: ${show} 0.5s;
 
-  // set animateDrawer true animate on remove
   transition: 0.5s;
   transform: ${({ animateDrawer }) =>
-    animateDrawer ? "translateX(-100%)" : "translateX(0)"};
+    animateDrawer ? "translateX(-100%)" : "translateX(0%)"};
 `;
 
 export const LoginDrawer = () => {
@@ -38,25 +37,21 @@ export const LoginDrawer = () => {
   const { setShowDrawer } = ui.actions;
 
   const [showSignUp, setShowSignUp] = useState(false);
+  const [animateDrawer, setAnimateDrawer] = useState(false);
 
   const closeDrawer = () => {
-    document.getElementById("drawer").classList.add("close");
+    setAnimateDrawer(true);
     setTimeout(() => {
       dispatch(setShowDrawer(false));
-    }, 1500);
+      setAnimateDrawer(false);
+    }, 500);
   };
 
-  // if false hide drawer
   if (!showDrawer) return <></>;
 
-  // if showDrawer true (else) show drawer
   return (
     <>
-      <Drawer
-        id="drawer"
-        showDrawer={showDrawer}
-        // animateDrawer={ }
-      >
+      <Drawer showDrawer={showDrawer} animateDrawer={animateDrawer}>
         {showSignUp ? (
           <SignUpForm closeDrawer={closeDrawer} />
         ) : (
