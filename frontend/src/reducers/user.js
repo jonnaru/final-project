@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { URL } from "../App";
 
 const initialState = {
   login: {
@@ -77,3 +78,36 @@ export const user = createSlice({
     },
   },
 });
+
+export const logout = () => {
+  const LOGOUT_URL = `${URL}/users/logout`;
+
+  return (dispatch, getState) => {
+    const accessToken = getState().user.login.accessToken;
+
+    const { logout, setStatusMessage } = user.actions;
+
+    const logoutSuccess = () => {
+      dispatch(setStatusMessage({ statusMessage: "You are logged out" }));
+      dispatch(logout());
+    };
+
+    const logoutFailed = (logoutError) => {
+      dispatch(setStatusMessage({ statusMessage: logoutError.message }));
+    };
+
+    fetch(LOGOUT_URL, {
+      method: "POST",
+
+      headers: { Authorization: accessToken },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to logout");
+        }
+        return res.json();
+      })
+      .then((json) => logoutSuccess(json))
+      .catch((err) => logoutFailed(err));
+  };
+};

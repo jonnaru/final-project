@@ -24,10 +24,25 @@ const Drawer = styled.aside`
     animateDrawer ? "translateX(-100%)" : "translateX(0%)"};
 `;
 
-export const StyledDrawer = ({ animateDrawer, title }) => {
+export const StyledArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px 40px;
+
+  & h1 {
+    text-align: center;
+    font-size: 36px;
+  }
+`;
+
+export const StyledDrawer = ({ animateDrawer, title, children }) => {
   return (
     <Drawer animateDrawer={animateDrawer}>
-      <h1>{title}</h1>
+      <StyledArticle>
+        <h1>{title}</h1>
+        {children}
+      </StyledArticle>
     </Drawer>
   );
 };

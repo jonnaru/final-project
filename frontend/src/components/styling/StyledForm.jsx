@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-export const StyledForm = styled.form`
+export const StyledForm = styled.article`
   display: flex;
   flex-direction: column;
 

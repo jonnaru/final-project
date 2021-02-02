@@ -119,66 +119,77 @@ export const SignUpForm = ({ closeDrawer }) => {
     }
   };
 
+  const SignUpFormValues = [
+    {
+      placeholder: "first name",
+      value: name,
+      onChange: (event) => setName(event.target.value),
+      required: true,
+      type: "text",
+    },
+    {
+      placeholder: "last name",
+      value: lastName,
+      onChange: (event) => setLastName(event.target.value),
+      required: true,
+      type: "text",
+    },
+    {
+      placeholder: "address",
+      value: address,
+      onChange: (event) => setAddress(event.target.value),
+      required: true,
+      type: "text",
+    },
+    {
+      placeholder: "postal code",
+      value: postalCode,
+      onChange: (event) => setPostalCode(event.target.value),
+      required: true,
+      type: "text",
+    },
+    {
+      placeholder: "city",
+      value: city,
+      onChange: (event) => setCity(event.target.value),
+      required: true,
+      type: "text",
+    },
+    {
+      placeholder: "email",
+      value: email,
+      onChange: (event) => setEmail(event.target.value),
+      required: true,
+      type: "text",
+    },
+    {
+      placeholder: "password",
+      value: password,
+      onChange: (event) => setPassword(event.target.value),
+      required: true,
+      type: "password",
+    },
+    {
+      placeholder: "password confirm",
+      value: confirmPassword,
+      onChange: (event) => setConfirmPassword(event.target.value),
+      required: true,
+      type: "password",
+    },
+  ];
+
   return (
-    // Will map this:
     <StyledForm>
       <h1>sign up</h1>
-      <TextInput
-        placeholder="first name"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        required
-        type="text"
-      />
-      <TextInput
-        placeholder="last name"
-        value={lastName}
-        onChange={(event) => setLastName(event.target.value)}
-        required
-        type="text"
-      />
-      <TextInput
-        placeholder="address"
-        value={address}
-        onChange={(event) => setAddress(event.target.value)}
-        required
-        type="text"
-      />
-      <TextInput
-        placeholder="postal code"
-        value={postalCode}
-        onChange={(event) => setPostalCode(event.target.value)}
-        required
-        type="text"
-      />
-      <TextInput
-        placeholder="city"
-        value={city}
-        onChange={(event) => setCity(event.target.value)}
-        required
-        type="text"
-      />
-      <TextInput
-        placeholder="email"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-        required
-        type="text"
-      />
-      <TextInput
-        placeholder="password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-        required
-        type="password"
-      />
-      <TextInput
-        placeholder="password confirm"
-        value={confirmPassword}
-        onChange={(event) => setConfirmPassword(event.target.value)}
-        required
-        type="password"
-      />
+      {SignUpFormValues.map((item) => (
+        <TextInput
+          placeholder={item.placeholder}
+          value={item.value}
+          onChange={item.onChange}
+          required={item.value}
+          type={item.type}
+        />
+      ))}
       <PrimaryButton
         small
         type="submit"

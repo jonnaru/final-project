@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import styled, { keyframes } from "styled-components/macro";
 import { createClient } from "contentful-management";
 import { useSelector, useDispatch } from "react-redux";
 import { ui } from "../reducers/ui";
@@ -53,9 +52,8 @@ export const CartDrawer = () => {
       <StyledDrawer
         showLoginDrawer={showCartDrawer}
         animateDrawer={animateDrawer}
-        title="This is a drawer"
+        title="Your cart is empty"
       >
-        <h1>Your cart is empty</h1>
         <button onClick={() => changeQuantity()}>test</button>
       </StyledDrawer>
       <Backdrop onClick={closeDrawer} />
