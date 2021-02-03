@@ -24,8 +24,21 @@ export const ProductPage = () => {
     client
       .getEntry(id)
       .then((item) => {
-        console.log("item product page", item.fields);
-        setProduct(item.fields);
+        console.log("item product page", item);
+        setProduct({
+          id: item.sys.id,
+          title: item.fields.productName,
+          price: item.fields.price,
+          color: item.fields.color,
+          measurements: item.fields.size,
+          inStock: item.fields.quantity,
+          description: item.fields.productDescription,
+          materialCare: item.fields.materialCare,
+          sample: item.fields.sample,
+          mainImage: item.fields.image[0],
+          images: item.fields.image.slice(1),
+          thumb: item.fields.thumb,
+        });
       })
       .catch((error) => {
         console.log("error", error);
@@ -39,22 +52,13 @@ export const ProductPage = () => {
       <ProductPageContainer>
         <article>
           <img
-            src={`http:${product.image[0].fields.file.url}`}
-            alt={product.image[0].fields.title}
+            src={`http:${product.mainImage.fields.file.url}`}
+            alt={product.mainImage.fields.title}
           />
         </article>
 
         <article>
-          <ProductCard
-            itemTitle={product.productName}
-            price={product.price}
-            color={product.color}
-            measurements={product.size}
-            quantity={product.quantity}
-            description={product.productDescription}
-            materialCare={product.materialCare}
-            sample={product.sample}
-          />
+          <ProductCard product={product} />
           <div style={{ padding: "40px", textAlign: "right" }}>
             <PrimaryButton
               small
@@ -65,12 +69,12 @@ export const ProductPage = () => {
           </div>
         </article>
 
-        {product.image.slice(1).map((item) => (
+        {product.images.map((image) => (
           <article>
             <img
               style={{ height: "500px" }}
-              src={`http:${item.fields.file.url}`}
-              alt={item.fields.title}
+              src={`http:${image.fields.file.url}`}
+              alt={image.fields.title}
             />
           </article>
         ))}

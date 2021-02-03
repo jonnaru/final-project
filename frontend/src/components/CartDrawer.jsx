@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ui } from "../reducers/ui";
 import { Backdrop } from "./styling/Backdrop";
 import { StyledDrawer } from "../lib/StyledDrawer";
+import { CartItem } from "./CartItem";
 
 const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_TOKEN,
@@ -13,6 +14,7 @@ const id = "67FditGZDejc2XnMLtqIY3";
 
 export const CartDrawer = () => {
   const showCartDrawer = useSelector((store) => store.ui.showCartDrawer);
+  const products = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
 
   const { setShowCartDrawer } = ui.actions;
@@ -54,6 +56,11 @@ export const CartDrawer = () => {
         animateDrawer={animateDrawer}
         title="Your cart is empty"
       >
+        <ul>
+          {products.map((product) => (
+            <CartItem key={product.id} product={product} />
+          ))}
+        </ul>
         <button onClick={() => changeQuantity()}>test</button>
       </StyledDrawer>
       <Backdrop onClick={closeDrawer} />

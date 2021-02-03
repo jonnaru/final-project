@@ -6,7 +6,7 @@ const show = keyframes`
   to {transform: translateX(0%)}
 `;
 
-const Drawer = styled.aside`
+export const Drawer = styled.aside`
   position: fixed;
   width: 400px;
   top: 0;

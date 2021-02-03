@@ -27,7 +27,9 @@ export const Header = () => {
             small
             title={!accessToken ? "sign in" : "log out"}
             onClick={
-              !accessToken ? () => dispatch(setShowLoginDrawer(true)) : logout
+              !accessToken
+                ? () => dispatch(setShowLoginDrawer(true))
+                : () => dispatch(logout())
             }
           />
           <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />

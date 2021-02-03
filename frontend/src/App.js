@@ -10,6 +10,8 @@ import {
 } from "react-router-dom";
 
 import { user } from "./reducers/user";
+import { ui } from "./reducers/ui";
+import { cart } from "./reducers/cart";
 
 import { StartPage } from "./pages/StartPage";
 import { Header } from "./components/Header";
@@ -22,11 +24,14 @@ import { ShopPage } from "./pages/ShopPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
-import { ui } from "./reducers/ui";
 
 export const URL = process.env.REACT_APP_URL;
 
-const reducer = combineReducers({ user: user.reducer, ui: ui.reducer });
+const reducer = combineReducers({
+  user: user.reducer,
+  ui: ui.reducer,
+  cart: cart.reducer,
+});
 
 // Get local storage and sets as preloadedState
 const persistedStateJSON = localStorage.getItem("userStore");

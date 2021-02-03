@@ -80,9 +80,9 @@ export const user = createSlice({
 });
 
 export const logout = () => {
-  const LOGOUT_URL = `${URL}/users/logout`;
-
+  console.log("logout thunk");
   return (dispatch, getState) => {
+    const LOGOUT_URL = `${URL}/users/logout`;
     const accessToken = getState().user.login.accessToken;
 
     const { logout, setStatusMessage } = user.actions;
