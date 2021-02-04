@@ -4,7 +4,7 @@ import { Backdrop } from "./styling/Backdrop";
 import { LoginForm } from "./LoginForm";
 import { SignUpForm } from "./SignUpForm";
 import { PrimaryButton } from "../lib/PrimaryButton";
-import { StyledDrawer } from "../lib/StyledDrawer";
+import { StyledDrawer } from "./styling/StyledDrawer";
 import { ui } from "../reducers/ui";
 
 export const LoginDrawer = () => {

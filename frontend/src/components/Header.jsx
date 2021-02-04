@@ -8,6 +8,10 @@ import { PrimaryButton } from "../lib/PrimaryButton";
 import { HeaderContainer } from "./styling/HeaderContainer";
 import { HeaderLogo } from "../lib/HeaderLogo";
 import { IconCart } from "../lib/IconCart";
+import { TotalCartItems } from "./TotalCartItems";
+// import { IconCart2 } from "../lib/IconCart2";
+// import { IconBasket } from "../lib/IconBasket";
+// import { IconBasket2 } from "../lib/IconBasket2";
 
 export const Header = () => {
   const location = useLocation();
@@ -33,6 +37,7 @@ export const Header = () => {
             }
           />
           <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />
+          <TotalCartItems />
         </div>
 
         <HeaderLogo onMouseEnter={() => dispatch(setShowNav(true))} />

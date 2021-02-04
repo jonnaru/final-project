@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { URL } from "../App";
 import { user } from "../reducers/user";
 
-import { StyledForm } from "./styling/StyledForm";
 import { TextInput } from "../lib/TextInput";
 import { PrimaryButton } from "../lib/PrimaryButton";
 
@@ -79,7 +78,7 @@ export const LoginForm = ({ closeDrawer }) => {
   };
 
   return (
-    <StyledForm>
+    <>
       <h1>login</h1>
       <TextInput
         placeholder="email"
@@ -97,6 +96,6 @@ export const LoginForm = ({ closeDrawer }) => {
       />
       <PrimaryButton small title="sign in" onClick={handleLogin} />
       <p>{`${statusMessage}`}</p>
-    </StyledForm>
+    </>
   );
 };

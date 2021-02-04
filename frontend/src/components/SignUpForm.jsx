@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { URL } from "../App";
 import { user } from "../reducers/user";
 
-import { StyledForm } from "./styling/StyledForm";
 import { TextInput } from "../lib/TextInput";
 import { PrimaryButton } from "../lib/PrimaryButton";
 
@@ -179,7 +178,7 @@ export const SignUpForm = ({ closeDrawer }) => {
   ];
 
   return (
-    <StyledForm>
+    <>
       <h1>sign up</h1>
       {SignUpFormValues.map((item) => (
         <TextInput
@@ -197,6 +196,6 @@ export const SignUpForm = ({ closeDrawer }) => {
         onClick={handleSignup}
       />
       <p>{`${statusMessage}`}</p>
-    </StyledForm>
+    </>
   );
 };

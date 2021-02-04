@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import { createClient } from "contentful";
 
 import { PageContainer } from "./styling/PageContainer";
-import { ShopCard } from "../lib/ShopCard";
+import { ShopCard } from "./styling/ShopCard";
 
 const ShopContainer = styled.section`
   display: flex;

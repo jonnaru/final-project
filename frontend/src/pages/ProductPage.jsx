@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import { PageContainer } from "./styling/PageContainer";
 import { ProductPageContainer } from "./styling/ProductPageContainer";
-import { ProductCard } from "../lib/ProductCard";
+import { ProductCard } from "./styling/ProductCard";
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { IconArrow } from "../lib/IconArrow";
 

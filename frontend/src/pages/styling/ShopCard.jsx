@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 
-import { IconHeart } from "./IconHeart";
+import { IconHeart } from "../../lib/IconHeart";
 
 const Container = styled.article`
   /* border: 1px solid black; */
@@ -44,11 +44,6 @@ const CoverImage = styled.img`
 
 const Content = styled.div`
   padding: 10px 0;
-`;
-
-const ChildrenContent = styled.div`
-  background: #f1f1f1;
-  padding: 20px;
 `;
 
 const Heart = styled(IconHeart)`

@@ -37,12 +37,12 @@ export const cart = createSlice({
         (item) => item.id === action.payload.id
       );
 
-      if (existingProduct && existingProduct.quantity === 1) {
+      if (existingProduct && existingProduct.cartQuantity === 1) {
         state.items = state.items.filter(
           (item) => item.id !== action.payload.id
         );
       } else if (existingProduct) {
-        existingProduct.quantity -= 1;
+        existingProduct.cartQuantity -= 1;
       }
     },
   },

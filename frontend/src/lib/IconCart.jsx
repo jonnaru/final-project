@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { Link } from "react-router-dom";
 
 const Cart = styled.svg`
-  width: 34px;
-  margin-left: 16px;
+  height: 30px;
+  margin-left: 26px;
+  cursor: pointer;
 `;
 
 export const IconCart = ({ onClick }) => {

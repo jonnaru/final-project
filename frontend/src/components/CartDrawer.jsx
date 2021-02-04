@@ -3,8 +3,8 @@ import { createClient } from "contentful-management";
 import { useSelector, useDispatch } from "react-redux";
 import { ui } from "../reducers/ui";
 import { Backdrop } from "./styling/Backdrop";
-import { StyledDrawer } from "../lib/StyledDrawer";
-import { CartItem } from "./CartItem";
+import { StyledDrawer } from "./styling/StyledDrawer";
+import { CartCard } from "./styling/CartList";
 
 const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_TOKEN,
@@ -14,7 +14,16 @@ const id = "67FditGZDejc2XnMLtqIY3";
 
 export const CartDrawer = () => {
   const showCartDrawer = useSelector((store) => store.ui.showCartDrawer);
+
+  const totalPrice = useSelector((store) =>
+    store.cart.items.reduce(
+      (total, item) => total + item.price * item.cartQuantity,
+      0
+    )
+  );
+
   const products = useSelector((store) => store.cart.items);
+
   const dispatch = useDispatch();
 
   const { setShowCartDrawer } = ui.actions;
@@ -54,13 +63,17 @@ export const CartDrawer = () => {
       <StyledDrawer
         showLoginDrawer={showCartDrawer}
         animateDrawer={animateDrawer}
-        title="Your cart is empty"
       >
-        <ul>
-          {products.map((product) => (
-            <CartItem key={product.id} product={product} />
-          ))}
-        </ul>
+        {products.length === 0 ? (
+          <h1>your cart is empty</h1>
+        ) : (
+          <>
+            <h1 style={{ marginBottom: 30 }}>your cart</h1>
+            <CartCard />
+            <h2>Total: {totalPrice} SEK</h2>
+          </>
+        )}
+
         <button onClick={() => changeQuantity()}>test</button>
       </StyledDrawer>
       <Backdrop onClick={closeDrawer} />

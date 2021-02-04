@@ -11,6 +11,7 @@ export const Drawer = styled.aside`
   width: 400px;
   top: 0;
   bottom: 0;
+  overflow-y: scroll;
 
   background: #fff;
   z-index: 25;
@@ -36,13 +37,10 @@ export const StyledArticle = styled.article`
   }
 `;
 
-export const StyledDrawer = ({ animateDrawer, title, children }) => {
+export const StyledDrawer = ({ animateDrawer, children }) => {
   return (
     <Drawer animateDrawer={animateDrawer}>
-      <StyledArticle>
-        <h1>{title}</h1>
-        {children}
-      </StyledArticle>
+      <StyledArticle>{children}</StyledArticle>
     </Drawer>
   );
 };

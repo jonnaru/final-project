@@ -20,9 +20,7 @@ export const StartPage = () => {
   return (
     <StartPageContainer>
       {!showNav && (
-        <StartPageLogo onMouseEnter={() => dispatch(setShowNav(true))}>
-          shop-name
-        </StartPageLogo>
+        <StartPageLogo onMouseEnter={() => dispatch(setShowNav(true))} />
       )}
     </StartPageContainer>
   );
