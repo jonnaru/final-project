@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Cell } from "styled-css-grid";
 import styled from "styled-components/macro";
+
+import { createClient } from "contentful";
 
 import { PageContainer } from "./styling/PageContainer";
 
@@ -10,7 +12,29 @@ const Image = styled.img`
   height: 100%;
 `;
 
+const client = createClient({
+  space: process.env.REACT_APP_CONTENTFUL_SPACE,
+  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
+});
+
 export const GalleryPage = () => {
+  const [images, setImages] = useState([]);
+
+  // const dispatch = useDispatch();
+
+  const BrandId = "4QooFrW7W3oRtVqjitZaw2";
+  useEffect(() => {
+    client
+      .getEntry(BrandId)
+      .then((brand) => {
+        console.log("brand", brand);
+        setImages(brand.fields.gallery);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, []);
+
   return (
     // Will map this:
     <PageContainer>
@@ -19,61 +43,15 @@ export const GalleryPage = () => {
         columns="repeat(auto-fit,minmax(200px,1fr))"
         gap="20px"
       >
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/200x400?random=${Math.random()}`}
-            alt="hej"
-            type="large"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/380x580?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/400x300?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/200x400?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/380x580?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/400x300?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/200x400?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/380x580?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
-        <Cell>
-          <Image
-            src={`https://source.unsplash.com/collection/76205006/400x300?random=${Math.random()}`}
-            alt="hej"
-          />
-        </Cell>
+        {images.map((image, index) => (
+          <Cell>
+            <Image
+              src={`https:${image.fields.file.url}`}
+              alt={`Slider image ${index}`}
+              type="large"
+            />
+          </Cell>
+        ))}
       </Grid>
     </PageContainer>
   );
