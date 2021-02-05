@@ -3,7 +3,12 @@ import styled from "styled-components/macro";
 
 const StartLogo = styled.svg`
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: calc(100vw - 50px);
   width: 1000px;
+  z-index: 10;
 `;
 
 export const StartPageLogo = ({ onMouseEnter }) => {
@@ -72,9 +77,3 @@ export const StartPageLogo = ({ onMouseEnter }) => {
     </StartLogo>
   );
 };
-
-// export const StartPageLogo = styled.h1`
-//   position: absolute;
-//   color: white;
-//   font-size: 200px;
-// `;

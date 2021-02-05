@@ -9,16 +9,3 @@ h1 {
   margin: 0;
   font-family: "Lexend Deca", sans-serif;
 }
-
-@keyframes close {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-.close {
-  animation: close 1.5s;
-}

@@ -25,14 +25,14 @@ export const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const productsInCart = useSelector((store) => store.cart.items);
 
-  const cartFull = () => {
-    const quantityInCart = productsInCart.find(
+  const inStock = () => {
+    const itemInCart = productsInCart.find(
       (itemInCart) => itemInCart.id === product.id
     );
 
-    const cartFull = quantityInCart?.cartQuantity >= product.inStock;
+    if (itemInCart) return product.inStock - itemInCart.cartQuantity;
 
-    return cartFull;
+    return product.inStock;
   };
 
   const handleOnClick = () => {
@@ -43,27 +43,17 @@ export const ProductCard = ({ product }) => {
     }, 1000);
   };
 
-  // const closeDrawer = () => {
-  //   setAnimateDrawer(true);
-  //   setTimeout(() => {
-  //     dispatch(setShowLoginDrawer(false));
-  //     setAnimateDrawer(false);
-  //   }, 500);
-  // };
-
   return (
     <Product>
       <h1>{product.title}</h1>
       <h2>{`${product.price} SEK`}</h2>
       <h2>{`Glazing: ${product.color}`}</h2>
       <h2>{`Measurements: ${product.measurements}`}</h2>
-      <h2>
-        {product.inStock < 1 ? "Sold out" : `Quantity: ${product.inStock}`}
-      </h2>
+      <h2>{inStock() < 1 ? "" : `In stock: ${inStock()}`}</h2>
       {product.sample && <p>This is a sample item</p>}
       <PrimaryButton
-        disabled={product.inStock < 1 || cartFull()}
-        title={buttonTitle}
+        disabled={inStock() < 1}
+        title={inStock() < 1 ? "Out of stock" : buttonTitle}
         onClick={handleOnClick}
       />
       <p>{product.description}</p>

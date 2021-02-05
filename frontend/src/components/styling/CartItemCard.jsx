@@ -29,6 +29,7 @@ const Button = styled.button`
   background: none;
   border: none;
   padding: 0;
+  outline: none;
 `;
 
 const ContentContainer = styled.div`
