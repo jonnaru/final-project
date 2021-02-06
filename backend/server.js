@@ -131,6 +131,24 @@ app.post("/users/logout", async (req, res) => {
   }
 });
 
+// Likes
+app.post("/users/:id/likes", authenticateUser);
+app.post("/users/:id/likes", async (req, res) => {
+  try {
+    const user = req.user;
+    if (user.likes.includes(req.body.likeId)) {
+      user.likes = user.likes.filter((like) => like !== req.body.likeId);
+      await user.save();
+    } else {
+      user.likes.push(req.body.likeId);
+      await user.save();
+    }
+    res.status(200).json({ message: "Success", likes: user.likes });
+  } catch (err) {
+    res.status(400).json({ error: "Could not like", err });
+  }
+});
+
 // Get user specific information
 app.get("/users/:id/secret", authenticateUser);
 app.get("/users/:id/secret", async (req, res) => {
