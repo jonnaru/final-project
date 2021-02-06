@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { logout } from "../reducers/user";
 import { ui } from "../reducers/ui";
+import { cart } from "../reducers/cart";
 
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { HeaderContainer } from "./styling/HeaderContainer";
@@ -20,6 +21,16 @@ export const Header = () => {
 
   const dispatch = useDispatch();
   const { setShowNav, setShowLoginDrawer, setShowCartDrawer } = ui.actions;
+  const { emptyCart } = cart.actions;
+
+  const handleOnClick = () => {
+    if (!accessToken) {
+      dispatch(setShowLoginDrawer(true));
+    } else {
+      dispatch(logout());
+      dispatch(emptyCart());
+    }
+  };
 
   if (location.pathname === "/") return <></>;
 
@@ -30,11 +41,7 @@ export const Header = () => {
           <PrimaryButton
             small
             title={!accessToken ? "sign in" : "log out"}
-            onClick={
-              !accessToken
-                ? () => dispatch(setShowLoginDrawer(true))
-                : () => dispatch(logout())
-            }
+            onClick={handleOnClick}
           />
           <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />
           <TotalCartItems />

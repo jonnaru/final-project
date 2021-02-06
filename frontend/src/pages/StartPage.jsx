@@ -10,16 +10,16 @@ import { StartPageLogo } from "../lib/StartPageLogo";
 
 import { createClient } from "contentful";
 
-const client = createClient({
-  space: process.env.REACT_APP_CONTENTFUL_SPACE,
-  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
-});
-
 const SliderImg = styled.img`
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 `;
+
+const client = createClient({
+  space: process.env.REACT_APP_CONTENTFUL_SPACE,
+  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
+});
 
 export const StartPage = () => {
   const showNav = useSelector((store) => store.ui.showNav);

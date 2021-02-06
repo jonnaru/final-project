@@ -38,6 +38,7 @@ export const LoginForm = ({ closeDrawer }) => {
 
   // Login success
   const handleLoginSuccess = (loginResponse) => {
+    console.log(loginResponse);
     // sending response to store
     dispatch(setAccessToken({ accessToken: loginResponse.accessToken }));
     dispatch(setUserId({ userId: loginResponse.userId }));

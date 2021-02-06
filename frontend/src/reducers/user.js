@@ -65,7 +65,7 @@ export const user = createSlice({
       console.log(`Status Message: ${statusMessage}`);
       state.login.statusMessage = statusMessage;
     },
-    logout: (state, action) => {
+    logout: (state) => {
       console.log("Logging out");
       state.login.userId = 0;
       state.login.accessToken = null;
