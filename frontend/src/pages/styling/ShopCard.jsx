@@ -1,6 +1,8 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
+import { user } from "../../reducers/user";
 
 import { IconHeart } from "../../lib/IconHeart";
 
@@ -47,7 +49,8 @@ const Content = styled.div`
 `;
 
 const Heart = styled(IconHeart)`
-  z-index: 15;
+  position: absolute;
+  z-index: 150;
   &:hover path {
     fill: #000;
   }
@@ -76,31 +79,45 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export const ShopCard = ({
-  title,
-  secondaryText,
-  coverImage,
-  className,
-  quantity,
-  id,
-  sample,
-}) => (
-  <Container className={className}>
-    {quantity < 1 && <TextFlag>sold out</TextFlag>}
-    {sample && <TextFlag sample>sample</TextFlag>}
+export const ShopCard = (props) => {
+  const {
+    title,
+    secondaryText,
+    coverImage,
+    className,
+    quantity,
+    id,
+    sample,
+  } = props;
 
-    <StyledLink to={`/product/${id}`}>
-      <CoverImage src={coverImage} />
+  const accessToken = useSelector((store) => store.user.login.accessToken);
 
-      <Content>
-        <TitleBar>
-          <div>
-            <Title>{title}</Title>
-            <SecondaryText>{`${secondaryText} SEK`}</SecondaryText>
-          </div>
-          <Heart />
-        </TitleBar>
-      </Content>
-    </StyledLink>
-  </Container>
-);
+  const dispatch = useDispatch();
+  const { handleLike } = user.actions;
+
+  const handleClickLike = (id) => {
+    if (accessToken) dispatch(handleLike({ productId: id }));
+    console.log("Liked", id);
+  };
+
+  return (
+    <Container className={className}>
+      {quantity < 1 && <TextFlag>sold out</TextFlag>}
+      {sample && <TextFlag sample>sample</TextFlag>}
+      <Heart onClick={() => handleClickLike(id)} />
+
+      <StyledLink to={`/product/${id}`}>
+        <CoverImage src={coverImage} />
+
+        <Content>
+          <TitleBar>
+            <div>
+              <Title>{title}</Title>
+              <SecondaryText>{`${secondaryText} SEK`}</SecondaryText>
+            </div>
+          </TitleBar>
+        </Content>
+      </StyledLink>
+    </Container>
+  );
+};

@@ -13,6 +13,7 @@ const initialState = {
     email: "",
     statusMessage: "",
   },
+  likes: [],
 };
 
 export const user = createSlice({
@@ -75,9 +76,20 @@ export const user = createSlice({
       state.login.postalCode = "";
       state.login.city = "";
       state.login.email = "";
+      state.likes = [];
+    },
+    handleLike: (state, action) => {
+      const { productId } = action.payload;
+      if (state.likes.includes(productId)) {
+        state.likes = state.likes.filter((like) => like !== productId);
+      } else {
+        state.likes.push(productId);
+      }
     },
   },
 });
+
+///// THUNKS
 
 export const logout = () => {
   console.log("logout thunk");
