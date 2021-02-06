@@ -80,6 +80,7 @@ app.post("/users", async (req, res) => {
       city: user.city,
       email: user.email,
       accessToken: user.accessToken,
+      likes: user.likes,
       message: `Signup success for ${user.name}`,
     });
   } catch (err) {
@@ -107,6 +108,7 @@ app.post("/sessions", async (req, res) => {
         city: updatedUser.city,
         email: updatedUser.email,
         accessToken: updatedUser.accessToken,
+        likes: updatedUser.likes,
       });
     } else {
       throw "User not found";

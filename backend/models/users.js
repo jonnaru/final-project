@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: () => crypto.randomBytes(128).toString("hex"),
   },
+  likes: {
+    type: Array,
+    default: [],
+  },
 });
 
 export default userSchema;
