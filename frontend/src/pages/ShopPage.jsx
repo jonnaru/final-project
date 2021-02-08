@@ -40,6 +40,10 @@ export const ShopPage = () => {
 
   return (
     <PageContainer>
+      {products?.fields?.categories?.map((category) => (
+        <p>{category.fields.title}</p>
+      ))}
+      <p>bajs</p>
       <ShopContainer>
         {products?.map((product) => (
           <ItemCard
@@ -47,7 +51,7 @@ export const ShopPage = () => {
             id={product.sys.id}
             coverImage={`http:${product.fields.thumb.fields.file.url}`}
             title={product.fields.productName}
-            secondaryText={product.fields.price}
+            price={product.fields.price}
             quantity={product.fields.quantity}
             sample={product.fields.sample}
           />

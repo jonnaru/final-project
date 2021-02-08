@@ -7,26 +7,36 @@ import { user } from "../../reducers/user";
 import { IconHeart } from "../../lib/IconHeart";
 
 const Container = styled.article`
-  /* border: 1px solid black; */
   position: relative;
   background: #fff;
   padding: 10px;
   margin-bottom: 20px;
 
   cursor: pointer;
-`;
 
-const Title = styled.h3`
-  margin: 0;
-  color: #000;
-  text-transform: lowercase;
-  /* font-style: italic; */
-  font-size: 36px;
-`;
+  & p {
+    margin: 0;
+    color: #6b6b6b;
+  }
 
-const SecondaryText = styled.p`
-  margin: 0;
-  color: #6b6b6b;
+  & h3 {
+    margin: 0;
+    color: #000;
+    text-transform: lowercase;
+    font-size: 32px;
+  }
+
+  &:hover h3 {
+    text-decoration: underline;
+  }
+
+  & img {
+    width: 100%;
+  }
+
+  &:hover img {
+    opacity: 0.7;
+  }
 `;
 
 const TitleBar = styled.div`
@@ -35,28 +45,18 @@ const TitleBar = styled.div`
   justify-content: space-between;
 `;
 
-const CoverImage = styled.img`
-  width: 100%;
-  /* padding: 0 10px; */
-
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-
 const Content = styled.div`
   padding: 10px 0;
 `;
 
 const Heart = styled(IconHeart)`
-  position: absolute;
-  z-index: 150;
+  padding-top: 4px;
   &:hover path {
-    fill: #000;
+    fill: #919191;
   }
 `;
 
-const TextFlag = styled.p`
+const TextFlag = styled.span`
   position: absolute;
   z-index: 5;
   right: 0;
@@ -65,7 +65,7 @@ const TextFlag = styled.p`
 
   margin-right: 10px;
   padding: 3px 10px 4px 10px;
-  background: ${(props) => (props.sample ? "#fff" : "#303030")};
+  background: ${(props) => (props.sample ? "#fff" : "#000")};
   color: ${(props) => (props.sample ? "#000" : "#fff")};
   font-size: 18px;
   font-style: italic;
@@ -73,22 +73,10 @@ const TextFlag = styled.p`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-
-  &:hover h3 {
-    text-decoration: underline;
-  }
 `;
 
 export const ShopCard = (props) => {
-  const {
-    title,
-    secondaryText,
-    coverImage,
-    className,
-    quantity,
-    id,
-    sample,
-  } = props;
+  const { title, price, coverImage, className, quantity, id, sample } = props;
 
   const accessToken = useSelector((store) => store.user.login.accessToken);
 
@@ -104,20 +92,20 @@ export const ShopCard = (props) => {
     <Container className={className}>
       {quantity < 1 && <TextFlag>sold out</TextFlag>}
       {sample && <TextFlag sample>sample</TextFlag>}
-      <Heart onClick={() => handleClickLike(id)} />
 
       <StyledLink to={`/product/${id}`}>
-        <CoverImage src={coverImage} />
-
-        <Content>
-          <TitleBar>
-            <div>
-              <Title>{title}</Title>
-              <SecondaryText>{`${secondaryText} SEK`}</SecondaryText>
-            </div>
-          </TitleBar>
-        </Content>
+        <img src={coverImage} />
       </StyledLink>
+
+      <Content>
+        <TitleBar>
+          <StyledLink to={`/product/${id}`}>
+            <h3>{title}</h3>
+          </StyledLink>
+          <Heart onClick={() => handleClickLike(id)} />
+        </TitleBar>
+        <p>{`${price} SEK`}</p>
+      </Content>
     </Container>
   );
 };

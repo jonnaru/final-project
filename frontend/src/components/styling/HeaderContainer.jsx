@@ -10,4 +10,5 @@ export const HeaderContainer = styled.header`
   width: 100%;
   max-width: 1400px;
   margin: auto;
+  z-index: 8;
 `;

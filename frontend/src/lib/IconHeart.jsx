@@ -3,8 +3,8 @@ import React from "react";
 import styled from "styled-components/macro";
 
 const Heart = styled.svg`
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
 `;
 
 export const IconHeart = ({ className, onClick }) => {

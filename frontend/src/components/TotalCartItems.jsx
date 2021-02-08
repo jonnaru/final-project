@@ -11,6 +11,8 @@ const NumberContainer = styled.div`
   border-radius: 50%;
   height: 18px;
   width: 18px;
+  margin-top: -22px;
+  margin-left: -10px;
 `;
 
 const NumberOfItems = styled.p`

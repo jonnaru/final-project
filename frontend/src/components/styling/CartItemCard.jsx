@@ -16,7 +16,6 @@ const CardContainer = styled.div`
   & h1 {
     text-align: left;
     text-transform: uppercase;
-    /* margin-bottom: 8px; */
     font-size: 24px;
   }
 
@@ -30,6 +29,7 @@ const Button = styled.button`
   border: none;
   padding: 0;
   outline: none;
+  cursor: pointer;
 `;
 
 const ContentContainer = styled.div`
