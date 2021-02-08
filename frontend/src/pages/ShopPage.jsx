@@ -4,6 +4,7 @@ import { createClient } from "contentful";
 
 import { PageContainer } from "./styling/PageContainer";
 import { ShopCard } from "./styling/ShopCard";
+import { DropDown } from "../components/DropDown";
 
 const ShopContainer = styled.section`
   display: flex;
@@ -21,6 +22,8 @@ const client = createClient({
 
 export const ShopPage = () => {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState();
 
   useEffect(() => {
     client
@@ -31,21 +34,28 @@ export const ShopPage = () => {
       })
       .then((data) => {
         setProducts(data.items);
-        console.log(data.items);
+        setCategories(data.includes.Entry);
+        console.log("data:", data);
+        console.log("items:", data.items);
       })
       .catch((error) => {
         console.log("error", error);
       });
   }, []);
 
+  const filterProducts = (productsToFilter) => {
+    if (!categoryFilter) return productsToFilter;
+    return productsToFilter.filter(
+      (product) => product.fields.categories[0].fields.title === categoryFilter
+    );
+  };
+
   return (
     <PageContainer>
-      {products?.fields?.categories?.map((category) => (
-        <p>{category.fields.title}</p>
-      ))}
-      <p>bajs</p>
+      <DropDown categories={categories} setCategoryFilter={setCategoryFilter} />
+
       <ShopContainer>
-        {products?.map((product) => (
+        {filterProducts(products).map((product) => (
           <ItemCard
             key={product.sys.id}
             id={product.sys.id}

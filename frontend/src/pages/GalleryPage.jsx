@@ -38,21 +38,23 @@ export const GalleryPage = () => {
   return (
     // Will map this:
     <PageContainer>
-      <Grid
-        flow="row dense"
-        columns="repeat(auto-fit,minmax(200px,1fr))"
-        gap="20px"
-      >
-        {images.map((image, index) => (
-          <Cell>
-            <Image
-              src={`https:${image.fields.file.url}`}
-              alt={`Slider image ${index}`}
-              type="large"
-            />
-          </Cell>
-        ))}
-      </Grid>
+      <div style={{ padding: "10px" }}>
+        <Grid
+          flow="row dense"
+          columns="repeat(auto-fit,minmax(200px,1fr))"
+          gap="20px"
+        >
+          {images.map((image, index) => (
+            <Cell>
+              <Image
+                src={`https:${image.fields.file.url}`}
+                alt={`Slider image ${index}`}
+                type="large"
+              />
+            </Cell>
+          ))}
+        </Grid>
+      </div>
     </PageContainer>
   );
 };

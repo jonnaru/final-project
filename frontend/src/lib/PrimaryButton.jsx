@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   background: ${(props) => (props.small ? "none" : "#000")};
   padding: 6px 20px;
   margin: 20px 0;
-  margin-left: 2px;
+  margin-left: ${(props) => (props.small ? "2px " : "0")};
   width: ${(props) => (props.small ? "120px" : "100%")};
   font-size: ${(props) => (props.small ? "14px" : "22px")};
   border: 1px solid #000;

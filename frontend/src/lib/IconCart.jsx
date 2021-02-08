@@ -5,6 +5,9 @@ const Cart = styled.svg`
   height: 30px;
   margin-left: 26px;
   cursor: pointer;
+  &:hover path {
+    fill: #919191;
+  }
 `;
 
 export const IconCart = ({ onClick }) => {
