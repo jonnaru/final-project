@@ -24,6 +24,7 @@ export const LoginForm = ({ closeDrawer }) => {
     setCity,
     setEmail: setUserEmail,
     setStatusMessage,
+    setLikes,
   } = user.actions;
 
   const [email, setEmail] = useState("");
@@ -48,6 +49,7 @@ export const LoginForm = ({ closeDrawer }) => {
     dispatch(setPostalCode({ postalCode: loginResponse.postalCode }));
     dispatch(setCity({ city: loginResponse.city }));
     dispatch(setUserEmail({ email: loginResponse.email }));
+    dispatch(setLikes({ likes: loginResponse.likes }));
     // closing drawer
     closeDrawer();
   };
@@ -95,8 +97,8 @@ export const LoginForm = ({ closeDrawer }) => {
         required
         type="password"
       />
-      <PrimaryButton small title="sign in" onClick={handleLogin} />
-      <p>{`${statusMessage}`}</p>
+      <PrimaryButton title="sign in" onClick={handleLogin} />
+      {statusMessage && <p>{`${statusMessage}`}</p>}
     </>
   );
 };

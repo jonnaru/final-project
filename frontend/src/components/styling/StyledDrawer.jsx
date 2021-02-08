@@ -11,7 +11,7 @@ export const Drawer = styled.aside`
   width: 400px;
   top: 0;
   bottom: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   background: #fff;
   z-index: 25;

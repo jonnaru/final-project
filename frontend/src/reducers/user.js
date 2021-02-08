@@ -66,6 +66,11 @@ export const user = createSlice({
       console.log(`Status Message: ${statusMessage}`);
       state.login.statusMessage = statusMessage;
     },
+    setLikes: (state, action) => {
+      const { likes } = action.payload;
+      console.log(`Likes: ${likes}`);
+      state.likes = likes;
+    },
     logout: (state) => {
       console.log("Logging out");
       state.login.userId = 0;
@@ -90,6 +95,43 @@ export const user = createSlice({
 });
 
 ///// THUNKS
+
+// Get likes
+
+export const handleLikeThunk = (likeId) => {
+  console.log("handleLike thunk");
+  return (dispatch, getState) => {
+    const { userId, accessToken } = getState().user.login;
+    const LIKES_URL = `${URL}/users/${userId}/likes`;
+
+    // updating likes in store
+    const { handleLike } = user.actions;
+    dispatch(handleLike({ productId: likeId }));
+
+    fetch(LIKES_URL, {
+      method: "POST",
+      body: JSON.stringify({ likeId: likeId }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: accessToken,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to like");
+        }
+        return res.json();
+      })
+      .then((json) => console.log(json))
+      .catch((err) => {
+        console.log("Could not like", err);
+        // reverting like in store
+        dispatch(handleLike({ productId: likeId }));
+      });
+  };
+};
+
+// Logout
 
 export const logout = () => {
   console.log("logout thunk");

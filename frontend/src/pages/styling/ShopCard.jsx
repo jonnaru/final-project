@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import { user } from "../../reducers/user";
+import { handleLikeThunk } from "../../reducers/user";
 
 import { IconHeart } from "../../lib/IconHeart";
 
@@ -50,7 +50,9 @@ const Content = styled.div`
 `;
 
 const Heart = styled(IconHeart)`
-  padding-top: 4px;
+  padding-top: 6px;
+  fill: ${(props) => (props.liked ? "#000" : "#ccc")};
+
   &:hover path {
     fill: #919191;
   }
@@ -79,12 +81,12 @@ export const ShopCard = (props) => {
   const { title, price, coverImage, className, quantity, id, sample } = props;
 
   const accessToken = useSelector((store) => store.user.login.accessToken);
+  const likes = useSelector((store) => store.user.likes);
 
   const dispatch = useDispatch();
-  const { handleLike } = user.actions;
 
-  const handleClickLike = (id) => {
-    if (accessToken) dispatch(handleLike({ productId: id }));
+  const handleLike = (id) => {
+    if (accessToken) dispatch(handleLikeThunk(id));
     console.log("Liked", id);
   };
 
@@ -102,7 +104,7 @@ export const ShopCard = (props) => {
           <StyledLink to={`/product/${id}`}>
             <h3>{title}</h3>
           </StyledLink>
-          <Heart onClick={() => handleClickLike(id)} />
+          <Heart liked={likes.includes(id)} onClick={() => handleLike(id)} />
         </TitleBar>
         <p>{`${price} SEK`}</p>
       </Content>

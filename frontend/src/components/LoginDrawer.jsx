@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Backdrop } from "./styling/Backdrop";
 import { LoginForm } from "./LoginForm";
 import { SignUpForm } from "./SignUpForm";
-import { PrimaryButton } from "../lib/PrimaryButton";
+import { SecondaryButton } from "../lib/SecondaryButton";
 import { StyledDrawer } from "./styling/StyledDrawer";
 import { ui } from "../reducers/ui";
 
@@ -37,8 +37,8 @@ export const LoginDrawer = () => {
         ) : (
           <LoginForm closeDrawer={closeDrawer} />
         )}
-        <PrimaryButton
-          title={showSignUp ? "Login" : "Create an account"}
+        <SecondaryButton
+          title={showSignUp ? "Already have an account?" : "Create an account"}
           onClick={() => setShowSignUp(!showSignUp)}
         />
       </StyledDrawer>

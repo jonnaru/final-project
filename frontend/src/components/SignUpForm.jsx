@@ -39,6 +39,7 @@ export const SignUpForm = ({ closeDrawer }) => {
   }, []);
 
   const handleSignupSuccess = (signupResponse) => {
+    // need to add address or call login function?
     dispatch(setAccessToken({ accessToken: signupResponse.accessToken }));
     dispatch(setUserId({ userId: signupResponse.userId }));
     dispatch(setFirstName({ name: signupResponse.name }));
@@ -189,13 +190,8 @@ export const SignUpForm = ({ closeDrawer }) => {
           type={item.type}
         />
       ))}
-      <PrimaryButton
-        small
-        type="submit"
-        title="sign up"
-        onClick={handleSignup}
-      />
-      <p>{`${statusMessage}`}</p>
+      <PrimaryButton type="submit" title="sign up" onClick={handleSignup} />
+      {statusMessage && <p>{`${statusMessage}`}</p>}
     </>
   );
 };

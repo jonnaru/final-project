@@ -7,6 +7,7 @@ const Cart = styled.svg`
   cursor: pointer;
   &:hover path {
     fill: #919191;
+    /* fill: rgba(0, 0, 0, 0.5); */
   }
 `;
 

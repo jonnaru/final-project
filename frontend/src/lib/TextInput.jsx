@@ -2,19 +2,25 @@ import React from "react";
 import styled from "styled-components/macro";
 
 const StyledInput = styled.input`
-  width: 200px;
+  width: 100%;
   font-size: 16px;
-  margin-top: 30px;
+  margin-top: 20px;
   padding-left: 10px;
-  height: 32px;
+  height: 40px;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f1f1f1;
-  border: 1px solid #ccc;
+  background: none;
+  border: 1px solid #000;
   outline: none;
-  /* border-radius: 4px; */
+  text-transform: capitalize;
+
   &::placeholder {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
+    color: #ccc;
+  }
+
+  &:last-child {
+    padding-bottom: 20px;
   }
 `;
 
@@ -23,6 +29,6 @@ export const TextInput = ({ placeholder, onChange, value, type }) => (
     placeholder={placeholder}
     value={value}
     onChange={onChange}
-    type="text"
+    type={type}
   />
 );
