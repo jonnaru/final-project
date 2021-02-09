@@ -11,8 +11,9 @@ const BackgroundContainer = styled.div`
   text-align: center;
   /* overflow-y: auto; */
   background: rgba(0, 0, 0, 0.4);
-  /* height: 100%; */
+
   z-index: 100;
+  text-transform: uppercase;
 
   &::before {
     content: "";
@@ -23,15 +24,11 @@ const BackgroundContainer = styled.div`
 `;
 
 const DialogContainer = styled.div`
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-item: center; */
   display: inline-block;
   vertical-align: middle;
   background: #fff;
   padding: 20px 40px;
   max-width: 304px;
-  /* border: 1px solid #000; */
 `;
 
 const Title = styled.h2`

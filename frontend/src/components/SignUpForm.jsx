@@ -18,7 +18,8 @@ export const SignUpForm = ({ closeDrawer }) => {
   const {
     setAccessToken,
     setUserId,
-    setName: setFirstName,
+    setName: setNameStore,
+    setLastName: setLastNameStore,
     setStatusMessage,
   } = user.actions;
 
@@ -42,8 +43,8 @@ export const SignUpForm = ({ closeDrawer }) => {
     // need to add address or call login function?
     dispatch(setAccessToken({ accessToken: signupResponse.accessToken }));
     dispatch(setUserId({ userId: signupResponse.userId }));
-    dispatch(setFirstName({ name: signupResponse.name }));
-    dispatch(setLastName({ lastName: signupResponse.lastName }));
+    dispatch(setNameStore({ name: signupResponse.name }));
+    dispatch(setLastNameStore({ lastName: signupResponse.lastName }));
     dispatch(setStatusMessage({ statusMessage: signupResponse.message }));
     // closing drawer
     closeDrawer();

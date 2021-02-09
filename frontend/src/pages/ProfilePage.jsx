@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { createClient } from "contentful";
 
 import { PageContainer } from "./styling/PageContainer";
+import { ProfileLikedItemCard } from "./styling/ProfileLikedItemCard";
+import { ProfileCard } from "./styling/ProfileCard";
 
 const client = createClient({
   space: "u1hj1odlv53m",
@@ -21,7 +23,7 @@ export const ProfilePage = () => {
 
   const [likedProducts, setLikedProducts] = useState([]);
 
-  // till thunk
+  // change to thunk
   useEffect(() => {
     client
       .getEntries({
@@ -38,32 +40,42 @@ export const ProfilePage = () => {
       .catch((error) => {
         console.log("error", error);
       });
-  }, []);
+  }, [likes]);
 
   console.log("likedProducts", likedProducts);
 
   return (
-    <PageContainer>
+    <PageContainer style={{ display: "flex" }}>
       {!accessToken ? (
-        <h1>Sign in to view user details</h1>
+        <article>
+          <h1 style={{ paddingLeft: "12px" }}>sign in to view user details</h1>
+        </article>
       ) : (
-        <>
-          <h1>{`Hello ${name}!`}</h1>
-          <p>User details:</p>
-          <p>{`${name}`}</p>
-          <p>{`${lastName}`}</p>
-          <p>{`${address}`}</p>
-          <p>{`${postalCode}`}</p>
-          <p>{`${city}`}</p>
-          <p>{`${email}`}</p>
-          <p></p>
-          <ul>
-            {likes.map((like) => (
-              <li>{`${like}`} </li>
+        likedProducts.length > 0 && (
+          <article style={{ display: "flex", flexWrap: "wrap", width: "100%" }}>
+            {likedProducts.map((liked) => (
+              <ProfileLikedItemCard
+                src={`http:${liked.fields.thumb.fields.file.url}`}
+                title={liked.fields.productName}
+                price={liked.fields.price}
+                id={liked.sys.id}
+              />
             ))}
-          </ul>
-        </>
+          </article>
+        )
       )}
+      <ProfileCard>
+        {accessToken && (
+          <>
+            <h1>{`Hello ${name}!`}</h1>
+            {likedProducts.length === 0 && <h3>you have no saved items</h3>}
+            <p>{`${name} ${lastName}`}</p>
+            <p>{`${address}`}</p>
+            <p>{`${postalCode}, ${city}`}</p>
+            <p>{`${email}`}</p>
+          </>
+        )}
+      </ProfileCard>
     </PageContainer>
   );
 };

@@ -41,14 +41,21 @@ export const GalleryPage = () => {
       <div style={{ padding: "10px" }}>
         <Grid
           flow="row dense"
-          columns="repeat(auto-fit,minmax(200px,1fr))"
+          columns="repeat(auto-fit,minmax(160px,1fr))"
           gap="20px"
         >
-          {images.map((image, index) => (
-            <Cell>
+          <Cell width={2} height={2}>
+            <Image
+              src={`https:${images[0]?.fields.file.url}`}
+              alt={`Gallery main image`}
+              type="large"
+            />
+          </Cell>
+          {images?.slice(1).map((image, index) => (
+            <Cell width={2} height={4}>
               <Image
                 src={`https:${image.fields.file.url}`}
-                alt={`Slider image ${index}`}
+                alt={`Gallery image ${index}`}
                 type="large"
               />
             </Cell>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { handleLikeThunk } from "../../reducers/user";
 
 import { IconHeart } from "../../lib/IconHeart";
+import { useTooltip } from "../../lib/Tooltip";
 
 const Container = styled.article`
   position: relative;
@@ -49,12 +50,22 @@ const Content = styled.div`
   padding: 10px 0;
 `;
 
+const Button = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+`;
+
 const Heart = styled(IconHeart)`
   padding-top: 6px;
-  fill: ${(props) => (props.liked ? "#000" : "#ccc")};
-
-  &:hover path {
-    fill: #919191;
+  transition: 0.1s;
+  & .cls-1 {
+    fill: ${(props) => props.liked && "#000"};
+  }
+  & .cls-2 {
+    fill: ${(props) => props.liked && "#000"};
   }
 `;
 
@@ -90,6 +101,8 @@ export const ShopCard = (props) => {
     console.log("Liked", id);
   };
 
+  const ref = useTooltip("sign in to like", {});
+
   return (
     <Container className={className}>
       {quantity < 1 && <TextFlag>sold out</TextFlag>}
@@ -104,7 +117,9 @@ export const ShopCard = (props) => {
           <StyledLink to={`/product/${id}`}>
             <h3>{title}</h3>
           </StyledLink>
-          <Heart liked={likes.includes(id)} onClick={() => handleLike(id)} />
+          <Button ref={ref}>
+            <Heart liked={likes.includes(id)} onClick={() => handleLike(id)} />
+          </Button>
         </TitleBar>
         <p>{`${price} SEK`}</p>
       </Content>

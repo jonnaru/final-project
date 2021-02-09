@@ -75,18 +75,18 @@ export const CartDrawer = () => {
         animateDrawer={animateDrawer}
       >
         {products.length === 0 ? (
-          <h1>your cart is empty</h1>
+          <h1>cart is empty</h1>
         ) : (
           <>
             <h1 style={{ marginBottom: 30 }}>your cart</h1>
             <CartCard />
             <h2>Total: {totalPrice} SEK</h2>
+            <PrimaryButton
+              title="Checkout"
+              onClick={() => setShowCheckoutAlert(true)}
+            />
           </>
         )}
-        <PrimaryButton
-          title="Checkout"
-          onClick={() => setShowCheckoutAlert(true)}
-        />
         {/* <button onClick={() => changeQuantity()}>test</button> */}
       </StyledDrawer>
       <Backdrop onClick={closeDrawer} />

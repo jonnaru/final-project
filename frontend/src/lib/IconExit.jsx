@@ -4,9 +4,9 @@ import styled from "styled-components/macro";
 const Exit = styled.svg`
   position: absolute;
   top: 10px;
-  left: 362px;
-  height: 28px;
-  width: 28px;
+  left: 366px;
+  height: 24px;
+  width: 24px;
 `;
 
 export const IconExit = () => {

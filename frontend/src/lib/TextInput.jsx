@@ -11,7 +11,6 @@ const StyledInput = styled.input`
   background: none;
   border: 1px solid #000;
   outline: none;
-  text-transform: capitalize;
 
   &::placeholder {
     font-family: Arial, Helvetica, sans-serif;
