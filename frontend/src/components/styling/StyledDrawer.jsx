@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { keyframes } from "styled-components/macro";
 
+import { IconExit } from "../../lib/IconExit";
+
 const show = keyframes`
   from {transform: translateX(-100%)}
   to {transform: translateX(0%)}
@@ -40,6 +42,7 @@ export const StyledArticle = styled.article`
 export const StyledDrawer = ({ animateDrawer, children }) => {
   return (
     <Drawer animateDrawer={animateDrawer}>
+      <IconExit />
       <StyledArticle>{children}</StyledArticle>
     </Drawer>
   );

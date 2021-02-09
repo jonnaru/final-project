@@ -5,6 +5,8 @@ import { ui } from "../reducers/ui";
 import { Backdrop } from "./styling/Backdrop";
 import { StyledDrawer } from "./styling/StyledDrawer";
 import { CartCard } from "./styling/CartList";
+import { PrimaryButton } from "../lib/PrimaryButton";
+import { Dialog } from "../lib/Dialog";
 
 const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_TOKEN,
@@ -13,6 +15,7 @@ const client = createClient({
 const id = "67FditGZDejc2XnMLtqIY3";
 
 export const CartDrawer = () => {
+  const [showCheckoutAlert, setShowCheckoutAlert] = useState(false);
   const showCartDrawer = useSelector((store) => store.ui.showCartDrawer);
 
   const totalPrice = useSelector((store) =>
@@ -60,6 +63,13 @@ export const CartDrawer = () => {
 
   return (
     <>
+      {showCheckoutAlert && (
+        <Dialog
+          title="Checkout is coming soon!"
+          buttonText="ok"
+          onClose={() => setShowCheckoutAlert(false)}
+        />
+      )}
       <StyledDrawer
         showLoginDrawer={showCartDrawer}
         animateDrawer={animateDrawer}
@@ -73,8 +83,11 @@ export const CartDrawer = () => {
             <h2>Total: {totalPrice} SEK</h2>
           </>
         )}
-
-        <button onClick={() => changeQuantity()}>test</button>
+        <PrimaryButton
+          title="Checkout"
+          onClick={() => setShowCheckoutAlert(true)}
+        />
+        {/* <button onClick={() => changeQuantity()}>test</button> */}
       </StyledDrawer>
       <Backdrop onClick={closeDrawer} />
     </>

@@ -25,6 +25,7 @@ export const ShopPage = () => {
   const [categories, setCategories] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState();
 
+  // till thunk
   useEffect(() => {
     client
       .getEntries({
