@@ -6,7 +6,7 @@ const BackgroundContainer = styled.div`
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 400px;
+  left: ${(props) => (props.drawer ? "400px" : "0")};
   right: 0;
   text-align: center;
   /* overflow-y: auto; */
@@ -46,8 +46,9 @@ export const Dialog = ({
   buttonText,
   secondaryText,
   secondaryButtonText,
+  drawer,
 }) => (
-  <BackgroundContainer>
+  <BackgroundContainer drawer={drawer}>
     <DialogContainer>
       {title && <Title>{title}</Title>}
       {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}

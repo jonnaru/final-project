@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { handleLikeThunk } from "../../reducers/user";
 
 import { IconHeart } from "../../lib/IconHeart";
-import { useTooltip } from "../../lib/Tooltip";
+import { Dialog } from "../../lib/Dialog";
+// import { useTooltip } from "../../lib/Tooltip";
 
 const Container = styled.article`
   position: relative;
@@ -91,38 +92,57 @@ const StyledLink = styled(Link)`
 export const ShopCard = (props) => {
   const { title, price, coverImage, className, quantity, id, sample } = props;
 
+  const [showLikeAlert, setShowLikeAlert] = useState(false);
+
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const likes = useSelector((store) => store.user.likes);
 
   const dispatch = useDispatch();
 
   const handleLike = (id) => {
-    if (accessToken) dispatch(handleLikeThunk(id));
+    if (accessToken) {
+      dispatch(handleLikeThunk(id));
+    } else {
+      setShowLikeAlert(true);
+    }
+
     console.log("Liked", id);
   };
 
-  const ref = useTooltip("sign in to like", {});
+  // const ref = useTooltip("sign in to like", {});
 
   return (
-    <Container className={className}>
-      {quantity < 1 && <TextFlag>sold out</TextFlag>}
-      {sample && <TextFlag sample>sample</TextFlag>}
+    <>
+      {showLikeAlert && (
+        <Dialog
+          title="You have to sign in to like"
+          buttonText="ok"
+          onClose={() => setShowLikeAlert(false)}
+        />
+      )}
+      <Container className={className}>
+        {quantity < 1 && <TextFlag>sold out</TextFlag>}
+        {sample && <TextFlag sample>sample</TextFlag>}
 
-      <StyledLink to={`/product/${id}`}>
-        <img src={coverImage} />
-      </StyledLink>
+        <StyledLink to={`/product/${id}`}>
+          <img src={coverImage} />
+        </StyledLink>
 
-      <Content>
-        <TitleBar>
-          <StyledLink to={`/product/${id}`}>
-            <h3>{title}</h3>
-          </StyledLink>
-          <Button ref={ref}>
-            <Heart liked={likes.includes(id)} onClick={() => handleLike(id)} />
-          </Button>
-        </TitleBar>
-        <p>{`${price} SEK`}</p>
-      </Content>
-    </Container>
+        <Content>
+          <TitleBar>
+            <StyledLink to={`/product/${id}`}>
+              <h3>{title}</h3>
+            </StyledLink>
+            <Button>
+              <Heart
+                liked={likes.includes(id)}
+                onClick={() => handleLike(id)}
+              />
+            </Button>
+          </TitleBar>
+          <p>{`${price} SEK`}</p>
+        </Content>
+      </Container>
+    </>
   );
 };

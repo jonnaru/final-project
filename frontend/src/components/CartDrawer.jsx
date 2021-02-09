@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { createClient } from "contentful-management";
 import { useSelector, useDispatch } from "react-redux";
+
 import { ui } from "../reducers/ui";
+
 import { Backdrop } from "./styling/Backdrop";
 import { StyledDrawer } from "./styling/StyledDrawer";
 import { CartCard } from "./styling/CartList";
@@ -65,6 +67,7 @@ export const CartDrawer = () => {
     <>
       {showCheckoutAlert && (
         <Dialog
+          drawer
           title="Checkout is coming soon!"
           buttonText="ok"
           onClose={() => setShowCheckoutAlert(false)}
