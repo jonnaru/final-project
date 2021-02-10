@@ -19,6 +19,10 @@ const Product = styled.div`
   }
 `;
 
+const ShippingText = styled.p`
+  font-size: 12px;
+`;
+
 export const ProductCard = ({ product }) => {
   const [buttonTitle, setButtonTitle] = useState("Add to basket");
 
@@ -56,7 +60,7 @@ export const ProductCard = ({ product }) => {
         title={inStock() < 1 ? "Out of stock" : buttonTitle}
         onClick={handleOnClick}
       />
-      <p>Free shipping over 600 SEK</p>
+      <ShippingText>Free shipping over 600 SEK</ShippingText>
       <p>{product.description}</p>
       <p>{`Item Care: ${product.materialCare}`}</p>
     </Product>
