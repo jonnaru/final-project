@@ -34,6 +34,7 @@ const DialogContainer = styled.div`
 const Title = styled.h2`
   margin: 0;
   text-align: center;
+  font-weight: lighter;
 `;
 
 const SecondaryText = styled.p`

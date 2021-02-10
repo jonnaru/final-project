@@ -3,6 +3,7 @@ import { createClient } from "contentful-management";
 import { useSelector, useDispatch } from "react-redux";
 
 import { ui } from "../reducers/ui";
+import { user } from "../reducers/user";
 
 import { Backdrop } from "./styling/Backdrop";
 import { StyledDrawer } from "./styling/StyledDrawer";
@@ -28,6 +29,7 @@ export const CartDrawer = () => {
   );
 
   const products = useSelector((store) => store.cart.items);
+  const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const dispatch = useDispatch();
 
@@ -83,7 +85,10 @@ export const CartDrawer = () => {
           <>
             <h1 style={{ marginBottom: 30 }}>your cart</h1>
             <CartCard />
-            <h2>Total: {totalPrice} SEK</h2>
+            <h2>
+              Total: {totalPrice > 599 ? totalPrice : totalPrice + 79} SEK
+            </h2>
+            <p>Shipping: {totalPrice < 600 ? "79 SEK" : "Free"}</p>
             <PrimaryButton
               title="Checkout"
               onClick={() => setShowCheckoutAlert(true)}
