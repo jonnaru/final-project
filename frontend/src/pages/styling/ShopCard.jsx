@@ -115,7 +115,7 @@ export const ShopCard = (props) => {
     <>
       {showLikeAlert && (
         <Dialog
-          title="You have to sign in to like"
+          title="Sign in to like!"
           buttonText="ok"
           onClose={() => setShowLikeAlert(false)}
         />

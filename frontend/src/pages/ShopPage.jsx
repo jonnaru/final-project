@@ -24,14 +24,18 @@ export const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState();
+  const [page, setPage] = useState(1);
 
-  // till thunk
+  // onClick={() => setPage((prev) => prev + 1)}
+  // onClick={() => setPage((prev) => prev - 1)}
+
+  // make thunk
   useEffect(() => {
     client
       .getEntries({
         content_type: "product",
         limit: 20,
-        skip: 0,
+        skip: page - 1,
       })
       .then((data) => {
         setProducts(data.items);
