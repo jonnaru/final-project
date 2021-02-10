@@ -24,7 +24,7 @@ export const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState();
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1)
 
   // onClick={() => setPage((prev) => prev + 1)}
   // onClick={() => setPage((prev) => prev - 1)}
@@ -34,8 +34,8 @@ export const ShopPage = () => {
     client
       .getEntries({
         content_type: "product",
-        limit: 20,
-        skip: page - 1,
+        limit: 40,
+        skip: 0,
       })
       .then((data) => {
         setProducts(data.items);
