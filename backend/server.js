@@ -84,9 +84,7 @@ app.post("/users", async (req, res) => {
       message: `Signup success for ${user.name}`,
     });
   } catch (err) {
-    res
-      .status(400)
-      .json({ message: "Could not create user", errors: err.errors });
+    res.status(400).json({ message: "Could not create user", err });
   }
 });
 
