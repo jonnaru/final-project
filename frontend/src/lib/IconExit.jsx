@@ -7,6 +7,7 @@ const Exit = styled.svg`
   left: 366px;
   height: 24px;
   width: 24px;
+  cursor: pointer;
 
   &:hover path {
     opacity: 0.3;

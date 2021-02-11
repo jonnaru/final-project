@@ -17,6 +17,7 @@ import { ShopPage } from "./pages/ShopPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
+import { Footer } from "./components/Footer";
 
 export const URL = process.env.REACT_APP_URL;
 
@@ -71,6 +72,7 @@ const App = () => {
             <ProductPage />
           </Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </Provider>
   );
