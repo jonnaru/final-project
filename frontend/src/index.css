@@ -20,8 +20,11 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: none;
-  background: none;
+  border: 1px solid #000;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
   -webkit-text-fill-color: #000;
   -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset;
   box-shadow: none;
