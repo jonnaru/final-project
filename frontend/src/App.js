@@ -1,13 +1,7 @@
 import React from "react";
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { user } from "./reducers/user";
 import { ui } from "./reducers/ui";
@@ -20,7 +14,6 @@ import { LoginDrawer } from "./components/LoginDrawer";
 import { CartDrawer } from "./components/CartDrawer";
 import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
-// import { CartPage } from "./pages/CartPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
@@ -71,9 +64,6 @@ const App = () => {
           <Route path="/profile" exact>
             <ProfilePage />
           </Route>
-          {/* <Route path="/cart" exact>
-            <CartPage />
-          </Route> */}
           <Route path="/contact" exact>
             <ContactPage />
           </Route>

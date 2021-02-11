@@ -20,14 +20,11 @@ const client = createClient({
 export const GalleryPage = () => {
   const [images, setImages] = useState([]);
 
-  // const dispatch = useDispatch();
-
   const BrandId = "4QooFrW7W3oRtVqjitZaw2";
   useEffect(() => {
     client
       .getEntry(BrandId)
       .then((brand) => {
-        console.log("brand", brand);
         setImages(brand.fields.gallery);
       })
       .catch((error) => {
@@ -36,7 +33,6 @@ export const GalleryPage = () => {
   }, []);
 
   return (
-    // Will map this:
     <PageContainer>
       <div style={{ padding: "10px" }}>
         <Grid

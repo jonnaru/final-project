@@ -19,18 +19,21 @@ export const LoginDrawer = () => {
 
   const closeDrawer = () => {
     setAnimateDrawer(true);
+
+    // Timeout to hide the drawer after the animation finished
     setTimeout(() => {
       dispatch(setShowLoginDrawer(false));
       setAnimateDrawer(false);
     }, 500);
   };
 
+  // Blocks the drawer from rendering
   if (!showLoginDrawer) return <></>;
 
   return (
     <>
       <StyledDrawer
-        showLoginDrawer={showLoginDrawer}
+        // Sending props to animateDrawer
         animateDrawer={animateDrawer}
       >
         {showSignUp ? (
