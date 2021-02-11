@@ -25,6 +25,7 @@ const StyledInput = styled.input`
 
 export const TextInput = ({ placeholder, onChange, value, type }) => (
   <StyledInput
+    className="auto-input"
     placeholder={placeholder}
     value={value}
     onChange={onChange}
