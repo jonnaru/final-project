@@ -6,8 +6,9 @@ const BackgroundContainer = styled.div`
   position: fixed;
   top: 0;
   bottom: 0;
-  left: ${(props) => (props.drawer ? "400px" : "0")};
+  left: 0;
   right: 0;
+  /* width: ${(props) => (props.drawer ? "100%" : "0")}; */
   text-align: center;
   /* overflow-y: auto; */
   background: rgba(0, 0, 0, 0.4);

@@ -7,11 +7,17 @@ const Exit = styled.svg`
   left: 366px;
   height: 24px;
   width: 24px;
+
+  &:hover path {
+    opacity: 0.3;
+    transition: 0.1s ease-out;
+  }
 `;
 
-export const IconExit = () => {
+export const IconExit = ({ onClick }) => {
   return (
     <Exit
+      onClick={onClick}
       id="Capa_1"
       data-name="Capa 1"
       xmlns="http://www.w3.org/2000/svg"

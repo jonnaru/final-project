@@ -46,7 +46,6 @@ export const Header = () => {
           <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />
           <TotalCartItems />
         </div>
-
         <HeaderLogo onMouseEnter={() => dispatch(setShowNav(true))} />
       </HeaderContainer>
     </>

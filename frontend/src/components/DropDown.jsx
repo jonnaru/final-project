@@ -5,7 +5,7 @@ import { Backdrop } from "./styling/Backdrop";
 
 const DropDownContainer = styled.div`
   position: absolute;
-  top: 80px;
+  top: 70px;
 
   width: 130px;
   padding-left: 10px;
@@ -24,7 +24,7 @@ const DropDownHeader = styled.div`
   &:hover {
     background: #000;
     color: #f1f1f1;
-    transition: 0.1s;
+    transition: 0.1s ease-out;
   }
 `;
 
@@ -36,30 +36,20 @@ const DropDownList = styled.ul`
   &:first-child {
     padding-top: 10px;
   }
-
-  /* &:hover {
-    background: rgba(255, 255, 255, 0.7);
-  } */
 `;
 const ListItem = styled.li`
   list-style: none;
-  /* margin-bottom: 14px; */
   padding: 10px 0;
   padding-left: 8px;
 
   &:hover {
-    /* color: rgba(0, 0, 0, 0.7); */
-    /* opacity: 0.5; */
     background: #fff;
-    /* background: #000;
-    color: #fff; */
-    transition: 0.1s;
+    transition: 0.1s ease-out;
   }
 `;
 
 export const DropDown = ({ categories, setCategoryFilter }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // const [selectedCategory, setSelectedCategory] = useState(null);
 
   const toggling = () => setIsOpen(!isOpen);
 
@@ -67,8 +57,6 @@ export const DropDown = ({ categories, setCategoryFilter }) => {
     setCategoryFilter(value);
     setIsOpen(false);
   };
-
-  // console.log("selected category", selectedCategory);
 
   return (
     <>
@@ -93,7 +81,6 @@ export const DropDown = ({ categories, setCategoryFilter }) => {
           </div>
         )}
       </DropDownContainer>
-      {/* {<ListItem /> && <Backdrop onClick={toggling} />} */}
     </>
   );
 };

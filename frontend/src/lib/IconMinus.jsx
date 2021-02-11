@@ -3,6 +3,11 @@ import styled from "styled-components/macro";
 
 const Minus = styled.svg`
   height: 24px;
+
+  &:hover path {
+    opacity: 0.3;
+    transition: 0.1s ease-out;
+  }
 `;
 
 export const IconMinus = ({ className }) => {

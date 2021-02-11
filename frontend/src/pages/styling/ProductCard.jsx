@@ -12,19 +12,50 @@ const Product = styled.div`
     font-size: 42px;
     text-transform: uppercase;
   }
-  & h2 {
-    font-size: 20px;
-    font-weight: normal;
-    color: #6b6b6b;
+  & h4 {
+    font-weight: lighter;
   }
+`;
+
+const ProductPrice = styled.h4`
+  color: #6b6b6b;
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 32px;
+`;
+
+const ProductInfo = styled.h4`
+  font-size: 20px;
+  margin: 0;
+  line-height: 34px;
+`;
+
+const ProductDescription = styled.p`
+  line-height: 30px;
+  font-size: 18px;
 `;
 
 const ShippingText = styled.p`
   font-size: 12px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 32px;
+`;
+
+const SampleItem = styled.p`
+  font-size: 20px;
+  font-style: italic;
+  font-weight: lighter;
+`;
+
+const InfoTitle = styled.span`
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-right: 10px;
 `;
 
 export const ProductCard = ({ product }) => {
-  const [buttonTitle, setButtonTitle] = useState("Add to basket");
+  const [buttonTitle, setButtonTitle] = useState("Add to cart");
 
   const dispatch = useDispatch();
   const productsInCart = useSelector((store) => store.cart.items);
@@ -50,19 +81,38 @@ export const ProductCard = ({ product }) => {
   return (
     <Product>
       <h1>{product.title}</h1>
-      <h2>{`${product.price} SEK`}</h2>
-      <h2>{`Glazing: ${product.color}`}</h2>
-      <h2>{`Measurements: ${product.measurements}`}</h2>
-      <h2>{inStock() < 1 ? "" : `In stock: ${inStock()}`}</h2>
-      {product.sample && <p>This is a sample item</p>}
+      <ProductPrice>{`${product.price} SEK`}</ProductPrice>
+
+      <div style={{ marginBottom: "22px" }}>
+        <ProductInfo>
+          <InfoTitle>Glazing: </InfoTitle>
+          {product.color}
+        </ProductInfo>
+
+        <ProductInfo>
+          <InfoTitle>Measurements: </InfoTitle>
+          {product.measurements}
+        </ProductInfo>
+
+        {inStock() > 0 && (
+          <ProductInfo>
+            <InfoTitle>In stock: </InfoTitle>
+            {inStock()}
+          </ProductInfo>
+        )}
+      </div>
+
+      {product.sample && <SampleItem>This is a sample item</SampleItem>}
+
       <PrimaryButton
         disabled={inStock() < 1}
         title={inStock() < 1 ? "Out of stock" : buttonTitle}
         onClick={handleOnClick}
       />
-      <ShippingText>Free shipping over 600 SEK</ShippingText>
-      <p>{product.description}</p>
-      <p>{`Item Care: ${product.materialCare}`}</p>
+
+      <ShippingText>Free shipping within Sweden over 600 SEK</ShippingText>
+      <ProductDescription>{product.description}</ProductDescription>
+      <ProductDescription>{`Item Care: ${product.materialCare}`}</ProductDescription>
     </Product>
   );
 };

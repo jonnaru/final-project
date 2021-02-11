@@ -24,7 +24,10 @@ export const StyledNav = styled.nav`
       text-align: center;
       cursor: pointer;
       & a {
+        /* display: block; */
         text-decoration: none;
+        padding: 20px;
+        /* margin: 20px; */
         color: #000;
       }
       &:hover {

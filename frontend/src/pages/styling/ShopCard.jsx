@@ -38,6 +38,7 @@ const Container = styled.article`
 
   &:hover img {
     opacity: 0.7;
+    transition: 0.1s ease-out;
   }
 `;
 
@@ -115,7 +116,7 @@ export const ShopCard = (props) => {
     <>
       {showLikeAlert && (
         <Dialog
-          title="Sign in to like!"
+          title="Sign in to like"
           buttonText="ok"
           onClose={() => setShowLikeAlert(false)}
         />

@@ -12,6 +12,7 @@ export const ProfileCard = styled.article`
   }
 
   & h1 {
+    margin-top: 20px;
     font-size: 42px;
     margin-bottom: 30px;
   }

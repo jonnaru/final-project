@@ -10,6 +10,7 @@ import { StyledDrawer } from "./styling/StyledDrawer";
 import { CartCard } from "./styling/CartList";
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { Dialog } from "../lib/Dialog";
+import { IconExit } from "../lib/IconExit";
 
 const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_TOKEN,
@@ -96,6 +97,7 @@ export const CartDrawer = () => {
           </>
         )}
         {/* <button onClick={() => changeQuantity()}>test</button> */}
+        <IconExit onClick={closeDrawer} />
       </StyledDrawer>
       <Backdrop onClick={closeDrawer} />
     </>

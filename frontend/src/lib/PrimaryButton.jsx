@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   &:hover {
     background: ${(props) => (props.small ? "#101010;" : "#fff")};
     color: ${(props) => (props.small ? "#f1f1f1;" : "#101010")};
-    transition: 0.1s;
+    transition: 0.1s ease-out;
 
     & path {
       fill: #fff;

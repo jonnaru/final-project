@@ -37,12 +37,6 @@ const ContentContainer = styled.div`
   justify-content: space-between;
 `;
 
-const MinusButton = styled(IconMinus)`
-  &:hover path {
-    fill: #919191;
-  }
-`;
-
 export const CartItemCard = ({ product }) => {
   const dispatch = useDispatch();
 
@@ -58,7 +52,7 @@ export const CartItemCard = ({ product }) => {
           type="button"
           onClick={() => dispatch(cart.actions.removeItem(product))}
         >
-          <MinusButton />
+          <IconMinus />
         </Button>
       </ContentContainer>
       <ContentContainer>

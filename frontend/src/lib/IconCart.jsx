@@ -5,9 +5,10 @@ const Cart = styled.svg`
   height: 30px;
   margin-left: 26px;
   cursor: pointer;
+
   &:hover path {
-    fill: #919191;
-    /* fill: rgba(0, 0, 0, 0.5); */
+    opacity: 0.3;
+    transition: 0.1s ease-out;
   }
 `;
 

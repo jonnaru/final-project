@@ -5,6 +5,7 @@ import { LoginForm } from "./LoginForm";
 import { SignUpForm } from "./SignUpForm";
 import { SecondaryButton } from "../lib/SecondaryButton";
 import { StyledDrawer } from "./styling/StyledDrawer";
+import { IconExit } from "../lib/IconExit";
 import { ui } from "../reducers/ui";
 
 export const LoginDrawer = () => {
@@ -41,6 +42,7 @@ export const LoginDrawer = () => {
           title={showSignUp ? "Already have an account?" : "Create an account"}
           onClick={() => setShowSignUp(!showSignUp)}
         />
+        <IconExit onClick={closeDrawer} />
       </StyledDrawer>
       <Backdrop onClick={closeDrawer} />
     </>
