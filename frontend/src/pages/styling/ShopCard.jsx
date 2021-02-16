@@ -136,7 +136,7 @@ export const ShopCard = (props) => {
             </StyledLink>
             <Button>
               <Heart
-                liked={likes.includes(id)}
+                liked={likes?.includes(id)}
                 onClick={() => handleLike(id)}
               />
             </Button>

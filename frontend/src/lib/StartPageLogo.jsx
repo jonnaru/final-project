@@ -11,10 +11,11 @@ const StartLogo = styled.svg`
   z-index: 10;
 `;
 
-export const StartPageLogo = ({ onMouseEnter }) => {
+export const StartPageLogo = ({ onMouseEnter, onClick }) => {
   return (
     <StartLogo
       onMouseEnter={onMouseEnter}
+      onClick={onClick}
       id="Layer_1"
       fill="#fff"
       data-name="Layer 1"

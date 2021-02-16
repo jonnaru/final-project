@@ -13,6 +13,10 @@ const ShopContainer = styled.section`
 
 const ItemCard = styled(ShopCard)`
   width: 25%;
+
+  @media (max-width: 1024px) {
+    width: 50%;
+  }
 `;
 
 const client = createClient({

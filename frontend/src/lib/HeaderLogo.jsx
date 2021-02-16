@@ -6,10 +6,11 @@ const Logo = styled.svg`
   cursor: pointer;
 `;
 
-export const HeaderLogo = ({ onMouseEnter }) => {
+export const HeaderLogo = ({ onMouseEnter, onClick }) => {
   return (
     <Logo
       onMouseEnter={onMouseEnter}
+      onClick={onClick}
       id="Layer_1"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"

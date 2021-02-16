@@ -44,7 +44,10 @@ export const StartPage = () => {
   return (
     <>
       {!showNav && (
-        <StartPageLogo onMouseEnter={() => dispatch(setShowNav(true))} />
+        <StartPageLogo
+          onMouseEnter={() => dispatch(setShowNav(true))}
+          onClick={() => dispatch(setShowNav(true))}
+        />
       )}
       <Fade
         autoplay

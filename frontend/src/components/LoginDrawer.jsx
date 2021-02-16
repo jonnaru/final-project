@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Backdrop } from "./styling/Backdrop";
+
+import { ui } from "../reducers/ui";
+
 import { LoginForm } from "./LoginForm";
 import { SignUpForm } from "./SignUpForm";
-import { SecondaryButton } from "../lib/SecondaryButton";
+import { Backdrop } from "./styling/Backdrop";
 import { StyledDrawer } from "./styling/StyledDrawer";
+import { SecondaryButton } from "../lib/SecondaryButton";
 import { IconExit } from "../lib/IconExit";
-import { ui } from "../reducers/ui";
 
 export const LoginDrawer = () => {
   const showLoginDrawer = useSelector((store) => store.ui.showLoginDrawer);
@@ -20,22 +22,17 @@ export const LoginDrawer = () => {
   const closeDrawer = () => {
     setAnimateDrawer(true);
 
-    // Timeout to hide the drawer after the animation finished
     setTimeout(() => {
       dispatch(setShowLoginDrawer(false));
       setAnimateDrawer(false);
     }, 500);
   };
 
-  // Blocks the drawer from rendering
   if (!showLoginDrawer) return <></>;
 
   return (
     <>
-      <StyledDrawer
-        // Sending props to animateDrawer
-        animateDrawer={animateDrawer}
-      >
+      <StyledDrawer animateDrawer={animateDrawer}>
         {showSignUp ? (
           <SignUpForm closeDrawer={closeDrawer} />
         ) : (

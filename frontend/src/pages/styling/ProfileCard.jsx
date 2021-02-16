@@ -20,4 +20,9 @@ export const ProfileCard = styled.article`
   & h3 {
     margin-top: 0;
   }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    align-items: center;
+  }
 `;

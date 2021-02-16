@@ -25,4 +25,9 @@ export const FooterContainer = styled.footer`
   &:hover a {
     text-decoration: none;
   }
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    padding: 14px 10px 40px;
+  }
 `;

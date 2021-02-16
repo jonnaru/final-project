@@ -16,4 +16,15 @@ export const ProductPageContainer = styled.section`
     margin-bottom: -4px;
     padding: 10px;
   }
+
+  @media (max-width: 1024px) {
+    & article {
+      width: 100%;
+    }
+
+    & img {
+      height: 100%;
+      padding: 5px 0;
+    }
+  }
 `;
