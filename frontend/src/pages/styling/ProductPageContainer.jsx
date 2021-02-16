@@ -20,9 +20,17 @@ export const ProductPageContainer = styled.section`
   @media (max-width: 1024px) {
     & article {
       width: 100%;
+      height: 100%;
     }
 
     & img {
+      height: 100% !important;
+    }
+  }
+
+  @media (max-width: 667px) {
+    & img {
+      width: 100%;
       height: 100%;
       padding: 5px 0;
     }

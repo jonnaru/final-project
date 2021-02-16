@@ -14,7 +14,8 @@ export const Footer = () => {
         <a href="mailto:hello@drejad.studios" target="_blank" rel="noreferrer">
           hello@drejad.studio
         </a>{" "}
-        for international shipping, custom order-inquires or other questions.
+        for international shipping, custom order-inquires or
+        other&nbsp;questions.
       </p>
     </FooterContainer>
   );

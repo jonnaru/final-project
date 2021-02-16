@@ -4,6 +4,10 @@ import styled from "styled-components/macro";
 const Arrow = styled.svg`
   width: 24px;
   margin-right: 6px;
+
+  @media (max-width: 667px) {
+    width: 20px;
+  }
 `;
 
 export const IconArrow = () => {

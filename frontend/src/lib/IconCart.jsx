@@ -10,6 +10,12 @@ const Cart = styled.svg`
     opacity: 0.3;
     transition: 0.1s ease-out;
   }
+
+  @media (max-width: 667px) {
+    height: 22px;
+    margin-left: 6px;
+    margin-top: 3px;
+  }
 `;
 
 export const IconCart = ({ onClick }) => {

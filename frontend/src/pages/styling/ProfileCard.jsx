@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 export const ProfileCard = styled.article`
   display: flex;
   flex-direction: column;
-  margin: 0 10px;
+  padding: 0 10px;
   width: 25%;
 
   & p {
@@ -22,7 +22,11 @@ export const ProfileCard = styled.article`
   }
 
   @media (max-width: 1024px) {
-    width: 100%;
+    width: 50%;
     align-items: center;
+  }
+
+  @media (max-width: 667px) {
+    width: 100%;
   }
 `;

@@ -17,6 +17,10 @@ const ItemCard = styled(ShopCard)`
   @media (max-width: 1024px) {
     width: 50%;
   }
+
+  @media (max-width: 667px) {
+    width: 100%;
+  }
 `;
 
 const client = createClient({

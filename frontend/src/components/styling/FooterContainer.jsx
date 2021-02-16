@@ -15,8 +15,11 @@ export const FooterContainer = styled.footer`
     font-size: 14px;
     text-transform: lowercase;
     font-family: Arial, Helvetica, sans-serif;
+
+    @media (max-width: 667px) {
+      font-size: 12px;
+    }
   }
-  /* font-weight: bold; */
 
   & a {
     color: inherit;

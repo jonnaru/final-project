@@ -7,12 +7,10 @@ import { cart } from "../reducers/cart";
 
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { HeaderContainer } from "./styling/HeaderContainer";
+import { HeaderContentContainer } from "./styling/HeaderContentContainer";
 import { HeaderLogo } from "../lib/HeaderLogo";
 import { IconCart } from "../lib/IconCart";
 import { TotalCartItems } from "./TotalCartItems";
-// import { IconCart2 } from "../lib/IconCart2";
-// import { IconBasket } from "../lib/IconBasket";
-// import { IconBasket2 } from "../lib/IconBasket2";
 
 export const Header = () => {
   const location = useLocation();
@@ -37,15 +35,17 @@ export const Header = () => {
   return (
     <>
       <HeaderContainer>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <HeaderContentContainer>
           <PrimaryButton
             small
             title={!accessToken ? "sign in" : "log out"}
             onClick={handleOnClick}
           />
-          <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />
-          <TotalCartItems />
-        </div>
+          <div>
+            <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />
+            <TotalCartItems />
+          </div>
+        </HeaderContentContainer>
         <HeaderLogo
           onMouseEnter={() => dispatch(setShowNav(true))}
           onClick={() => dispatch(setShowNav(true))}

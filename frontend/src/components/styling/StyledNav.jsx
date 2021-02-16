@@ -23,13 +23,23 @@ export const StyledNav = styled.nav`
       letter-spacing: 4px;
       text-align: center;
       cursor: pointer;
+
+      @media (max-width: 667px) {
+        font-size: 80px;
+        letter-spacing: 2px;
+        padding: 10px;
+      }
+
       & a {
-        /* display: block; */
         text-decoration: none;
         padding: 20px;
-        /* margin: 20px; */
         color: #000;
+
+        @media (max-width: 667px) {
+          padding: 10px;
+        }
       }
+
       &:hover {
         background: #fff;
         font-style: italic;

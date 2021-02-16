@@ -23,6 +23,11 @@ export const Drawer = styled.aside`
   transition: 0.5s;
   transform: ${({ animateDrawer }) =>
     animateDrawer ? "translateX(-100%)" : "translateX(0%)"};
+
+  @media (max-width: 667px) {
+    width: 100%;
+    box-shadow: none;
+  }
 `;
 
 export const StyledArticle = styled.article`

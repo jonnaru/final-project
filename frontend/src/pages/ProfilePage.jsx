@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { createClient } from "contentful";
 
 import { PageContainer } from "./styling/PageContainer";
+import { ProfilePageContainer } from "./styling/ProfilePageContainer";
+import { ProfileItemsContainer } from "./styling/ProfileItemsContainer";
 import { ProfileLikedItemCard } from "./styling/ProfileLikedItemCard";
 import { ProfileCard } from "./styling/ProfileCard";
 
@@ -45,37 +47,41 @@ export const ProfilePage = () => {
   console.log("likedProducts", likedProducts);
 
   return (
-    <PageContainer style={{ display: "flex" }}>
-      {!accessToken ? (
-        <article>
-          <h1 style={{ paddingLeft: "12px" }}>sign in to view user details</h1>
-        </article>
-      ) : (
-        likedProducts.length > 0 && (
-          <article style={{ display: "flex", flexWrap: "wrap", width: "100%" }}>
-            {likedProducts.map((liked) => (
-              <ProfileLikedItemCard
-                src={`http:${liked.fields.thumb.fields.file.url}`}
-                title={liked.fields.productName}
-                price={liked.fields.price}
-                id={liked.sys.id}
-              />
-            ))}
+    <PageContainer>
+      <ProfilePageContainer>
+        {!accessToken ? (
+          <article>
+            <h1 style={{ paddingLeft: "12px" }}>
+              sign in to view user details
+            </h1>
           </article>
-        )
-      )}
-      <ProfileCard>
-        {accessToken && (
-          <>
-            <h1>{`Hello ${name}!`}</h1>
-            {likedProducts.length === 0 && <h3>you have no saved items</h3>}
-            <p>{`${name} ${lastName}`}</p>
-            <p>{`${address}`}</p>
-            <p>{`${postalCode}, ${city}`}</p>
-            <p>{`${email}`}</p>
-          </>
+        ) : (
+          likedProducts.length > 0 && (
+            <ProfileItemsContainer>
+              {likedProducts.map((liked) => (
+                <ProfileLikedItemCard
+                  src={`http:${liked.fields.thumb.fields.file.url}`}
+                  title={liked.fields.productName}
+                  price={liked.fields.price}
+                  id={liked.sys.id}
+                />
+              ))}
+            </ProfileItemsContainer>
+          )
         )}
-      </ProfileCard>
+        <ProfileCard>
+          {accessToken && (
+            <>
+              <h1>{`Hello ${name}!`}</h1>
+              {likedProducts.length === 0 && <h3>you have no saved items</h3>}
+              <p>{`${name} ${lastName}`}</p>
+              <p>{`${address}`}</p>
+              <p>{`${postalCode}, ${city}`}</p>
+              <p>{`${email}`}</p>
+            </>
+          )}
+        </ProfileCard>
+      </ProfilePageContainer>
     </PageContainer>
   );
 };

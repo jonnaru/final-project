@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { PageContainer } from "./styling/PageContainer";
 import { ProductPageContainer } from "./styling/ProductPageContainer";
 import { ProductCard } from "./styling/ProductCard";
+import { ProductPageImage } from "./styling/ProductPageImage";
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { IconArrow } from "../lib/IconArrow";
 
@@ -71,8 +72,8 @@ export const ProductPage = () => {
 
         {product.images.map((image) => (
           <article>
-            <img
-              style={{ height: "500px" }}
+            <ProductPageImage
+              // style={{ height: "500px" }}
               src={`http:${image.fields.file.url}`}
               alt={image.fields.title}
             />

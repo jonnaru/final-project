@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 
-import { Backdrop } from "./styling/Backdrop";
-
 const DropDownContainer = styled.div`
   position: absolute;
   top: 70px;
@@ -15,6 +13,11 @@ const DropDownContainer = styled.div`
   margin-left: 2px;
   cursor: pointer;
   z-index: 9;
+  text-align: center;
+
+  @media (max-width: 667px) {
+    top: 106px;
+  }
 `;
 
 const DropDownHeader = styled.div`
@@ -26,12 +29,21 @@ const DropDownHeader = styled.div`
     color: #f1f1f1;
     transition: 0.1s ease-out;
   }
+
+  @media (max-width: 667px) {
+    margin: 10px 0 10px 2px;
+    width: 100px;
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-left: 0;
+  }
 `;
 
 const DropDownList = styled.ul`
   padding: 0;
   margin: 0;
   border-top: none;
+  text-align: left;
 
   &:first-child {
     padding-top: 10px;
@@ -45,6 +57,12 @@ const ListItem = styled.li`
   &:hover {
     background: #fff;
     transition: 0.1s ease-out;
+  }
+
+  @media (max-width: 667px) {
+    font-size: 12px;
+    padding: 6px 0;
+    padding-left: 8px;
   }
 `;
 

@@ -13,6 +13,10 @@ const Exit = styled.svg`
     opacity: 0.3;
     transition: 0.1s ease-out;
   }
+
+  @media (max-width: 667px) {
+    left: 90%;
+  }
 `;
 
 export const IconExit = ({ onClick }) => {

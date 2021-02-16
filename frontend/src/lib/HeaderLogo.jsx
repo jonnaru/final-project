@@ -4,6 +4,10 @@ import styled from "styled-components/macro";
 const Logo = styled.svg`
   width: 300px;
   cursor: pointer;
+
+  @media (max-width: 667px) {
+    width: 100%;
+  }
 `;
 
 export const HeaderLogo = ({ onMouseEnter, onClick }) => {
