@@ -10,7 +10,6 @@ const DropDownContainer = styled.div`
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
-  margin-left: 2px;
   cursor: pointer;
   z-index: 9;
   text-align: center;
