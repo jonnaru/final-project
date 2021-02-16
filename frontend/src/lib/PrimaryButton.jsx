@@ -34,7 +34,7 @@ const StyledButton = styled.button`
   }
 
   @media (max-width: 667px) {
-    margin: ${(props) => (props.small ? "10px 0 10px 2px" : "20px 0;")};
+    margin: ${(props) => (props.small ? "10px 0 10px" : "20px 0;")};
     width: ${(props) => (props.small ? "100px" : "100%")};
     padding: ${(props) => (props.small ? "4px 8px " : "6px 20px")};
     font-size: ${(props) => (props.small ? "12px" : "22px")};
