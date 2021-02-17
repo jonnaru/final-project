@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { ui } from "../reducers/ui";
 import { user } from "../reducers/user";
 
-import { Backdrop } from "./styling/Backdrop";
+import { Backdrop } from "../lib/Backdrop";
 import { StyledDrawer } from "./styling/StyledDrawer";
-import { CartCard } from "./styling/CartList";
+import { StyledCartLIst } from "./styling/StyledCartList";
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { Dialog } from "../lib/Dialog";
 import { IconExit } from "../lib/IconExit";
@@ -85,7 +85,7 @@ export const CartDrawer = () => {
         ) : (
           <>
             <h1 style={{ marginBottom: 30 }}>your cart</h1>
-            <CartCard />
+            <StyledCartLIst />
             <h2>
               Total: {totalPrice > 599 ? totalPrice : totalPrice + 79} SEK
             </h2>

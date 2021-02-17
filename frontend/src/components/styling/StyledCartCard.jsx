@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { useDispatch } from "react-redux";
+
 import { cart } from "../../reducers/cart";
 
 import { IconMinus } from "../../lib/IconMinus";
@@ -25,9 +26,9 @@ const CardContainer = styled.div`
 `;
 
 const Button = styled.button`
+  padding: 0;
   background: none;
   border: none;
-  padding: 0;
   outline: none;
   cursor: pointer;
 `;
@@ -37,7 +38,7 @@ const ContentContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const CartItemCard = ({ product }) => {
+export const StyledCartCard = ({ product }) => {
   const dispatch = useDispatch();
 
   return (

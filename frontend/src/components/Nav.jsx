@@ -1,10 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import { ui } from "../reducers/ui";
-import { Backdrop } from "./styling/Backdrop";
+import { Backdrop } from "../lib/Backdrop";
 import { StyledNav } from "./styling/StyledNav";
 
 export const Nav = () => {

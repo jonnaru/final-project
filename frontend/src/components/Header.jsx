@@ -7,7 +7,7 @@ import { cart } from "../reducers/cart";
 
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { HeaderContainer } from "./styling/HeaderContainer";
-import { ItemsInCartContainer } from "./styling/ItemsInCartContainer";
+import { HeaderCartContainer } from "./styling/HeaderCartContainer";
 import { HeaderContentContainer } from "./styling/HeaderContentContainer";
 import { HeaderLogo } from "../lib/HeaderLogo";
 import { IconCart } from "../lib/IconCart";
@@ -42,10 +42,10 @@ export const Header = () => {
             title={!accessToken ? "sign in" : "log out"}
             onClick={handleOnClick}
           />
-          <ItemsInCartContainer>
+          <HeaderCartContainer>
             <IconCart onClick={() => dispatch(setShowCartDrawer(true))} />
             <TotalCartItems />
-          </ItemsInCartContainer>
+          </HeaderCartContainer>
         </HeaderContentContainer>
         <HeaderLogo
           onMouseEnter={() => dispatch(setShowNav(true))}

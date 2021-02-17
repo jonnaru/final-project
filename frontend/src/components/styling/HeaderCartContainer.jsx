@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-export const ItemsInCartContainer = styled.div`
+export const HeaderCartContainer = styled.div`
   position: relative;
   margin-left: 26px;
 
