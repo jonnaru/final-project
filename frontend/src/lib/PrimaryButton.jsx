@@ -38,6 +38,17 @@ const StyledButton = styled.button`
     width: ${(props) => (props.small ? "100px" : "100%")};
     padding: ${(props) => (props.small ? "4px 8px " : "6px 20px")};
     font-size: ${(props) => (props.small ? "12px" : "22px")};
+
+ &:hover {
+    background: ${(props) => (props.small ? "none" : "#000")};
+    color: ${(props) => (props.small ? "#000" : "#fff")};
+    transition: 0.1s ease-out;
+
+    & path {
+      fill: #000;
+    }
+  }
+
   }
 `;
 

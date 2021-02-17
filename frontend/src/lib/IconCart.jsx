@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 const Cart = styled.svg`
   height: 30px;
-  margin-left: 26px;
+  /* margin-left: 26px; */
   cursor: pointer;
 
   &:hover path {

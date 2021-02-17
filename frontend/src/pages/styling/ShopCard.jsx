@@ -40,6 +40,13 @@ const Container = styled.article`
     opacity: 0.7;
     transition: 0.1s ease-out;
   }
+
+  @media (max-width: 667px) {
+    &:hover img {
+    opacity: 1;
+  }
+
+  }
 `;
 
 const TitleBar = styled.div`

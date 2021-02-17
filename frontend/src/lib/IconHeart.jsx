@@ -10,6 +10,13 @@ const Heart = styled.svg`
     transform: scale(1.1);
     transition: 0.2s;
   }
+
+  @media (max-width: 667px) {
+    
+    &:hover {
+    transform: none;
+  }
+  }
 `;
 
 export const IconHeart = ({ className, onClick }) => {

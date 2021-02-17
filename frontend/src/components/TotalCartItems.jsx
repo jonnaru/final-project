@@ -12,14 +12,17 @@ const NumberContainer = styled.div`
   border-radius: 50%;
   height: 18px;
   width: 18px;
-  top: 24px;
-  left: 190px;
+  /* top: 24px;
+  left: 190px; */
+  top: -4px;
+  left: 22px;
 
   @media (max-width: 667px) {
     height: 14px;
     width: 14px;
-    top: 82px;
-    left: 134px;
+    /* top: 82px;
+    left: 134px; */
+    top: -2px;
   }
 `;
 
