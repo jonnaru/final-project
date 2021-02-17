@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/macro";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { handleLikeThunk } from "../../reducers/user";
 
 import { IconHeart } from "../../lib/IconHeart";
@@ -10,11 +11,19 @@ import { Dialog } from "../../lib/Dialog";
 
 const Container = styled.article`
   position: relative;
+  width: 25%;
   background: #fff;
   padding: 10px;
   margin-bottom: 20px;
-
   cursor: pointer;
+
+  @media (max-width: 1024px) {
+    width: 50%;
+  }
+
+  @media (max-width: 667px) {
+    width: 100%;
+  }
 
   & p {
     margin: 0;
@@ -43,9 +52,8 @@ const Container = styled.article`
 
   @media (max-width: 667px) {
     &:hover img {
-    opacity: 1;
-  }
-
+      opacity: 1;
+    }
   }
 `;
 
@@ -62,17 +70,19 @@ const Content = styled.div`
 const Button = styled.button`
   background: none;
   border: none;
-  padding: 0;
   outline: none;
+  padding: 0;
   cursor: pointer;
 `;
 
 const Heart = styled(IconHeart)`
   padding-top: 6px;
   transition: 0.1s;
+
   & .cls-1 {
     fill: ${(props) => props.liked && "#000"};
   }
+
   & .cls-2 {
     fill: ${(props) => props.liked && "#000"};
   }
@@ -82,15 +92,16 @@ const TextFlag = styled.span`
   position: absolute;
   z-index: 5;
   right: 0;
-  text-align: right;
   margin-top: 12px;
-
   margin-right: 10px;
   padding: 3px 10px 4px 10px;
+
+  font-size: 18px;
+  text-align: right;
+  font-style: italic;
+
   background: ${(props) => (props.sample ? "#fff" : "#000")};
   color: ${(props) => (props.sample ? "#000" : "#fff")};
-  font-size: 18px;
-  font-style: italic;
 `;
 
 const StyledLink = styled(Link)`

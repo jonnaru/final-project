@@ -5,8 +5,8 @@ import { ui } from "../reducers/ui";
 
 import { LoginForm } from "./LoginForm";
 import { SignUpForm } from "./SignUpForm";
-import { Backdrop } from "../lib/Backdrop";
 import { StyledDrawer } from "./styling/StyledDrawer";
+import { Backdrop } from "../lib/Backdrop";
 import { SecondaryButton } from "../lib/SecondaryButton";
 import { IconExit } from "../lib/IconExit";
 

@@ -5,9 +5,11 @@ const StartLogo = styled.svg`
   position: absolute;
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
   max-width: calc(100vw - 50px);
   width: 1000px;
+
   z-index: 10;
 `;
 

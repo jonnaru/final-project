@@ -1,17 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+
 import { logout } from "../reducers/user";
 import { ui } from "../reducers/ui";
 import { cart } from "../reducers/cart";
 
-import { PrimaryButton } from "../lib/PrimaryButton";
+import { TotalCartItems } from "./TotalCartItems";
+import { HeaderContentContainer } from "./styling/HeaderContentContainer";
 import { HeaderContainer } from "./styling/HeaderContainer";
 import { HeaderCartContainer } from "./styling/HeaderCartContainer";
-import { HeaderContentContainer } from "./styling/HeaderContentContainer";
+import { PrimaryButton } from "../lib/PrimaryButton";
 import { HeaderLogo } from "../lib/HeaderLogo";
 import { IconCart } from "../lib/IconCart";
-import { TotalCartItems } from "./TotalCartItems";
 
 export const Header = () => {
   const location = useLocation();

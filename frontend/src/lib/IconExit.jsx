@@ -5,8 +5,10 @@ const Exit = styled.svg`
   position: absolute;
   top: 10px;
   left: 366px;
+
   height: 24px;
   width: 24px;
+
   cursor: pointer;
 
   &:hover path {

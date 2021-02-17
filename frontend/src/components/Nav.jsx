@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { ui } from "../reducers/ui";
-import { Backdrop } from "../lib/Backdrop";
+
 import { StyledNav } from "./styling/StyledNav";
+import { Backdrop } from "../lib/Backdrop";
 
 export const Nav = () => {
   const showNav = useSelector((store) => store.ui.showNav);

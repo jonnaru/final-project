@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cart } from "../../reducers/cart";
 import styled from "styled-components/macro";
+
+import { cart } from "../../reducers/cart";
 
 import { PrimaryButton } from "../../lib/PrimaryButton";
 
@@ -12,6 +13,7 @@ const Product = styled.div`
     font-size: 42px;
     text-transform: uppercase;
   }
+
   & h4 {
     font-weight: lighter;
   }

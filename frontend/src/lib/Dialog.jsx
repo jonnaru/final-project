@@ -8,13 +8,12 @@ const BackgroundContainer = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  /* width: ${(props) => (props.drawer ? "100%" : "0")}; */
+
   text-align: center;
-  /* overflow-y: auto; */
+  text-transform: uppercase;
   background: rgba(0, 0, 0, 0.4);
 
   z-index: 100;
-  text-transform: uppercase;
 
   &::before {
     content: "";
@@ -27,19 +26,21 @@ const BackgroundContainer = styled.div`
 const DialogContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
+
+  max-width: 304px;
+
   background: #fff;
   padding: 20px 40px;
-  max-width: 304px;
 `;
 
 const Title = styled.h2`
   margin: 0;
-  text-align: center;
   font-weight: lighter;
 `;
 
 const SecondaryText = styled.p`
   font-size: 18px;
+  text-transform: lowercase;
 `;
 
 export const Dialog = ({

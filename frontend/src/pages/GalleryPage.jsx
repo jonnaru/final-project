@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Cell } from "styled-css-grid";
-import styled from "styled-components/macro";
-
 import { createClient } from "contentful";
 
 import { PageContainer } from "./styling/PageContainer";
-
-const Image = styled.img`
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-`;
+import { GalleryImage } from "./styling/GalleryImage";
 
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE,
@@ -41,7 +34,7 @@ export const GalleryPage = () => {
           gap="20px"
         >
           <Cell width={2} height={2}>
-            <Image
+            <GalleryImage
               src={`https:${images[0]?.fields.file.url}`}
               alt={`Gallery main image`}
               type="large"
@@ -49,7 +42,7 @@ export const GalleryPage = () => {
           </Cell>
           {images?.slice(1).map((image, index) => (
             <Cell width={2} height={4}>
-              <Image
+              <GalleryImage
                 src={`https:${image.fields.file.url}`}
                 alt={`Gallery image ${index}`}
                 type="large"

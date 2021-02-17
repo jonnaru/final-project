@@ -25,5 +25,10 @@ export const ContactPageContainer = styled.div`
   & a {
     display: inline-block;
     color: inherit;
+
+    &:hover {
+      text-decoration: none;
+      color: #ccc;
+    }
   }
 `;

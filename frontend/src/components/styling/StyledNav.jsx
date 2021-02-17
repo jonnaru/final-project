@@ -15,13 +15,16 @@ export const StyledNav = styled.nav`
 
     & li {
       display: block;
-      font-size: 120px;
+
       margin: 0;
       padding: 20px;
+
+      font-size: 120px;
       font-weight: 700;
       letter-spacing: 4px;
       text-transform: lowercase;
       text-align: center;
+
       cursor: pointer;
 
       @media (max-width: 667px) {

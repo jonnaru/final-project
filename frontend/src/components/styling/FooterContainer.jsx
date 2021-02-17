@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 export const FooterContainer = styled.footer`
   width: 100%;
   max-width: 1380px;
-  padding: 14px 0 40px 0;
+  padding: 14px 0 40px;
   height: 80px;
   margin: auto;
   text-align: center;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createClient } from "contentful";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import { PageContainer } from "./styling/PageContainer";
 import { ProductPageContainer } from "./styling/ProductPageContainer";
@@ -51,12 +50,12 @@ export const ProductPage = () => {
   return (
     <PageContainer>
       <ProductPageContainer>
-        <article>
+        <picture>
           <img
             src={`http:${product.mainImage.fields.file.url}`}
             alt={product.mainImage.fields.title}
           />
-        </article>
+        </picture>
 
         <article>
           <ProductCard product={product} />
@@ -71,13 +70,12 @@ export const ProductPage = () => {
         </article>
 
         {product.images.map((image) => (
-          <article>
+          <picture>
             <ProductPageImage
-              // style={{ height: "500px" }}
               src={`http:${image.fields.file.url}`}
               alt={image.fields.title}
             />
-          </article>
+          </picture>
         ))}
       </ProductPageContainer>
     </PageContainer>

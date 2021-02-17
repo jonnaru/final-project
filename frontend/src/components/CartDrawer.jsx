@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { ui } from "../reducers/ui";
 import { user } from "../reducers/user";
 
-import { Backdrop } from "../lib/Backdrop";
 import { StyledDrawer } from "./styling/StyledDrawer";
 import { StyledCartLIst } from "./styling/StyledCartList";
+import { Backdrop } from "../lib/Backdrop";
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { Dialog } from "../lib/Dialog";
 import { IconExit } from "../lib/IconExit";
@@ -71,7 +71,8 @@ export const CartDrawer = () => {
       {showCheckoutAlert && (
         <Dialog
           drawer
-          title="Checkout is coming soon!"
+          title="Checkout is coming soon"
+          secondaryText="Email to order"
           buttonText="ok"
           onClose={() => setShowCheckoutAlert(false)}
         />

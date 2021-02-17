@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+
 import { FooterContainer } from "./styling/FooterContainer";
 
 export const Footer = () => {

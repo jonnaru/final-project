@@ -4,7 +4,8 @@ export const ProductPageContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
 
-  & article {
+  & article,
+  picture {
     width: 50%;
     object-fit: cover;
   }
@@ -18,7 +19,8 @@ export const ProductPageContainer = styled.section`
   }
 
   @media (max-width: 1024px) {
-    & article {
+    & article,
+    picture {
       width: 100%;
       height: 100%;
     }

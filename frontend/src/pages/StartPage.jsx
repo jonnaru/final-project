@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { createClient } from "contentful";
 import { Fade } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import styled from "styled-components/macro";
 
 import { ui } from "../reducers/ui";
+
 import { StartPageLogo } from "../lib/StartPageLogo";
-
-import { createClient } from "contentful";
-
-const SliderImg = styled.img`
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-`;
+import { StartPageImgSlider } from "./styling/StartPageImgSlider";
 
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE,
@@ -59,7 +52,7 @@ export const StartPage = () => {
         Easing={"ease"}
       >
         {images.map((image, index) => (
-          <SliderImg
+          <StartPageImgSlider
             src={`https:${image.fields.file.url}`}
             alt={`Slider image ${index}`}
           />

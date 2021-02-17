@@ -11,11 +11,10 @@ export const DropDownHeader = styled.div`
   }
 
   @media (max-width: 667px) {
-    margin: 10px 0 10px 2px;
+    margin: 10px 0 10px;
     width: 100px;
     padding: 4px 8px;
     font-size: 12px;
-    margin-left: 0;
 
     &:hover {
       background: none;

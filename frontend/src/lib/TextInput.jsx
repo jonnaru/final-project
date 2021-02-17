@@ -3,10 +3,11 @@ import styled from "styled-components/macro";
 
 const StyledInput = styled.input`
   width: 100%;
-  font-size: 16px;
+  height: 40px;
   margin-top: 20px;
   padding-left: 10px;
-  height: 40px;
+
+  font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   background: none;
   border: 1px solid #000;

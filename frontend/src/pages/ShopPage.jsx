@@ -1,28 +1,10 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components/macro";
 import { createClient } from "contentful";
 
+import { DropDown } from "../components/DropDown";
 import { PageContainer } from "./styling/PageContainer";
 import { ShopCard } from "./styling/ShopCard";
-import { DropDown } from "../components/DropDown";
-
-const ShopContainer = styled.section`
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const ItemCard = styled(ShopCard)`
-  width: 25%;
-
-  @media (max-width: 1024px) {
-    width: 50%;
-  }
-
-  @media (max-width: 667px) {
-    width: 100%;
-  }
-`;
+import { ShopPageContainer } from "./styling/ShopPageContainer";
 
 const client = createClient({
   space: "u1hj1odlv53m",
@@ -33,10 +15,6 @@ export const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState();
-  // const [page, setPage] = useState(1)
-
-  // onClick={() => setPage((prev) => prev + 1)}
-  // onClick={() => setPage((prev) => prev - 1)}
 
   // make thunk
   useEffect(() => {
@@ -66,13 +44,13 @@ export const ShopPage = () => {
 
   return (
     <PageContainer>
-      <ShopContainer>
+      <ShopPageContainer>
         <DropDown
           categories={categories}
           setCategoryFilter={setCategoryFilter}
         />
         {filterProducts(products).map((product) => (
-          <ItemCard
+          <ShopCard
             key={product.sys.id}
             id={product.sys.id}
             coverImage={`http:${product.fields.thumb.fields.file.url}`}
@@ -82,7 +60,7 @@ export const ShopPage = () => {
             sample={product.fields.sample}
           />
         ))}
-      </ShopContainer>
+      </ShopPageContainer>
     </PageContainer>
   );
 };

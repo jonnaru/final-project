@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { useDispatch, useSelector } from "react-redux";
-import { handleLikeThunk } from "../../reducers/user";
 import { Link } from "react-router-dom";
+
+import { handleLikeThunk } from "../../reducers/user";
 
 import { IconHeart } from "../../lib/IconHeart";
 
@@ -33,6 +34,7 @@ const CardContainer = styled.article`
   &:hover img {
     opacity: 0.7;
   }
+
   @media (max-width: 1024px) {
     width: 100%;
   }
@@ -46,17 +48,19 @@ const ContentContainer = styled.div`
 const Button = styled.button`
   background: none;
   border: none;
-  padding: 0;
   outline: none;
+  padding: 0;
   cursor: pointer;
 `;
 
 const Heart = styled(IconHeart)`
   padding-top: 4px;
   transition: 0.1s;
+
   & .cls-1 {
     fill: #000;
   }
+
   & .cls-2 {
     /* fill: #000; */
   }

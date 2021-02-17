@@ -5,20 +5,24 @@ const StyledButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: ${(props) => (props.small ? "none" : "#000")};
+
   padding: 6px 20px;
   margin: 20px 0;
-  width: ${(props) => (props.small ? "120px" : "100%")};
-  font-size: ${(props) => (props.small ? "14px" : "22px")};
   border: 1px solid #000;
   text-transform: uppercase;
-  cursor: pointer;
   outline: none;
+
+  cursor: pointer;
+
+  background: ${(props) => (props.small ? "none" : "#000")};
+  width: ${(props) => (props.small ? "120px" : "100%")};
+  font-size: ${(props) => (props.small ? "14px" : "22px")};
   color: ${(props) => (props.small ? "#000" : "#fff")};
 
   &:hover {
     background: ${(props) => (props.small ? "#101010;" : "#fff")};
     color: ${(props) => (props.small ? "#f1f1f1;" : "#101010")};
+
     transition: 0.1s ease-out;
 
     & path {
@@ -30,6 +34,7 @@ const StyledButton = styled.button`
     background: #ccc;
     border: #ccc;
     color: #fff;
+
     cursor: unset;
   }
 
@@ -39,16 +44,16 @@ const StyledButton = styled.button`
     padding: ${(props) => (props.small ? "4px 8px " : "6px 20px")};
     font-size: ${(props) => (props.small ? "12px" : "22px")};
 
- &:hover {
-    background: ${(props) => (props.small ? "none" : "#000")};
-    color: ${(props) => (props.small ? "#000" : "#fff")};
-    transition: 0.1s ease-out;
+    &:hover {
+      background: ${(props) => (props.small ? "none" : "#000")};
+      color: ${(props) => (props.small ? "#000" : "#fff")};
 
-    & path {
-      fill: #000;
+      transition: 0.1s ease-out;
+
+      & path {
+        fill: #000;
+      }
     }
-  }
-
   }
 `;
 
