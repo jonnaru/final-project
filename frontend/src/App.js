@@ -8,15 +8,15 @@ import { ui } from "./reducers/ui";
 import { cart } from "./reducers/cart";
 
 import { StartPage } from "./pages/StartPage";
-import { Header } from "./components/Header";
-import { Nav } from "./components/Nav";
-import { LoginDrawer } from "./components/LoginDrawer";
-import { CartDrawer } from "./components/CartDrawer";
 import { GalleryPage } from "./pages/GalleryPage";
 import { ShopPage } from "./pages/ShopPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { ContactPage } from "./pages/ContactPage";
 import { ProductPage } from "./pages/ProductPage";
+import { Header } from "./components/Header";
+import { Nav } from "./components/Nav";
+import { LoginDrawer } from "./components/LoginDrawer";
+import { CartDrawer } from "./components/CartDrawer";
 import { Footer } from "./components/Footer";
 
 export const URL = process.env.REACT_APP_URL;

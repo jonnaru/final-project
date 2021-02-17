@@ -9,6 +9,7 @@ import { ui } from "../reducers/ui";
 import { StartPageLogo } from "../lib/StartPageLogo";
 import { StartPageImgSlider } from "./styling/StartPageImgSlider";
 
+// to thunk
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE,
   accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
@@ -23,6 +24,7 @@ export const StartPage = () => {
 
   const BrandId = "4QooFrW7W3oRtVqjitZaw2";
   useEffect(() => {
+    // to thunk
     client
       .getEntry(BrandId)
       .then((brand) => {

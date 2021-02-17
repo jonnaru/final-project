@@ -1,30 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { URL } from "../App";
-import { user } from "../reducers/user";
+import { user, login } from "../reducers/user";
 
 import { TextInput } from "../lib/TextInput";
 import { PrimaryButton } from "../lib/PrimaryButton";
 
 export const LoginForm = ({ closeDrawer }) => {
-  const LOGIN_URL = `${URL}/sessions`;
-
   const statusMessage = useSelector((store) => store.user.login.statusMessage);
+  const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const dispatch = useDispatch();
-  const {
-    setAccessToken,
-    setUserId,
-    setName,
-    setLastName,
-    setAddress,
-    setPostalCode,
-    setCity,
-    setEmail: setUserEmail,
-    setStatusMessage,
-    setLikes,
-  } = user.actions;
+  const { setStatusMessage } = user.actions;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,51 +23,17 @@ export const LoginForm = ({ closeDrawer }) => {
     };
   }, []);
 
-  // Login success
-  const handleLoginSuccess = (loginResponse) => {
-    console.log(loginResponse);
-    // sending response to store
-    dispatch(setAccessToken({ accessToken: loginResponse.accessToken }));
-    dispatch(setUserId({ userId: loginResponse.userId }));
-    dispatch(setName({ name: loginResponse.name }));
-    dispatch(setLastName({ lastName: loginResponse.lastName }));
-    dispatch(setAddress({ address: loginResponse.address }));
-    dispatch(setPostalCode({ postalCode: loginResponse.postalCode }));
-    dispatch(setCity({ city: loginResponse.city }));
-    dispatch(setUserEmail({ email: loginResponse.email }));
-    dispatch(setLikes({ likes: loginResponse.likes }));
-    // closing drawer
-    closeDrawer();
-  };
-
-  // Login fail
-  const handleLoginFailed = (loginError) => {
-    // reset accessToken and show error message
-    dispatch(setAccessToken({ accessToken: null }));
-    dispatch(setStatusMessage({ statusMessage: loginError.message }));
-  };
+  // closing drawer on login success
+  if (accessToken) closeDrawer();
 
   // Login a user
   const handleLogin = (event) => {
     event.preventDefault();
-
-    fetch(LOGIN_URL, {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Login Failed");
-        }
-        return res.json();
-      })
-      .then((json) => handleLoginSuccess(json))
-      .catch((err) => handleLoginFailed(err));
+    dispatch(login(email, password));
   };
 
   return (
-    <>
+    <form onSubmit={handleLogin}>
       <h1>login</h1>
       <TextInput
         placeholder="email"
@@ -96,8 +49,8 @@ export const LoginForm = ({ closeDrawer }) => {
         required
         type="password"
       />
-      <PrimaryButton title="sign in" onClick={handleLogin} />
+      <PrimaryButton type="submit" title="sign in" />
       {statusMessage && <p>{`${statusMessage}`}</p>}
-    </>
+    </form>
   );
 };

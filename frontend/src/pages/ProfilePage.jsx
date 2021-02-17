@@ -8,6 +8,7 @@ import { ProfileItemsContainer } from "./styling/ProfileItemsContainer";
 import { ProfileLikedItemCard } from "./styling/ProfileLikedItemCard";
 import { ProfileCard } from "./styling/ProfileCard";
 
+// to thunk
 const client = createClient({
   space: "u1hj1odlv53m",
   accessToken: "1TRVfQyDn_PgHJtYsjYqeBAg8hfo5bIATKK_MBsFHYU",
@@ -27,6 +28,7 @@ export const ProfilePage = () => {
 
   // change to thunk
   useEffect(() => {
+    // to thunk
     client
       .getEntries({
         content_type: "product",
@@ -72,11 +74,19 @@ export const ProfilePage = () => {
         <ProfileCard>
           {accessToken && (
             <>
-              <h1>{`Hello ${name}!`}</h1>
+              <h1>
+                <span>{`Hello ${name}!`}</span>
+              </h1>
               {likedProducts.length === 0 && <h3>you have no saved items</h3>}
-              <p>{`${name} ${lastName}`}</p>
-              <p>{`${address}`}</p>
-              <p>{`${postalCode}, ${city}`}</p>
+              <p>
+                <span>{`${name} ${lastName}`}</span>
+              </p>
+              <p>
+                <span>{`${address}`}</span>
+              </p>
+              <p>
+                <span>{`${postalCode}, ${city}`}</span>
+              </p>
               <p>{`${email}`}</p>
             </>
           )}

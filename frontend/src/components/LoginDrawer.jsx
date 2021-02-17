@@ -25,6 +25,7 @@ export const LoginDrawer = () => {
     setTimeout(() => {
       dispatch(setShowLoginDrawer(false));
       setAnimateDrawer(false);
+      setShowSignUp(false);
     }, 500);
   };
 

@@ -94,10 +94,133 @@ export const user = createSlice({
   },
 });
 
-///// THUNKS
+////////// THUNKS //////////
 
-// Get likes
+// LOGIN
+export const login = (email, password) => {
+  console.log("login thunk");
+  return (dispatch) => {
+    const LOGIN_URL = `${URL}/sessions`;
 
+    const {
+      setAccessToken,
+      setUserId,
+      setName,
+      setLastName,
+      setAddress,
+      setPostalCode,
+      setCity,
+      setEmail,
+      setStatusMessage,
+      setLikes,
+    } = user.actions;
+
+    // Login success
+    const handleLoginSuccess = (loginResponse) => {
+      console.log(loginResponse);
+      // sending response to store
+      dispatch(setAccessToken({ accessToken: loginResponse.accessToken }));
+      dispatch(setUserId({ userId: loginResponse.userId }));
+      dispatch(setName({ name: loginResponse.name }));
+      dispatch(setLastName({ lastName: loginResponse.lastName }));
+      dispatch(setAddress({ address: loginResponse.address }));
+      dispatch(setPostalCode({ postalCode: loginResponse.postalCode }));
+      dispatch(setCity({ city: loginResponse.city }));
+      dispatch(setEmail({ email: loginResponse.email }));
+      dispatch(setLikes({ likes: loginResponse.likes }));
+    };
+
+    // Login fail
+    const handleLoginFailed = (loginError) => {
+      // reset accessToken and show error message
+      dispatch(setAccessToken({ accessToken: null }));
+      dispatch(setStatusMessage({ statusMessage: loginError.message }));
+    };
+
+    fetch(LOGIN_URL, {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Login Failed");
+        }
+        return res.json();
+      })
+      .then((json) => handleLoginSuccess(json))
+      .catch((err) => handleLoginFailed(err));
+  };
+};
+
+// SIGN UP
+export const signup = (
+  name,
+  lastName,
+  address,
+  postalCode,
+  city,
+  email,
+  password
+) => {
+  console.log("signup thunk");
+  return (dispatch) => {
+    const SIGNUP_URL = `${URL}/users`;
+
+    const {
+      setAccessToken,
+      setUserId,
+      setName,
+      setLastName,
+      setStatusMessage,
+      setAddress,
+      setPostalCode,
+      setCity,
+      setEmail,
+      setLikes,
+    } = user.actions;
+
+    const handleSignupSuccess = (signupResponse) => {
+      dispatch(setAccessToken({ accessToken: signupResponse.accessToken }));
+      dispatch(setUserId({ userId: signupResponse.userId }));
+      dispatch(setName({ name: signupResponse.name }));
+      dispatch(setLastName({ lastName: signupResponse.lastName }));
+      dispatch(setAddress({ address: signupResponse.address }));
+      dispatch(setPostalCode({ postalCode: signupResponse.postalCode }));
+      dispatch(setCity({ city: signupResponse.city }));
+      dispatch(setEmail({ email: signupResponse.email }));
+      dispatch(setLikes({ likes: signupResponse.likes }));
+    };
+
+    const handleSignupFailed = (signupError) => {
+      dispatch(setStatusMessage({ statusMessage: signupError.message }));
+    };
+
+    fetch(SIGNUP_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        lastName,
+        address,
+        postalCode,
+        city,
+        email,
+        password,
+      }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Signup Failed");
+        }
+        return res.json();
+      })
+      .then((json) => handleSignupSuccess(json))
+      .catch((err) => handleSignupFailed(err));
+  };
+};
+
+// GET LIKES
 export const handleLikeThunk = (likeId) => {
   console.log("handleLike thunk");
   return (dispatch, getState) => {
@@ -131,8 +254,7 @@ export const handleLikeThunk = (likeId) => {
   };
 };
 
-// Logout
-
+// LOGOUT
 export const logout = () => {
   console.log("logout thunk");
   return (dispatch, getState) => {

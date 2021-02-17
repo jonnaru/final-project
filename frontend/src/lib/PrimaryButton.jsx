@@ -57,10 +57,17 @@ const StyledButton = styled.button`
   }
 `;
 
-export const PrimaryButton = ({ title, onClick, small, icon, disabled }) => {
+export const PrimaryButton = ({
+  title,
+  onClick,
+  small,
+  icon,
+  disabled,
+  type = "button",
+}) => {
   return (
     <StyledButton
-      type="button"
+      type={type}
       small={small}
       disabled={disabled}
       onClick={onClick}

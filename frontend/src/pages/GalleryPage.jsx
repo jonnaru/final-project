@@ -5,6 +5,7 @@ import { createClient } from "contentful";
 import { PageContainer } from "./styling/PageContainer";
 import { GalleryImage } from "./styling/GalleryImage";
 
+// to thunk
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE,
   accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
@@ -15,6 +16,7 @@ export const GalleryPage = () => {
 
   const BrandId = "4QooFrW7W3oRtVqjitZaw2";
   useEffect(() => {
+    // to thunk
     client
       .getEntry(BrandId)
       .then((brand) => {

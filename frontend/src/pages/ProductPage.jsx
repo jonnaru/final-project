@@ -9,6 +9,7 @@ import { ProductPageImage } from "./styling/ProductPageImage";
 import { PrimaryButton } from "../lib/PrimaryButton";
 import { IconArrow } from "../lib/IconArrow";
 
+// to thunk
 const client = createClient({
   space: process.env.REACT_APP_CONTENTFUL_SPACE,
   accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
@@ -21,6 +22,7 @@ export const ProductPage = () => {
   const [product, setProduct] = useState();
 
   useEffect(() => {
+    // to thunk
     client
       .getEntry(id)
       .then((item) => {

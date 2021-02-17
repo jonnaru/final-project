@@ -21,6 +21,10 @@ export const ProfileCard = styled.article`
     margin-top: 0;
   }
 
+  & span {
+    text-transform: capitalize;
+  }
+
   @media (max-width: 1024px) {
     width: 50%;
     align-items: center;

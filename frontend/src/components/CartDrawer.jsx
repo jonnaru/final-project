@@ -12,6 +12,7 @@ import { PrimaryButton } from "../lib/PrimaryButton";
 import { Dialog } from "../lib/Dialog";
 import { IconExit } from "../lib/IconExit";
 
+// to thunk
 const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_TOKEN,
 });
@@ -48,6 +49,7 @@ export const CartDrawer = () => {
   if (!showCartDrawer) return <></>;
 
   const changeQuantity = () => {
+    // to thunk
     client
       .getSpace(process.env.REACT_APP_CONTENTFUL_SPACE)
       .then((space) => space.getEnvironment("master"))

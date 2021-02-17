@@ -6,6 +6,7 @@ import { PageContainer } from "./styling/PageContainer";
 import { ShopCard } from "./styling/ShopCard";
 import { ShopPageContainer } from "./styling/ShopPageContainer";
 
+// to thunk
 const client = createClient({
   space: "u1hj1odlv53m",
   accessToken: "1TRVfQyDn_PgHJtYsjYqeBAg8hfo5bIATKK_MBsFHYU",
@@ -18,6 +19,7 @@ export const ShopPage = () => {
 
   // make thunk
   useEffect(() => {
+    // to thunk
     client
       .getEntries({
         content_type: "product",

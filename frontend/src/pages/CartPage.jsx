@@ -3,6 +3,7 @@ import { createClient } from "contentful-management";
 
 import { PageContainer } from "./styling/PageContainer";
 
+// to thunk
 const client = createClient({
   accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_TOKEN,
 });
@@ -11,6 +12,7 @@ const id = "67FditGZDejc2XnMLtqIY3";
 
 export const CartPage = () => {
   const changeQuantity = () => {
+    // to thunk
     client
       .getSpace(process.env.REACT_APP_CONTENTFUL_SPACE)
       .then((space) => space.getEnvironment("master"))

@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { URL } from "../App";
-import { user } from "../reducers/user";
+import { user, signup } from "../reducers/user";
 
 import { TextInput } from "../lib/TextInput";
 import { PrimaryButton } from "../lib/PrimaryButton";
 
 export const SignUpForm = ({ closeDrawer }) => {
-  const SIGNUP_URL = `${URL}/users`;
-
   const statusMessage = useSelector((store) => store.user.login.statusMessage);
+  const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const dispatch = useDispatch();
-
-  const {
-    setAccessToken,
-    setUserId,
-    setName: setNameStore,
-    setLastName: setLastNameStore,
-    setStatusMessage,
-  } = user.actions;
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -38,20 +28,8 @@ export const SignUpForm = ({ closeDrawer }) => {
     };
   }, []);
 
-  const handleSignupSuccess = (signupResponse) => {
-    // need to add address or call login function?
-    dispatch(setAccessToken({ accessToken: signupResponse.accessToken }));
-    dispatch(setUserId({ userId: signupResponse.userId }));
-    dispatch(setNameStore({ name: signupResponse.name }));
-    dispatch(setLastNameStore({ lastName: signupResponse.lastName }));
-    dispatch(setStatusMessage({ statusMessage: signupResponse.message }));
-    // closing drawer
-    closeDrawer();
-  };
-
-  const handleSignupFailed = (signupError) => {
-    dispatch(setStatusMessage({ statusMessage: signupError.message }));
-  };
+  // closing drawer on login success
+  if (accessToken) closeDrawer();
 
   // To sign up a user
   const handleSignup = (event) => {
@@ -95,27 +73,9 @@ export const SignUpForm = ({ closeDrawer }) => {
         })
       );
     } else {
-      fetch(SIGNUP_URL, {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          lastName,
-          address,
-          postalCode,
-          city,
-          email,
-          password,
-        }),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Signup Failed");
-          }
-          return res.json();
-        })
-        .then((json) => handleSignupSuccess(json))
-        .catch((err) => handleSignupFailed(err));
+      dispatch(
+        signup(name, lastName, address, postalCode, city, email, password)
+      );
     }
   };
 
@@ -179,7 +139,7 @@ export const SignUpForm = ({ closeDrawer }) => {
   ];
 
   return (
-    <>
+    <form onSubmit={handleSignup}>
       <h1>sign up</h1>
       {SignUpFormValues.map((item) => (
         <TextInput
@@ -190,8 +150,8 @@ export const SignUpForm = ({ closeDrawer }) => {
           type={item.type}
         />
       ))}
-      <PrimaryButton type="submit" title="sign up" onClick={handleSignup} />
+      <PrimaryButton type="submit" title="sign up" />
       {statusMessage && <p>{`${statusMessage}`}</p>}
-    </>
+    </form>
   );
 };
