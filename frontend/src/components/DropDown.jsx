@@ -3,7 +3,8 @@ import styled from "styled-components/macro";
 
 const DropDownContainer = styled.div`
   position: absolute;
-  top: 70px;
+  /* top: 70px; */
+  top: -60px;
 
   width: 130px;
   padding-left: 10px;
@@ -15,7 +16,7 @@ const DropDownContainer = styled.div`
   text-align: center;
 
   @media (max-width: 667px) {
-    top: 106px;
+    top: -42px;
   }
 `;
 
@@ -35,6 +36,11 @@ const DropDownHeader = styled.div`
     padding: 4px 8px;
     font-size: 12px;
     margin-left: 0;
+
+    &:hover {
+      background: none;
+      color: #000;
+    }
   }
 `;
 

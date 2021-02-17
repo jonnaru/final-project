@@ -7,6 +7,7 @@ import { ShopCard } from "./styling/ShopCard";
 import { DropDown } from "../components/DropDown";
 
 const ShopContainer = styled.section`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
 `;
@@ -65,9 +66,11 @@ export const ShopPage = () => {
 
   return (
     <PageContainer>
-      <DropDown categories={categories} setCategoryFilter={setCategoryFilter} />
-
       <ShopContainer>
+        <DropDown
+          categories={categories}
+          setCategoryFilter={setCategoryFilter}
+        />
         {filterProducts(products).map((product) => (
           <ItemCard
             key={product.sys.id}
