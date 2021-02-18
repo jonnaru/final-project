@@ -27,7 +27,7 @@ export const ProductPage = () => {
       <ProductPageContainer>
         <picture>
           <img
-            src={`http:${product.mainImage.fields.file.url}`}
+            src={`https:${product.mainImage.fields.file.url}`}
             alt={product.mainImage.fields.title}
           />
         </picture>
@@ -47,7 +47,7 @@ export const ProductPage = () => {
         {product.images.map((image) => (
           <picture>
             <ProductPageImage
-              src={`http:${image.fields.file.url}`}
+              src={`https:${image.fields.file.url}`}
               alt={image.fields.title}
             />
           </picture>
