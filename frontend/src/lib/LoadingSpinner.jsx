@@ -1,6 +1,15 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components";
 import { useSelector } from "react-redux";
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
 
 const Loading = styled.div`
   z-index: 7;
@@ -30,15 +39,7 @@ const Loading = styled.div`
     border: 20px solid #000;
     border-color: #000 transparent #000 transparent;
 
-    animation: rotate 1s linear infinite;
-    @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+    animation: ${rotate} 1s linear infinite;
   }
 `;
 

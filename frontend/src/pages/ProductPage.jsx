@@ -29,7 +29,7 @@ export const ProductPage = () => {
     getItem(id, setProduct, handleLoadingChange);
   }, [id]);
 
-  if (!product) return <></>; // show spinner
+  if (!product) return <></>;
 
   return (
     <PageContainer>
@@ -58,6 +58,7 @@ export const ProductPage = () => {
             <ProductPageImage
               src={`https:${image.fields.file.url}`}
               alt={image.fields.title}
+              key={image.fields.title}
             />
           </picture>
         ))}

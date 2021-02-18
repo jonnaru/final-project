@@ -84,56 +84,48 @@ export const SignUpForm = ({ closeDrawer }) => {
       placeholder: "first name",
       value: name,
       onChange: (event) => setName(event.target.value),
-      required: true,
       type: "text",
     },
     {
       placeholder: "last name",
       value: lastName,
       onChange: (event) => setLastName(event.target.value),
-      required: true,
       type: "text",
     },
     {
       placeholder: "address",
       value: address,
       onChange: (event) => setAddress(event.target.value),
-      required: true,
       type: "text",
     },
     {
       placeholder: "postal code",
       value: postalCode,
       onChange: (event) => setPostalCode(event.target.value),
-      required: true,
       type: "text",
     },
     {
       placeholder: "city",
       value: city,
       onChange: (event) => setCity(event.target.value),
-      required: true,
       type: "text",
     },
     {
       placeholder: "email",
       value: email,
       onChange: (event) => setEmail(event.target.value),
-      required: true,
       type: "text",
     },
     {
       placeholder: "password",
       value: password,
       onChange: (event) => setPassword(event.target.value),
-      required: true,
       type: "password",
     },
     {
       placeholder: "password confirm",
       value: confirmPassword,
       onChange: (event) => setConfirmPassword(event.target.value),
-      required: true,
       type: "password",
     },
   ];
@@ -143,10 +135,10 @@ export const SignUpForm = ({ closeDrawer }) => {
       <h1>sign up</h1>
       {SignUpFormValues.map((item) => (
         <TextInput
+          key={item.placeholder}
           placeholder={item.placeholder}
           value={item.value}
           onChange={item.onChange}
-          required={item.value}
           type={item.type}
         />
       ))}

@@ -24,7 +24,6 @@ export const user = createSlice({
       const { accessToken } = action.payload;
       state.login.accessToken = accessToken;
     },
-
     setUserId: (state, action) => {
       const { userId } = action.payload;
       state.login.userId = userId;

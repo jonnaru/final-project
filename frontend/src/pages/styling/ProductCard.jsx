@@ -59,8 +59,8 @@ const InfoTitle = styled.span`
 export const ProductCard = ({ product }) => {
   const [buttonTitle, setButtonTitle] = useState("Add to cart");
 
-  const dispatch = useDispatch();
   const productsInCart = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
 
   const inStock = () => {
     const itemInCart = productsInCart.find(

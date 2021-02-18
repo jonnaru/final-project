@@ -43,6 +43,7 @@ export const ProfilePage = () => {
                   title={liked.fields.productName}
                   price={liked.fields.price}
                   id={liked.sys.id}
+                  key={liked.sys.id}
                 />
               ))}
             </ProfileItemsContainer>

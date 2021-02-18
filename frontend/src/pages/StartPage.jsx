@@ -41,6 +41,7 @@ export const StartPage = () => {
           <StartPageImgSlider
             src={`https:${image.fields.file.url}`}
             alt={`Slider image ${index}`}
+            key={image.fields.file.url}
           />
         ))}
       </Fade>

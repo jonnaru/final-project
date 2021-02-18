@@ -1,5 +1,4 @@
 import React from "react";
-
 import styled from "styled-components/macro";
 
 const Heart = styled.svg`
@@ -12,10 +11,9 @@ const Heart = styled.svg`
   }
 
   @media (max-width: 667px) {
-    
     &:hover {
-    transform: none;
-  }
+      transform: none;
+    }
   }
 `;
 

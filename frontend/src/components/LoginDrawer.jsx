@@ -11,13 +11,13 @@ import { SecondaryButton } from "../lib/SecondaryButton";
 import { IconExit } from "../lib/IconExit";
 
 export const LoginDrawer = () => {
-  const showLoginDrawer = useSelector((store) => store.ui.showLoginDrawer);
-  const dispatch = useDispatch();
-
-  const { setShowLoginDrawer } = ui.actions;
-
   const [showSignUp, setShowSignUp] = useState(false);
   const [animateDrawer, setAnimateDrawer] = useState(false);
+
+  const showLoginDrawer = useSelector((store) => store.ui.showLoginDrawer);
+
+  const dispatch = useDispatch();
+  const { setShowLoginDrawer } = ui.actions;
 
   const closeDrawer = () => {
     setAnimateDrawer(true);

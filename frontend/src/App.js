@@ -58,7 +58,6 @@ const App = () => {
           <Route path="/" exact>
             <StartPage />
           </Route>
-
           <Route path="/gallery" exact>
             <GalleryPage />
           </Route>
@@ -75,6 +74,7 @@ const App = () => {
             <ProductPage />
           </Route>
         </Switch>
+
         <Footer />
       </BrowserRouter>
     </Provider>

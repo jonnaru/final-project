@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Cell } from "styled-css-grid";
 import { useDispatch } from "react-redux";
+import { Grid, Cell } from "styled-css-grid";
 
 import { ui } from "../reducers/ui";
 import { getGalleryImages } from "../shared/getGalleryImages";
@@ -43,6 +43,7 @@ export const GalleryPage = () => {
                 src={`https:${image.fields.file.url}`}
                 alt={`Gallery image ${index}`}
                 type="large"
+                key={image.fields.file.url}
               />
             </Cell>
           ))}

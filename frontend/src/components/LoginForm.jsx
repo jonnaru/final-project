@@ -7,14 +7,14 @@ import { TextInput } from "../lib/TextInput";
 import { PrimaryButton } from "../lib/PrimaryButton";
 
 export const LoginForm = ({ closeDrawer }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const statusMessage = useSelector((store) => store.user.login.statusMessage);
   const accessToken = useSelector((store) => store.user.login.accessToken);
 
   const dispatch = useDispatch();
   const { setStatusMessage } = user.actions;
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   useEffect(() => {
     // Clean up

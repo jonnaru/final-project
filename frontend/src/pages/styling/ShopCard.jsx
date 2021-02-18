@@ -7,7 +7,7 @@ import { handleLikeThunk } from "../../reducers/user";
 
 import { IconHeart } from "../../lib/IconHeart";
 import { Dialog } from "../../lib/Dialog";
-// import { useTooltip } from "../../lib/Tooltip";
+// import { useTooltip } from "../../lib/Tooltip"; --> SAVING
 
 const Container = styled.article`
   position: relative;
@@ -72,6 +72,7 @@ const Button = styled.button`
   border: none;
   outline: none;
   padding: 0;
+
   cursor: pointer;
 `;
 
@@ -126,7 +127,7 @@ export const ShopCard = (props) => {
     }
   };
 
-  // const ref = useTooltip("sign in to like", {});
+  // const ref = useTooltip("sign in to like", {}); --> SAVING
 
   return (
     <>
@@ -142,7 +143,7 @@ export const ShopCard = (props) => {
         {sample && <TextFlag sample>sample</TextFlag>}
 
         <StyledLink to={`/product/${id}`}>
-          <img src={coverImage} />
+          <img src={coverImage} alt="product" />
         </StyledLink>
 
         <Content>
