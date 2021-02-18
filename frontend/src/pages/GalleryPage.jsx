@@ -1,30 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Cell } from "styled-css-grid";
-import { createClient } from "contentful";
+
+import { getGalleryImages } from "../shared/getGalleryImages";
 
 import { PageContainer } from "./styling/PageContainer";
 import { GalleryImage } from "./styling/GalleryImage";
 
-// to thunk
-const client = createClient({
-  space: process.env.REACT_APP_CONTENTFUL_SPACE,
-  accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
-});
-
 export const GalleryPage = () => {
   const [images, setImages] = useState([]);
 
-  const BrandId = "4QooFrW7W3oRtVqjitZaw2";
   useEffect(() => {
-    // to thunk
-    client
-      .getEntry(BrandId)
-      .then((brand) => {
-        setImages(brand.fields.gallery);
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
+    getGalleryImages(setImages);
   }, []);
 
   return (

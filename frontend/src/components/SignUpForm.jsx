@@ -28,7 +28,7 @@ export const SignUpForm = ({ closeDrawer }) => {
     };
   }, []);
 
-  // closing drawer on login success
+  // Closing drawer on signup success
   if (accessToken) closeDrawer();
 
   // To sign up a user

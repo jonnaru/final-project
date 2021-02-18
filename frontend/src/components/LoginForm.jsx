@@ -17,13 +17,13 @@ export const LoginForm = ({ closeDrawer }) => {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    // CLean up
+    // Clean up
     return () => {
       dispatch(setStatusMessage({ statusMessage: "" }));
     };
   }, []);
 
-  // closing drawer on login success
+  // Closing drawer on login success
   if (accessToken) closeDrawer();
 
   // Login a user

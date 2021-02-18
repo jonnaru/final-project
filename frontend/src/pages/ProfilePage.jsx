@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { createClient } from "contentful";
+
+import { getLikes } from "../shared/getLikes";
 
 import { PageContainer } from "./styling/PageContainer";
 import { ProfilePageContainer } from "./styling/ProfilePageContainer";
@@ -8,13 +9,9 @@ import { ProfileItemsContainer } from "./styling/ProfileItemsContainer";
 import { ProfileLikedItemCard } from "./styling/ProfileLikedItemCard";
 import { ProfileCard } from "./styling/ProfileCard";
 
-// to thunk
-const client = createClient({
-  space: "u1hj1odlv53m",
-  accessToken: "1TRVfQyDn_PgHJtYsjYqeBAg8hfo5bIATKK_MBsFHYU",
-});
-
 export const ProfilePage = () => {
+  const [likedProducts, setLikedProducts] = useState([]);
+
   const accessToken = useSelector((store) => store.user.login.accessToken);
   const name = useSelector((store) => store.user.login.name);
   const lastName = useSelector((store) => store.user.login.lastName);
@@ -24,26 +21,8 @@ export const ProfilePage = () => {
   const email = useSelector((store) => store.user.login.email);
   const likes = useSelector((store) => store.user.likes);
 
-  const [likedProducts, setLikedProducts] = useState([]);
-
-  // change to thunk
   useEffect(() => {
-    // to thunk
-    client
-      .getEntries({
-        content_type: "product",
-        limit: 20,
-        skip: 0,
-      })
-      .then((data) => {
-        const filteredProducts = data.items.filter((item) =>
-          likes.includes(item.sys.id)
-        );
-        setLikedProducts(filteredProducts);
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
+    getLikes(likes, setLikedProducts);
   }, [likes]);
 
   console.log("likedProducts", likedProducts);

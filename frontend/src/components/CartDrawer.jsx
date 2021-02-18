@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { createClient } from "contentful-management";
 import { useSelector, useDispatch } from "react-redux";
 
 import { ui } from "../reducers/ui";
-import { user } from "../reducers/user";
+// import { getChangeQuantity } from "../shared/getChangeQuantity"; --> SAVING FOR FUTURE CHECKOUT
 
 import { StyledDrawer } from "./styling/StyledDrawer";
 import { StyledCartLIst } from "./styling/StyledCartList";
@@ -12,16 +11,12 @@ import { PrimaryButton } from "../lib/PrimaryButton";
 import { Dialog } from "../lib/Dialog";
 import { IconExit } from "../lib/IconExit";
 
-// to thunk
-const client = createClient({
-  accessToken: process.env.REACT_APP_CONTENTFUL_MANAGEMENT_TOKEN,
-});
-
-const id = "67FditGZDejc2XnMLtqIY3";
-
 export const CartDrawer = () => {
   const [showCheckoutAlert, setShowCheckoutAlert] = useState(false);
+  const [animateDrawer, setAnimateDrawer] = useState(false);
+
   const showCartDrawer = useSelector((store) => store.ui.showCartDrawer);
+  const products = useSelector((store) => store.cart.items);
 
   const totalPrice = useSelector((store) =>
     store.cart.items.reduce(
@@ -30,13 +25,8 @@ export const CartDrawer = () => {
     )
   );
 
-  const products = useSelector((store) => store.cart.items);
-  const accessToken = useSelector((store) => store.user.login.accessToken);
-
   const dispatch = useDispatch();
-
   const { setShowCartDrawer } = ui.actions;
-  const [animateDrawer, setAnimateDrawer] = useState(false);
 
   const closeDrawer = () => {
     setAnimateDrawer(true);
@@ -48,25 +38,10 @@ export const CartDrawer = () => {
 
   if (!showCartDrawer) return <></>;
 
-  const changeQuantity = () => {
-    // to thunk
-    client
-      .getSpace(process.env.REACT_APP_CONTENTFUL_SPACE)
-      .then((space) => space.getEnvironment("master"))
-      .then((environment) => environment.getEntry(id))
-      .then((item) => {
-        console.log("Prev quantity", item.fields.quantity["en-US"]);
-        item.fields.quantity["en-US"] = item.fields.quantity["en-US"] + 1;
-        return item.update();
-      })
-      .then((item) => item.publish())
-      .then((item) =>
-        console.log(
-          `${item.fields.productName["en-US"]} updated. New quantity ${item.fields.quantity["en-US"]}`
-        )
-      )
-      .catch(console.error);
-  };
+  // --> SAVING FOR FUTURE CHECKOUT
+  // const changeQuantity = () => {
+  //   getChangeQuantity();
+  // };
 
   return (
     <>
