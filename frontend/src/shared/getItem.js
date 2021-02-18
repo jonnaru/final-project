@@ -29,8 +29,6 @@ export const getItem = (id, setProduct, handleLoadingChange) => {
       console.error("error", error);
     })
     .finally(() => {
-      setTimeout(() => {
-        handleLoadingChange(false);
-      }, 200);
+      handleLoadingChange(false);
     });
 };

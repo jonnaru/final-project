@@ -21,8 +21,6 @@ export const getItems = (setProducts, setCategories, handleLoadingChange) => {
       console.error("error", error);
     })
     .finally(() => {
-      setTimeout(() => {
-        handleLoadingChange(false);
-      }, 0);
+      handleLoadingChange(false);
     });
 };

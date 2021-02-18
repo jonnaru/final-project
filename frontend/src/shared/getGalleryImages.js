@@ -19,6 +19,6 @@ export const getGalleryImages = (setImages, handleLoadingChange) => {
     .finally(() => {
       setTimeout(() => {
         handleLoadingChange(false);
-      }, 200);
+      }, 100);
     });
 };

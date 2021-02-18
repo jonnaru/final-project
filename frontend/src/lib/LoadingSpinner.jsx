@@ -18,17 +18,6 @@ const Loading = styled.div`
   height: 100%;
 
   background-color: rgba(255, 255, 255, 1);
-  animation: wait 1s linear infinite;
-  animation-delay: 0.1s; /* waits 0.1s before displaying, to not flicker */
-
-  @keyframes wait {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 
   &::after {
     content: "";
