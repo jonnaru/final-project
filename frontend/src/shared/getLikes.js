@@ -2,8 +2,8 @@ import { createClient } from "contentful";
 
 export const getLikes = (likes, setLikedProducts) => {
   const client = createClient({
-    space: "u1hj1odlv53m",
-    accessToken: "1TRVfQyDn_PgHJtYsjYqeBAg8hfo5bIATKK_MBsFHYU",
+    space: process.env.REACT_APP_CONTENTFUL_SPACE,
+    accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
   });
 
   client
@@ -19,6 +19,6 @@ export const getLikes = (likes, setLikedProducts) => {
       setLikedProducts(filteredProducts);
     })
     .catch((error) => {
-      console.log("error", error);
+      console.error("error", error);
     });
 };

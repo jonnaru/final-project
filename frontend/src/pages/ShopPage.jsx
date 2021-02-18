@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
+import { ui } from "../reducers/ui";
 import { getItems } from "../shared/getItems";
 
 import { DropDown } from "../components/DropDown";
@@ -12,8 +14,15 @@ export const ShopPage = () => {
   const [categories, setCategories] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState();
 
+  const dispatch = useDispatch();
+  const { setIsLoading } = ui.actions;
+
+  const handleLoadingChange = (loading) => {
+    dispatch(setIsLoading(loading));
+  };
+
   useEffect(() => {
-    getItems(setProducts, setCategories);
+    getItems(setProducts, setCategories, handleLoadingChange);
   }, []);
 
   const filterProducts = (productsToFilter) => {

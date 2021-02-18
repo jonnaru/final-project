@@ -80,7 +80,6 @@ export const ProfileLikedItemCard = (props) => {
 
   const handleLike = (id) => {
     if (accessToken) dispatch(handleLikeThunk(id));
-    console.log("Liked", id);
   };
 
   return (

@@ -2,7 +2,7 @@
 
 ## Web Shop
 
-My final project at the Technigo Bootcamp. A full stack web-app to browse, filter, save and checkout items.
+My final project at the Technigo Bootcamp. A MERN stack web-app to browse, filter, save and checkout items.
 
 ![Mockup](mockup.jpg)
 

@@ -1,12 +1,12 @@
 import { createClient } from "contentful";
 
-export const getItems = (setProducts, setCategories) => {
+export const getItems = (setProducts, setCategories, handleLoadingChange) => {
   const client = createClient({
-    space: "u1hj1odlv53m",
-    accessToken: "1TRVfQyDn_PgHJtYsjYqeBAg8hfo5bIATKK_MBsFHYU",
+    space: process.env.REACT_APP_CONTENTFUL_SPACE,
+    accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
   });
 
-  console.log("get items thunk");
+  handleLoadingChange(true);
   client
     .getEntries({
       content_type: "product",
@@ -16,10 +16,13 @@ export const getItems = (setProducts, setCategories) => {
     .then((data) => {
       setProducts(data.items);
       setCategories(data.includes.Entry);
-      console.log("data:", data);
-      console.log("items:", data.items);
     })
     .catch((error) => {
-      console.log("error", error);
+      console.error("error", error);
+    })
+    .finally(() => {
+      setTimeout(() => {
+        handleLoadingChange(false);
+      }, 0);
     });
 };

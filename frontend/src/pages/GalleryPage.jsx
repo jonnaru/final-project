@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Cell } from "styled-css-grid";
+import { useDispatch } from "react-redux";
 
+import { ui } from "../reducers/ui";
 import { getGalleryImages } from "../shared/getGalleryImages";
 
 import { PageContainer } from "./styling/PageContainer";
@@ -9,8 +11,15 @@ import { GalleryImage } from "./styling/GalleryImage";
 export const GalleryPage = () => {
   const [images, setImages] = useState([]);
 
+  const dispatch = useDispatch();
+  const { setIsLoading } = ui.actions;
+
+  const handleLoadingChange = (loading) => {
+    dispatch(setIsLoading(loading));
+  };
+
   useEffect(() => {
-    getGalleryImages(setImages);
+    getGalleryImages(setImages, handleLoadingChange);
   }, []);
 
   return (

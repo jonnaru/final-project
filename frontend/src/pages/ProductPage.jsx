@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+import { ui } from "../reducers/ui";
 import { getItem } from "../shared/getItem";
 
 import { PageContainer } from "./styling/PageContainer";
@@ -16,8 +18,15 @@ export const ProductPage = () => {
   const { id } = useParams();
   const history = useHistory();
 
+  const dispatch = useDispatch();
+  const { setIsLoading } = ui.actions;
+
+  const handleLoadingChange = (loading) => {
+    dispatch(setIsLoading(loading));
+  };
+
   useEffect(() => {
-    getItem(id, setProduct);
+    getItem(id, setProduct, handleLoadingChange);
   }, [id]);
 
   if (!product) return <></>; // show spinner

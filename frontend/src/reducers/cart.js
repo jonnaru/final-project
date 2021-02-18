@@ -31,7 +31,6 @@ export const cart = createSlice({
       }
     },
     emptyCart: (state) => {
-      console.log("emptyCart");
       state.items = [];
     },
   },

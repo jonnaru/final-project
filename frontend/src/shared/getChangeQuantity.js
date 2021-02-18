@@ -13,13 +13,13 @@ export const getChangeQuantity = () => {
     .then((space) => space.getEnvironment("master"))
     .then((environment) => environment.getEntry(id))
     .then((item) => {
-      console.log("Prev quantity", item.fields.quantity["en-US"]);
       item.fields.quantity["en-US"] = item.fields.quantity["en-US"] - 1;
       return item.update();
     })
     .then((item) => item.publish())
     .then((item) =>
       console.log(
+        // saving console.log
         `${item.fields.productName["en-US"]} updated. New quantity ${item.fields.quantity["en-US"]}`
       )
     )

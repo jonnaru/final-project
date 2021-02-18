@@ -1,15 +1,15 @@
 import { createClient } from "contentful";
 
-export const getItem = (id, setProduct) => {
+export const getItem = (id, setProduct, handleLoadingChange) => {
   const client = createClient({
     space: process.env.REACT_APP_CONTENTFUL_SPACE,
     accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
   });
 
+  handleLoadingChange(true);
   client
     .getEntry(id)
     .then((item) => {
-      console.log("item product page", item);
       setProduct({
         id: item.sys.id,
         title: item.fields.productName,
@@ -26,6 +26,11 @@ export const getItem = (id, setProduct) => {
       });
     })
     .catch((error) => {
-      console.log("error", error);
+      console.error("error", error);
+    })
+    .finally(() => {
+      setTimeout(() => {
+        handleLoadingChange(false);
+      }, 200);
     });
 };

@@ -124,8 +124,6 @@ export const ShopCard = (props) => {
     } else {
       setShowLikeAlert(true);
     }
-
-    console.log("Liked", id);
   };
 
   // const ref = useTooltip("sign in to like", {});

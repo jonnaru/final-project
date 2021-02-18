@@ -19,6 +19,8 @@ import { LoginDrawer } from "./components/LoginDrawer";
 import { CartDrawer } from "./components/CartDrawer";
 import { Footer } from "./components/Footer";
 
+import { LoadingSpinner } from "./lib/LoadingSpinner";
+
 export const URL = process.env.REACT_APP_URL;
 
 const reducer = combineReducers({
@@ -48,6 +50,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Nav />
+        <LoadingSpinner />
         <LoginDrawer />
         <CartDrawer />
 

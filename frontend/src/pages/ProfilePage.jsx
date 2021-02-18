@@ -25,8 +25,6 @@ export const ProfilePage = () => {
     getLikes(likes, setLikedProducts);
   }, [likes]);
 
-  console.log("likedProducts", likedProducts);
-
   return (
     <PageContainer>
       <ProfilePageContainer>

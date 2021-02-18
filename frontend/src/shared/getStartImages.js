@@ -6,15 +6,14 @@ export const getStartImages = (setImages) => {
     accessToken: process.env.REACT_APP_CONTENTFUL_TOKEN,
   });
 
-  const BrandId = "4QooFrW7W3oRtVqjitZaw2";
+  const BrandId = process.env.REACT_APP_CONTENTFUL_BRAND;
 
   client
     .getEntry(BrandId)
     .then((brand) => {
-      console.log("brand", brand);
       setImages(brand.fields.slider);
     })
     .catch((error) => {
-      console.log("error", error);
+      console.error("error", error);
     });
 };
