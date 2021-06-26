@@ -10,12 +10,14 @@ export const getItems = (setProducts, setCategories, handleLoadingChange) => {
   client
     .getEntries({
       content_type: "product",
-      limit: 40,
+      limit: 100,
       skip: 0,
     })
     .then((data) => {
       setProducts(data.items);
-      setCategories(data.includes.Entry);
+      setCategories(
+        data.includes.Entry.filter((entry) => !entry.fields.companyName)
+      );
     })
     .catch((error) => {
       console.error("error", error);

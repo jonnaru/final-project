@@ -25,7 +25,7 @@ export const DropDown = ({ categories, setCategoryFilter }) => {
               <li onClick={onCategoryClicked(null)} key={"all"}>
                 All products
               </li>
-              {categories?.slice(0, categories.length - 1).map((category) => (
+              {categories?.map((category) => (
                 <li
                   onClick={onCategoryClicked(category.fields.title)}
                   key={category.fields.title}
