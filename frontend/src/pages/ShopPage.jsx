@@ -26,6 +26,11 @@ export const ShopPage = () => {
   }, []);
 
   const filterProducts = (productsToFilter) => {
+    productsToFilter = productsToFilter.sort((a, b) => {
+      if (a.fields.sort > b.fields.sort) return -1;
+      if (a.fields.sort < b.fields.sort) return 1;
+      return 0;
+    });
     if (!categoryFilter) return productsToFilter;
     return productsToFilter.filter(
       (product) => product.fields.categories[0].fields.title === categoryFilter

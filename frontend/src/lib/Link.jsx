@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-const CustomButton = styled.button`
+const CustomLink = styled.a`
+  display: block;
   background: none;
   border: none;
   outline: none;
@@ -21,6 +22,10 @@ const CustomButton = styled.button`
   }
 `;
 
-export const SecondaryButton = ({ title, onClick }) => {
-  return <CustomButton onClick={onClick}>{title}</CustomButton>;
+export const Link = ({ title, href }) => {
+  return (
+    <CustomLink href={href} target="_blank" rel="noreferrer">
+      {title}
+    </CustomLink>
+  );
 };

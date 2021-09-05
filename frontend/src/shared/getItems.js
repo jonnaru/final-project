@@ -10,7 +10,7 @@ export const getItems = (setProducts, setCategories, handleLoadingChange) => {
   client
     .getEntries({
       content_type: "product",
-      limit: 100,
+      limit: 200,
       skip: 0,
     })
     .then((data) => {

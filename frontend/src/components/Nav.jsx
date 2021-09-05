@@ -20,13 +20,13 @@ export const Nav = () => {
       <StyledNav onMouseLeave={() => dispatch(setShowNav(false))}>
         <ul onClick={() => dispatch(setShowNav(false))}>
           <li>
-            <Link to="/gallery">gallery</Link>
+            <Link to="/gallery">archive</Link>
           </li>
           <li>
             <Link to="/shop">shop</Link>
           </li>
           <li>
-            <Link to="/profile">profile</Link>
+            <Link to="/profile">account</Link>
           </li>
           <li>
             <Link to="/contact">contact</Link>

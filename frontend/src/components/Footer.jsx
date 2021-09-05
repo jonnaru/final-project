@@ -12,7 +12,7 @@ export const Footer = () => {
       <p>
         Drejad.studio is based in Stockholm, Sweden. All pieces are carefully
         handmade in stoneware. Email{" "}
-        <a href="mailto:hello@drejad.studios" target="_blank" rel="noreferrer">
+        <a href="mailto:hello@drejad.studio" target="_blank" rel="noreferrer">
           hello@drejad.studio
         </a>{" "}
         for international shipping, custom order-inquires or

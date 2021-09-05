@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { PrimaryButton } from "./PrimaryButton";
+import { Link } from "./Link";
+import { LoadingSmallSpinner } from "./LoadingSmallSpinner";
 
 const BackgroundContainer = styled.div`
   position: fixed;
@@ -10,7 +12,6 @@ const BackgroundContainer = styled.div`
   right: 0;
 
   text-align: center;
-  text-transform: uppercase;
   background: rgba(0, 0, 0, 0.4);
 
   z-index: 100;
@@ -36,6 +37,7 @@ const DialogContainer = styled.div`
 const Title = styled.h2`
   margin: 0;
   font-weight: lighter;
+  text-transform: uppercase;
 `;
 
 const SecondaryText = styled.p`
@@ -43,12 +45,30 @@ const SecondaryText = styled.p`
   text-transform: lowercase;
 `;
 
+const LoadingText = styled.p`
+  text-transform: uppercase;
+`;
+
+const Image = ({ img, altText, loadingText }) => {
+  if (img) return <img width="200" src={img} alt={altText} />;
+  return (
+    <>
+      <LoadingSmallSpinner />
+      <LoadingText>{loadingText}</LoadingText>
+    </>
+  );
+};
+
 export const Dialog = ({
   title,
+  img,
+  altText,
+  loadingText,
   onClose,
   buttonText,
   secondaryText,
-  secondaryButtonText,
+  linkText,
+  href,
   drawer,
 }) => (
   <BackgroundContainer drawer={drawer}>
@@ -56,13 +76,14 @@ export const Dialog = ({
       {title && <Title>{title}</Title>}
       {secondaryText && <SecondaryText>{secondaryText}</SecondaryText>}
 
+      {img !== undefined && (
+        <Image img={img} altText={altText} loadingText={loadingText} />
+      )}
       <div>
         {buttonText && (
           <PrimaryButton small title={buttonText} onClick={onClose} />
         )}
-        {secondaryButtonText && (
-          <PrimaryButton small title={secondaryButtonText} onClick={onClose} />
-        )}
+        {linkText && <Link small title={linkText} href={href} />}
       </div>
     </DialogContainer>
   </BackgroundContainer>

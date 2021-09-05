@@ -30,9 +30,7 @@ export const ProfilePage = () => {
       <ProfilePageContainer>
         {!accessToken ? (
           <article>
-            <h1 style={{ paddingLeft: "12px" }}>
-              sign in to view user details
-            </h1>
+            <h1 style={{ paddingLeft: "12px" }}>create an account to order</h1>
           </article>
         ) : (
           likedProducts.length > 0 && (
