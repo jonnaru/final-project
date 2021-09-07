@@ -44,8 +44,8 @@ export const StyledCartCard = ({ product }) => {
   return (
     <CardContainer>
       <img
-        src={product.thumb.fields.file.url}
-        alt={product.thumb.fields.title}
+        src={product.thumb.fields?.file?.url}
+        alt={product.thumb.fields?.title}
       />
       <ContentContainer>
         <h1>{product.title}</h1>

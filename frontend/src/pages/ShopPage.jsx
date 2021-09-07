@@ -48,7 +48,7 @@ export const ShopPage = () => {
           <ShopCard
             key={product.sys.id}
             id={product.sys.id}
-            coverImage={`http:${product.fields.thumb.fields.file.url}`}
+            coverImage={`http:${product.fields.thumb.fields?.file?.url}`}
             title={product.fields.productName}
             price={product.fields.price}
             quantity={product.fields.quantity}
