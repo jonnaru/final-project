@@ -139,8 +139,11 @@ export const ShopCard = (props) => {
         />
       )}
       <Container className={className}>
-        {quantity < 1 && <TextFlag>sold out</TextFlag>}
-        {sample && <TextFlag sample>sample</TextFlag>}
+        {quantity < 1 ? (
+          <TextFlag>sold out</TextFlag>
+        ) : (
+          sample && <TextFlag sample>sample</TextFlag>
+        )}
 
         <StyledLink to={`/product/${id}`}>
           <img src={coverImage} alt="product" />
