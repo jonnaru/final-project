@@ -101,8 +101,8 @@ const TextFlag = styled.span`
   text-align: right;
   font-style: italic;
 
-  background: ${(props) => (props.sample ? "#fff" : "#000")};
-  color: ${(props) => (props.sample ? "#000" : "#fff")};
+  background: ${(props) => (props.white ? "#fff" : "#000")};
+  color: ${(props) => (props.white ? "#000" : "#fff")};
 `;
 
 const StyledLink = styled(Link)`
@@ -110,7 +110,8 @@ const StyledLink = styled(Link)`
 `;
 
 export const ShopCard = (props) => {
-  const { title, price, coverImage, className, quantity, id, sample } = props;
+  const { title, price, coverImage, className, quantity, id, sample, sale } =
+    props;
 
   const [showLikeAlert, setShowLikeAlert] = useState(false);
 
@@ -142,7 +143,14 @@ export const ShopCard = (props) => {
         {quantity < 1 ? (
           <TextFlag>sold out</TextFlag>
         ) : (
-          sample && <TextFlag sample>sample</TextFlag>
+          <>
+            {sample && <TextFlag white>sample</TextFlag>}
+            {sale && (
+              <TextFlag white style={{ color: "red" }}>
+                sale
+              </TextFlag>
+            )}
+          </>
         )}
 
         <StyledLink to={`/product/${id}`}>

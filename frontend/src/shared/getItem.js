@@ -20,6 +20,7 @@ export const getItem = (id, setProduct, handleLoadingChange) => {
         description: item.fields.productDescription,
         materialCare: item.fields.materialCare,
         sample: item.fields.sample,
+        sale: item.fields.sale,
         mainImage: item.fields.image[0],
         images: item.fields.image.slice(1),
         thumb: item.fields.thumb,

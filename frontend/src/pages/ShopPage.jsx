@@ -53,6 +53,7 @@ export const ShopPage = () => {
             price={product.fields.price}
             quantity={product.fields.quantity}
             sample={product.fields.sample}
+            sale={product.fields.sale}
           />
         ))}
       </ShopPageContainer>
