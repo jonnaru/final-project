@@ -67,6 +67,14 @@ const Content = styled.div`
   padding: 10px 0;
 `;
 
+const SalePrice = styled.span`
+  color: red;
+`;
+
+const OldPrice = styled.span`
+  text-decoration: line-through;
+`;
+
 const Button = styled.button`
   background: none;
   border: none;
@@ -110,8 +118,17 @@ const StyledLink = styled(Link)`
 `;
 
 export const ShopCard = (props) => {
-  const { title, price, coverImage, className, quantity, id, sample, sale } =
-    props;
+  const {
+    title,
+    price,
+    oldPrice,
+    coverImage,
+    className,
+    quantity,
+    id,
+    sample,
+    sale,
+  } = props;
 
   const [showLikeAlert, setShowLikeAlert] = useState(false);
 
@@ -144,7 +161,7 @@ export const ShopCard = (props) => {
           <TextFlag>sold out</TextFlag>
         ) : (
           <>
-            {sample && <TextFlag white>sample</TextFlag>}
+            {sample && !sale && <TextFlag white>sample</TextFlag>}
             {sale && (
               <TextFlag white style={{ color: "red" }}>
                 sale
@@ -169,7 +186,14 @@ export const ShopCard = (props) => {
               />
             </Button>
           </TitleBar>
-          <p>{`${price} SEK`}</p>
+          {oldPrice ? (
+            <p>
+              <OldPrice>{`${oldPrice} SEK`}</OldPrice>
+              <SalePrice>{` ${price} SEK`}</SalePrice>
+            </p>
+          ) : (
+            <p>{`${price} SEK`}</p>
+          )}
         </Content>
       </Container>
     </>

@@ -51,9 +51,10 @@ export const ShopPage = () => {
             coverImage={`http:${product.fields.thumb.fields?.file?.url}`}
             title={product.fields.productName}
             price={product.fields.price}
+            oldPrice={product.fields.oldPrice}
             quantity={product.fields.quantity}
             sample={product.fields.sample}
-            sale={product.fields.sale}
+            sale={!!product.fields.oldPrice}
           />
         ))}
       </ShopPageContainer>

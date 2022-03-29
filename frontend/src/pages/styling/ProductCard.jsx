@@ -26,6 +26,14 @@ const ProductPrice = styled.h4`
   margin-bottom: 32px;
 `;
 
+const OldProductPrice = styled.span`
+  text-decoration: line-through;
+`;
+
+const SaleProductPrice = styled.span`
+  color: red;
+`;
+
 const ProductInfo = styled.h4`
   font-size: 20px;
   margin: 0;
@@ -83,7 +91,14 @@ export const ProductCard = ({ product }) => {
   return (
     <Product>
       <h1>{product.title}</h1>
-      <ProductPrice>{`${product.price} SEK`}</ProductPrice>
+      {product.oldPrice ? (
+        <ProductPrice>
+          <OldProductPrice>{`${product.oldPrice} SEK`}</OldProductPrice>
+          <SaleProductPrice>{` ${product.price} SEK`}</SaleProductPrice>
+        </ProductPrice>
+      ) : (
+        <ProductPrice>{`${product.price} SEK`}</ProductPrice>
+      )}
 
       <div style={{ marginBottom: "22px" }}>
         <ProductInfo>
